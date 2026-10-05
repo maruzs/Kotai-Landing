@@ -45,11 +45,6 @@ export const VideoSection: React.FC = () => {
               className="w-full aspect-video object-cover bg-black"
             />
 
-            {/* Floating Badge */}
-            <div className="absolute top-4 left-4 pointer-events-none z-10 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-950/80 backdrop-blur-md border border-white/10 text-xs font-bold text-white">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-              <span>Full HD 1080p · Locución Chilena Oficial</span>
-            </div>
 
           </div>
 
