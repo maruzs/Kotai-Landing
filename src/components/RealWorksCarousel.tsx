@@ -145,7 +145,7 @@ export const RealWorksCarousel: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2 text-sm font-semibold text-zinc-800">
                     <CheckCircle2 className="w-4 h-4 text-kotai-800 shrink-0" />
-                    <span>Cero costo de asesoría técnica para la postulación</span>
+                    <span>Acompañamiento y postulación ante el Serviu</span>
                   </div>
                 </div>
               </div>

@@ -28,7 +28,7 @@ export const VideoSection: React.FC = () => {
             Conoce el Subsidio Térmico en 1 Minuto
           </h2>
           <p className="mt-4 text-base sm:text-lg text-zinc-300 leading-relaxed font-normal">
-            Mira este breve video explicativo con locución y fotos reales. Conoce qué incluye el proyecto, los 3 requisitos obligatorios para calificar y cómo Kotai te acompaña sin costo.
+            Mira este breve video explicativo con locución y fotos reales. Conoce qué incluye el proyecto, los 3 requisitos obligatorios para calificar y cómo Kotai te acompaña en tu postulación.
           </p>
         </div>
 
@@ -88,7 +88,7 @@ export const VideoSection: React.FC = () => {
                 <span>Asesoría Kotai</span>
               </div>
               <h3 className="text-lg font-bold text-white">
-                100% Gratuita para Vecinos
+                Acompañamiento a Vecinos
               </h3>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
                 Revisión técnica en terreno, verificación de cartola RSH y postulación de tu carpeta ante el Serviu.

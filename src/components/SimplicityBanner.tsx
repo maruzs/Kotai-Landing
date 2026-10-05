@@ -75,7 +75,7 @@ export const SimplicityBanner: React.FC = () => {
               ¿No sabes si cumples con tu Registro Social de Hogares?
             </h4>
             <p className="text-base sm:text-lg text-zinc-300">
-              Escríbenos o llámanos; revisamos tu cartola sin costo ni compromiso alguno.
+              Escríbenos o llámanos; revisamos tu cartola y te orientamos paso a paso con amabilidad.
             </p>
           </div>
           <a

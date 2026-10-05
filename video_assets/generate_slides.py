@@ -111,7 +111,7 @@ def create_slide_1():
         ("Subsidio Habitacional del Estado", "El MINVU financia el aislamiento térmico y recambio de ventanas."),
         ("Aporte Mínimo desde 1 UF (~$41.500)", "Ahorro previo accesible según tu tramo de vulnerabilidad."),
         ("Tramo hasta el 60% en el RSH", "Enfocado en familias y personas mayores que requieren abrigo en su hogar."),
-        ("Asesoría Técnica 100% Gratuita", "Constructora Kotai y Grupo Alianza G5 te acompañan en todo el proceso.")
+        ("Acompañamiento Profesional", "Constructora Kotai y Grupo Alianza G5 te acompañan en todo el proceso.")
     ]
 
     by = 350
@@ -140,7 +140,7 @@ def create_slide_2():
     bullets = [
         ("Gestión y Acompañamiento Completo", "Elaboramos el proyecto de ingeniería y armamos la carpeta de postulación."),
         ("Postulación Colectiva o Individual", "Trabajamos con Comités de Vivienda, Juntas Vecinales y familias."),
-        ("Diagnóstico Técnico sin Costo", "Evaluamos tu vivienda en terreno para comprobar si cumple las condiciones."),
+        ("Evaluación Técnica en Terreno", "Revisamos tu vivienda para asegurar el cumplimiento de condiciones."),
         ("Materiales Bajo Norma Chilena", "Obras garantizadas con certificación de resistencia térmica y durabilidad.")
     ]
 
@@ -281,28 +281,28 @@ def create_slide_4():
 
     base.convert("RGB").save(f"{OUTPUT_DIR}/scene_4.jpg", quality=95)
 
-# ----------------- DIAPOSITIVA 5: ANTES Y DESPUÉS + ASESORÍA GRATIS -----------------
+# ----------------- DIAPOSITIVA 5: ANTES Y DESPUÉS + ACOMPAÑAMIENTO KOTAI -----------------
 def create_slide_5():
     base, draw = create_base_slide(
-        "EVIDENCIA Y COMPROMISO SOCIAL",
-        "Antes y Después · Asesoría 100% Gratuita",
-        "Comprueba la diferencia y postula sin pagar ningún costo de gestión"
+        "EVIDENCIA Y COMPROMISO CON LA COMUNIDAD",
+        "Antes y Después · Transformación Real",
+        "Comprueba la diferencia y postula con el respaldo de Constructora Kotai"
     )
 
     # Dos fotos lado a lado: Antes y Después
     place_framed_photo(base, "public/images/antes.jpg", [80, 330, 850, 480], "ANTES: Casa sin aislamiento térmico")
     place_framed_photo(base, "public/images/despues.jpg", [990, 330, 850, 480], "DESPUÉS: Casa aislada y renovada por Kotai")
 
-    # Banner informativo inferior de asesoría gratuita
+    # Banner informativo inferior de postulación
     draw.rounded_rectangle([80, 840, WIDTH - 80, 990], radius=12, fill=COLOR_WHITE, outline=COLOR_KOTAI_RED, width=3)
     
     draw.rounded_rectangle([80, 840, 520, 990], radius=12, fill=COLOR_KOTAI_RED)
-    draw.text((115, 875), "ASESORÍA", font=get_font(FONT_BLACK, 38), fill=COLOR_WHITE)
-    draw.text((115, 925), "100% GRATUITA", font=get_font(FONT_BLACK, 38), fill=COLOR_WHITE)
+    draw.text((115, 875), "POSTULACIÓN", font=get_font(FONT_BLACK, 36), fill=COLOR_WHITE)
+    draw.text((115, 925), "CON KOTAI", font=get_font(FONT_BLACK, 36), fill=COLOR_WHITE)
 
-    draw.text((550, 865), "• Cero costo de visita técnica a terreno y evaluación de tu vivienda", font=get_font(FONT_BOLD, 25), fill=COLOR_TEXT_MAIN)
+    draw.text((550, 865), "• Visita técnica a terreno y evaluación arquitectónica de tu vivienda", font=get_font(FONT_BOLD, 25), fill=COLOR_TEXT_MAIN)
     draw.text((550, 905), "• Acompañamos a comités de vivienda y juntas de vecinos paso a paso", font=get_font(FONT_BOLD, 25), fill=COLOR_TEXT_MAIN)
-    draw.text((550, 945), "• Revisamos tu cartola RSH de inmediato para informarte si calificas", font=get_font(FONT_BOLD, 25), fill=COLOR_KOTAI_RED)
+    draw.text((550, 945), "• Revisamos tu cartola RSH para informarte el tramo al que perteneces", font=get_font(FONT_BOLD, 25), fill=COLOR_KOTAI_RED)
 
     base.convert("RGB").save(f"{OUTPUT_DIR}/scene_5.jpg", quality=95)
 

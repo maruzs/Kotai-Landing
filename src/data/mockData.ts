@@ -102,7 +102,7 @@ export const PROJECTS_GALLERY: ProjectSlide[] = [
     title: 'Panel Solar Térmico para Agua Caliente Sanitaria',
     category: 'Sistema Solar Térmico',
     location: 'Villa El Sol, Melipilla',
-    description: 'Colector solar instalado en cubierta con estanque acumulador térmico. Agua caliente gratuita durante gran parte del año.',
+    description: 'Colector solar instalado en cubierta con estanque acumulador térmico. Agua caliente con energía solar y ahorro de hasta 80% en gas.',
     image: '/images/PuertaYPanel2.jpg',
     specs: ['Ahorro de hasta 80% en gas', 'Válvula termostática de seguridad', 'Certificación SEC'],
   },
@@ -358,7 +358,7 @@ export const SIMPLE_STEPS = [
   {
     number: '03',
     title: 'Postulación y Documentación',
-    desc: 'Te ayudamos a reunir los 5 documentos necesarios y armamos el expediente para postular al Serviu sin costo.',
+    desc: 'Te ayudamos a reunir los 5 documentos necesarios y armamos el expediente para postular formalmente ante el Serviu.',
   },
   {
     number: '04',
