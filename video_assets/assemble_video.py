@@ -15,39 +15,33 @@ SCENES = [
 CLIPS_DIR = "video_assets/clips"
 os.makedirs(CLIPS_DIR, exist_ok=True)
 
-# 1. Generar clips individuales con sutil zoom/movimiento y fade in/out
+# 1. Generar clips individuales estilo diapositiva PPTX nítida con transición suave
 concat_list_path = "video_assets/concat_list.txt"
 with open(concat_list_path, "w") as f:
     for idx, (img_path, duration) in enumerate(SCENES):
         clip_path = f"{CLIPS_DIR}/clip_{idx}.mp4"
-        frames = int(duration * 30)
 
-        # Zoom sutil y constante
-        # Usamos filter zoompan para un efecto elegante
-        zoom_filter = (
-            f"zoompan=z='min(zoom+0.0004,1.04)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={frames}:s=1920x1080:fps=30,"
-            f"fade=t=in:st=0:d=0.3,fade=t=out:st={duration - 0.3:.2f}:d=0.3"
-        )
+        # Transición suave estilo diapositiva (0.25s fade in / fade out) para máxima legibilidad
+        filter_str = f"fade=t=in:st=0:d=0.25,fade=t=out:st={duration - 0.25:.2f}:d=0.25"
 
         cmd = [
             "ffmpeg", "-y",
             "-loop", "1",
             "-i", img_path,
-            "-vf", zoom_filter,
+            "-vf", filter_str,
             "-t", str(duration),
             "-c:v", "libx264",
             "-pix_fmt", "yuv420p",
             "-r", "30",
             clip_path
         ]
-        print(f"Renderizando clip {idx+1}/{len(SCENES)}: {clip_path} ({duration}s)...")
+        print(f"Renderizando diapositiva {idx+1}/{len(SCENES)}: {clip_path} ({duration}s)...")
         subprocess.run(cmd, check=True)
         f.write(f"file '{os.path.abspath(clip_path)}'\n")
 
-print("Concatenando video con pista de audio y música de fondo...")
+print("Concatenando diapositivas con pista de audio y música de fondo...")
 
 # 2. Mezclar locución (100% volumen) + música de fondo (12% volumen con fade out)
-# Y unir con el video concatenado
 merged_video_raw = "video_assets/video_raw.mp4"
 subprocess.run([
     "ffmpeg", "-y",
@@ -71,7 +65,7 @@ cmd_final = [
     "-map", "[aout]",
     "-c:v", "libx264",
     "-preset", "medium",
-    "-crf", "20",
+    "-crf", "18",
     "-c:a", "aac",
     "-b:a", "192k",
     "-movflags", "+faststart",
@@ -81,4 +75,4 @@ cmd_final = [
 
 print("Renderizando video final:", output_final)
 subprocess.run(cmd_final, check=True)
-print("¡VIDEO FINAL CREADO EXITOSAMENTE EN:", output_final)
+print("¡VIDEO PRESENTACIÓN ACTUALIZADO EXITOSAMENTE EN:", output_final)
