@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroCarousel } from './components/HeroCarousel';
 import { SimplicityBanner } from './components/SimplicityBanner';
+import { VideoSection } from './components/VideoSection';
 import { ServicesSection } from './components/ServicesSection';
 import { BeforeAfterSlider } from './components/BeforeAfterSlider';
 import { ProjectsAutoCarousel } from './components/ProjectsAutoCarousel';
@@ -25,6 +26,9 @@ export const App: React.FC = () => {
 
         {/* 4 Pasos Simples para postular ante Serviu */}
         <SimplicityBanner />
+
+        {/* Video Oficial Informativo con Locución y Requisitos */}
+        <VideoSection />
 
         {/* Subsidios de Mejoramiento Serviu y Programas Oficiales */}
         <ServicesSection />

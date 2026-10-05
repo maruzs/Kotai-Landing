@@ -14,6 +14,7 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
+    { label: 'Video', href: '#video-explicativo' },
     { label: 'Subsidios', href: '#servicios' },
     { label: 'Obras y Fotos', href: '#proyectos' },
     { label: 'Antes y Después', href: '#antes-despues' },

@@ -11,3 +11,5 @@ dist-ssr/
 *.sw?
 __pycache__/
 *.py[cod]
+video_assets/clips/
+video_assets/video_raw.mp4

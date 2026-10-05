@@ -1,0 +1,8 @@
+file '/home/maruzs/Desktop/Kotai/video_assets/clips/clip_0.mp4'
+file '/home/maruzs/Desktop/Kotai/video_assets/clips/clip_1.mp4'
+file '/home/maruzs/Desktop/Kotai/video_assets/clips/clip_2.mp4'
+file '/home/maruzs/Desktop/Kotai/video_assets/clips/clip_3.mp4'
+file '/home/maruzs/Desktop/Kotai/video_assets/clips/clip_4.mp4'
+file '/home/maruzs/Desktop/Kotai/video_assets/clips/clip_5.mp4'
+file '/home/maruzs/Desktop/Kotai/video_assets/clips/clip_6.mp4'
+file '/home/maruzs/Desktop/Kotai/video_assets/clips/clip_7.mp4'
