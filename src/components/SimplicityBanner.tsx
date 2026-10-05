@@ -1,95 +1,96 @@
 import React from 'react';
-import { PhoneCall, MessageCircle, CheckCircle2, Volume2 } from 'lucide-react';
 import { SIMPLE_STEPS } from '../data/mockData';
+import { FileSearch, Home, FolderCheck, ShieldCheck, ArrowRight } from 'lucide-react';
 
 export const SimplicityBanner: React.FC = () => {
-  return (
-    <section className="bg-amber-50 border-y border-amber-200 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Banner Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <span className="inline-block bg-amber-200 text-amber-900 font-extrabold px-3 py-1 rounded-full text-xs uppercase tracking-wider mb-2">
-            Fácil, Rápido y Seguro para Todos
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900">
-            ¿Cómo te ayudamos en Kotai? En solo 4 pasos sencillos
-          </h2>
-          <p className="mt-2 text-stone-700 text-base sm:text-lg">
-            No necesitas saber de construcción ni trámites difíciles. Nosotros te guiamos con paciencia y claridad.
-          </p>
+  const stepIcons = [
+    <FileSearch className="w-7 h-7 text-kotai-800" />,
+    <Home className="w-7 h-7 text-kotai-800" />,
+    <FolderCheck className="w-7 h-7 text-kotai-800" />,
+    <ShieldCheck className="w-7 h-7 text-kotai-800" />,
+  ];
 
-          {/* Voice message accessibility reminder */}
-          <div className="mt-4 inline-flex items-center gap-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-amber-300 text-stone-800 text-sm font-semibold">
-            <Volume2 className="w-5 h-5 text-emerald-600 shrink-0" />
-            <span>¿Te complica escribir? <strong>¡Mándanos un audio por WhatsApp y te responderemos de inmediato!</strong></span>
+  const handleSoftScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <section id="requisitos" className="py-16 sm:py-24 bg-white border-b border-zinc-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header with Large, Friendly Text */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-kotai-50 border border-kotai-200 text-kotai-900 text-xs sm:text-sm font-bold uppercase tracking-wider mb-4">
+            Te Ayudamos a Postular Paso a Paso
           </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight">
+            Acceder a tu Subsidio es Fácil con Kotai
+          </h2>
+          <p className="mt-4 text-lg sm:text-xl text-zinc-600 leading-relaxed font-normal">
+            Te asesoramos con paciencia, sin palabras difíciles y con la experiencia de haber aislado cientos de hogares en toda la región.
+          </p>
         </div>
 
-        {/* 4 Clear Step Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SIMPLE_STEPS.map((item) => (
-            <div 
-              key={item.step}
-              className="bg-white rounded-2xl p-6 shadow-soft border border-amber-100 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden"
+        {/* 4 Steps Grid with Large, Readable Typography */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {SIMPLE_STEPS.map((step, index) => (
+            <div
+              key={step.number}
+              className="relative bg-zinc-50 rounded-3xl p-7 border border-zinc-200/90 shadow-sm hover:border-kotai-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
             >
-              <div className="absolute top-2 right-3 text-5xl font-black text-amber-100 select-none pointer-events-none">
-                {item.step}
-              </div>
-
               <div>
-                <div className="w-12 h-12 rounded-xl bg-kotai-100 text-kotai-800 flex items-center justify-center font-black text-xl mb-4 border border-kotai-200">
-                  {item.step}
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center shadow-sm">
+                    {stepIcons[index]}
+                  </div>
+                  <span className="text-3xl font-black text-zinc-300 font-mono">
+                    {step.number}
+                  </span>
                 </div>
-                <h3 className="text-lg font-bold text-stone-900 mb-2">
-                  {item.title}
+
+                <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 mb-3 leading-snug">
+                  {step.title}
                 </h3>
-                <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-                  {item.desc}
+
+                <p className="text-base sm:text-lg text-zinc-600 leading-relaxed">
+                  {step.desc}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-stone-100 flex items-center gap-1.5 text-xs font-bold text-kotai-800">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Atención con respeto y paciencia</span>
+              <div className="mt-8 pt-4 border-t border-zinc-200 flex items-center text-sm font-bold text-kotai-800">
+                <span>Paso {step.number} del proceso</span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Direct Action Banner for phone or WhatsApp */}
-        <div className="mt-10 bg-white rounded-2xl p-6 sm:p-8 shadow-card border border-stone-200 flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="text-center lg:text-left space-y-1">
-            <h3 className="text-xl sm:text-2xl font-bold text-stone-900">
-              ¿Quieres hacer una pregunta ahora mismo?
-            </h3>
-            <p className="text-stone-600 text-base">
-              Atendemos de lunes a sábado de 8:30 a 19:30 hrs.
+        {/* Reassurance Callout Box with Larger Text */}
+        <div className="mt-14 rounded-3xl bg-zinc-900 text-white p-7 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 border border-zinc-800">
+          <div className="space-y-2 text-center md:text-left">
+            <h4 className="text-xl sm:text-2xl font-bold">
+              ¿No sabes si cumples con tu Registro Social de Hogares?
+            </h4>
+            <p className="text-base sm:text-lg text-zinc-300">
+              Escríbenos o llámanos; revisamos tu cartola sin costo ni compromiso alguno.
             </p>
           </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3 w-full lg:w-auto">
-            <a
-              href="https://wa.me/56987654321?text=Hola,%20quisiera%20hacer%20una%20consulta%20a%20Kotai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3.5 rounded-xl shadow transition text-base"
-            >
-              <MessageCircle className="w-5 h-5 fill-white" />
-              <span>Enviar WhatsApp Directo</span>
-            </a>
-
-            <a
-              href="tel:+56987654321"
-              className="flex items-center gap-2 bg-stone-900 hover:bg-stone-800 text-white font-bold px-6 py-3.5 rounded-xl transition text-base"
-            >
-              <PhoneCall className="w-5 h-5 text-amber-400" />
-              <span>Llamar al +56 9 8765 4321</span>
-            </a>
-          </div>
+          <a
+            href="#contacto"
+            onClick={(e) => handleSoftScroll(e, '#contacto')}
+            className="shrink-0 inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-kotai-800 hover:bg-kotai-700 text-white text-base font-bold transition-all duration-200 active:scale-[0.98] shadow-sm"
+          >
+            <span>Postula con Nosotros</span>
+            <ArrowRight className="w-5 h-5" />
+          </a>
         </div>
 
       </div>
     </section>
   );
 };
+
+export default SimplicityBanner;

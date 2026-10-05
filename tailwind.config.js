@@ -9,17 +9,24 @@ export default {
     extend: {
       colors: {
         kotai: {
-          50: '#fdf2f3',
-          100: '#fce4e6',
-          200: '#f9cbd0',
-          300: '#f3a4ad',
-          400: '#e87280',
-          500: '#d74456',
-          600: '#be293c',
-          700: '#9f1e2f',
-          800: '#881020', // Color dominante del logo Kotai
-          900: '#72121e',
-          950: '#40060e',
+          50: '#fdf2f4',
+          100: '#fbe6e9',
+          200: '#f7ced4',
+          300: '#f0a7b3',
+          400: '#e47487',
+          500: '#d3455e',
+          600: '#bd2b45',
+          700: '#a11c33',
+          800: '#8b0b1d', // Color exacto del logo Kotai
+          900: '#730c1a',
+          950: '#42030c',
+        },
+        brand: {
+          charcoal: '#18181b',
+          concrete: '#27272a',
+          steel: '#52525b',
+          stone: '#f4f4f5',
+          sand: '#fafaf9',
         },
         holding: {
           blue: '#1e3a8a',
@@ -27,12 +34,13 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       boxShadow: {
-        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02)',
-        'card': '0 10px 30px -5px rgba(136, 16, 32, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04)',
-        'hero': '0 20px 50px -10px rgba(136, 16, 32, 0.25)',
+        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+        'card': '0 8px 30px -4px rgba(139, 11, 29, 0.08), 0 2px 8px -2px rgba(0, 0, 0, 0.04)',
+        'hero': '0 20px 50px -10px rgba(139, 11, 29, 0.28)',
+        'crimson': '0 10px 25px -5px rgba(139, 11, 29, 0.35)',
       }
     },
   },

@@ -1,66 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroCarousel } from './components/HeroCarousel';
 import { SimplicityBanner } from './components/SimplicityBanner';
+import { ServicesSection } from './components/ServicesSection';
 import { BeforeAfterSlider } from './components/BeforeAfterSlider';
 import { ProjectsAutoCarousel } from './components/ProjectsAutoCarousel';
-import { ServicesSection } from './components/ServicesSection';
+import { RealWorksCarousel } from './components/RealWorksCarousel';
 import { AboutAndHistory } from './components/AboutAndHistory';
 import { HoldingG5 } from './components/HoldingG5';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 export const App: React.FC = () => {
-  const [textSize, setTextSize] = useState<'normal' | 'lg' | 'xl'>('normal');
-
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.remove('text-size-lg', 'text-size-xl');
-    if (textSize === 'lg') {
-      root.classList.add('text-size-lg');
-    } else if (textSize === 'xl') {
-      root.classList.add('text-size-xl');
-    }
-  }, [textSize]);
-
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 font-sans selection:bg-kotai-100 selection:text-kotai-900">
-      {/* Navigation Bar with font size accessibility */}
-      <Navbar textSize={textSize} setTextSize={setTextSize} />
+    <div className="min-h-screen flex flex-col bg-[#FAFAFA] font-sans text-zinc-900 selection:bg-kotai-100 selection:text-kotai-900">
+      {/* Navbar principal limpia con logo Kotai_NoBG y postulación */}
+      <Navbar />
 
-      {/* Main Content */}
+      {/* Contenido Principal */}
       <main className="flex-1">
-        {/* Hero with auto-playing carousel */}
+        {/* Hero con carrusel automático de fotos reales de Kotai */}
         <HeroCarousel />
 
-        {/* 4 Simple Steps Banner for non-tech & seniors */}
+        {/* 4 Pasos Simples para postular ante Serviu */}
         <SimplicityBanner />
 
-        {/* Before and After Interactive & Auto-advancing Showcase */}
-        <BeforeAfterSlider />
-
-        {/* Live on-site works photo gallery carousel */}
-        <ProjectsAutoCarousel />
-
-        {/* Core Services: Constructora y Montaje, Serviu Renac, etc. */}
+        {/* Subsidios de Mejoramiento Serviu y Programas Oficiales */}
         <ServicesSection />
 
-        {/* Nuestra Historia, Quiénes Somos (Equipo y Aliados) */}
+        {/* Antes y Después interactivo (fotos reales antes.jpg y despues.jpg) */}
+        <BeforeAfterSlider />
+
+        {/* Obras y Proyectos de Acondicionamiento Térmico */}
+        <ProjectsAutoCarousel />
+
+        {/* Galería Fotográfica Real: Ventanas Termopanel, Colectores Solares y Puertas */}
+        <RealWorksCarousel />
+
+        {/* Quiénes Somos, Historia y Aliados */}
         <AboutAndHistory />
 
-        {/* Grupo Alianza G5 Holding Section */}
+        {/* Respaldo Grupo Alianza G5 */}
         <HoldingG5 />
 
-        {/* Contact and Direct Consultation */}
+        {/* Iniciar Postulación Directa */}
         <ContactSection />
       </main>
 
-      {/* Persistent Footer */}
+      {/* Pie de Página */}
       <Footer />
 
-      {/* Floating High-Contrast WhatsApp Action Button */}
-      <FloatingWhatsApp />
+      {/* Botón flotante oficial de WhatsApp en la esquina inferior derecha */}
+      <WhatsAppButton />
     </div>
   );
 };

@@ -1,274 +1,177 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { BEFORE_AFTER_PROJECTS } from '../data/mockData';
-import { ChevronLeft, ChevronRight, CheckCircle, MapPin, Sparkles, ArrowRightLeft } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { REAL_BEFORE_AFTER } from '../data/mockData';
+import { Sparkles, MapPin, CheckCircle, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
 
 export const BeforeAfterSlider: React.FC = () => {
-  const [selectedIdx, setSelectedIdx] = useState(0);
-  const [sliderPos, setSliderPos] = useState(50); // percentage 0-100
-  const [isAutoCycling, setIsAutoCycling] = useState(true);
-  const [viewMode, setViewMode] = useState<'compare' | 'before' | 'after'>('compare');
-  const timerRef = useRef<number | null>(null);
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const currentProject = BEFORE_AFTER_PROJECTS[selectedIdx];
+  const activeCase = REAL_BEFORE_AFTER;
 
-  // Auto-advance project every 7 seconds if not interacting
-  useEffect(() => {
-    if (isAutoCycling) {
-      timerRef.current = setInterval(() => {
-        setSelectedIdx((prev) => (prev + 1) % BEFORE_AFTER_PROJECTS.length);
-        setSliderPos(50); // reset slider to center on slide change
-      }, 7000);
+  const handleMove = (clientX: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPosition(percentage);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches[0]) {
+      handleMove(e.touches[0].clientX);
     }
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [isAutoCycling]);
-
-  const handleNext = () => {
-    setIsAutoCycling(false);
-    setSelectedIdx((prev) => (prev + 1) % BEFORE_AFTER_PROJECTS.length);
-    setSliderPos(50);
   };
 
-  const handlePrev = () => {
-    setIsAutoCycling(false);
-    setSelectedIdx((prev) => (prev - 1 + BEFORE_AFTER_PROJECTS.length) % BEFORE_AFTER_PROJECTS.length);
-    setSliderPos(50);
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging) {
+      handleMove(e.clientX);
+    }
   };
 
-  const handleSliderMove = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsAutoCycling(false);
-    setSliderPos(Number(e.target.value));
+  useEffect(() => {
+    const handleGlobalMouseUp = () => setIsDragging(false);
+    window.addEventListener('mouseup', handleGlobalMouseUp);
+    return () => window.removeEventListener('mouseup', handleGlobalMouseUp);
+  }, []);
+
+  const handleSoftScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
-    <section 
-      id="proyectos" 
-      className="py-16 sm:py-24 bg-stone-100 text-stone-900 border-b border-stone-200"
-      onMouseEnter={() => setIsAutoCycling(false)}
-      onMouseLeave={() => setIsAutoCycling(true)}
-    >
+    <section id="antes-despues" className="py-16 sm:py-24 bg-white border-b border-zinc-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 bg-kotai-100 text-kotai-900 font-bold px-3.5 py-1.5 rounded-full text-xs sm:text-sm uppercase tracking-wider mb-3 border border-kotai-200">
-            <Sparkles className="w-4 h-4 text-kotai-700" />
-            <span>Transformaciones Reales</span>
+        {/* Header with Larger Text */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-kotai-50 border border-kotai-200 text-kotai-900 text-xs sm:text-sm font-bold uppercase tracking-wider mb-4">
+            <Sparkles className="w-4 h-4 text-kotai-800" />
+            <span>Transformación Real</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-950 tracking-tight">
-            Nuestros Proyectos: Antes y Después
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight">
+            Antes y Después: Acondicionamiento Térmico Kotai
           </h2>
-          <p className="mt-3 text-stone-600 text-base sm:text-lg">
-            Las fotos hablan por sí solas. Mira cómo convertimos terrenos y construcciones desgastadas en espacios firmes, seguros y de alta calidad.
+          <p className="mt-4 text-lg sm:text-xl text-zinc-600 leading-relaxed font-normal">
+            Desliza la barra con el dedo o el mouse para comparar cómo era la casa y cómo quedó completamente aislada y renovada.
           </p>
-          <div className="mt-2 text-xs text-stone-500 font-medium">
-            {isAutoCycling ? '🔄 Los proyectos rotan automáticamente cada 7 segundos' : '⏸ Rotación pausada'}
-          </div>
         </div>
 
-        {/* Project Selector Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
-          {BEFORE_AFTER_PROJECTS.map((proj, idx) => (
-            <button
-              key={proj.id}
-              onClick={() => {
-                setSelectedIdx(idx);
-                setIsAutoCycling(false);
-                setSliderPos(50);
-              }}
-              className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition flex items-center gap-2 border ${
-                idx === selectedIdx
-                  ? 'bg-kotai-800 text-white border-kotai-900 shadow-md scale-105'
-                  : 'bg-white text-stone-700 hover:bg-stone-50 border-stone-300'
-              }`}
-            >
-              <span>{proj.title}</span>
-              <span className={`text-[10px] px-1.5 py-0.5 rounded font-semibold ${
-                idx === selectedIdx ? 'bg-kotai-950/60 text-white' : 'bg-stone-100 text-stone-600'
-              }`}>
-                {proj.category}
-              </span>
-            </button>
-          ))}
-        </div>
-
-        {/* Main Comparison Showcase */}
-        <div className="bg-white rounded-3xl p-4 sm:p-8 shadow-card border border-stone-200/80">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* Main Interactive Comparison Stage (Fixed Single Showcase, NOT a carousel) */}
+        <div className="bg-zinc-50 rounded-3xl border border-zinc-200 p-5 sm:p-8 shadow-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
-            {/* Visual Slider Interactive Container (7 cols on lg) */}
-            <div className="lg:col-span-7 flex flex-col gap-4">
-              
-              {/* View mode toggle for ease of use */}
-              <div className="flex items-center justify-between flex-wrap gap-2 text-xs font-bold">
-                <span className="text-stone-500 flex items-center gap-1">
-                  <ArrowRightLeft className="w-4 h-4 text-kotai-800" />
-                  Mueve la barra central para comparar:
-                </span>
-                <div className="flex bg-stone-100 p-1 rounded-lg border border-stone-200">
-                  <button
-                    onClick={() => setViewMode('compare')}
-                    className={`px-3 py-1 rounded text-xs transition ${viewMode === 'compare' ? 'bg-kotai-800 text-white' : 'text-stone-700'}`}
-                  >
-                    Comparador
-                  </button>
-                  <button
-                    onClick={() => setViewMode('before')}
-                    className={`px-3 py-1 rounded text-xs transition ${viewMode === 'before' ? 'bg-kotai-800 text-white' : 'text-stone-700'}`}
-                  >
-                    Solo Antes
-                  </button>
-                  <button
-                    onClick={() => setViewMode('after')}
-                    className={`px-3 py-1 rounded text-xs transition ${viewMode === 'after' ? 'bg-kotai-800 text-white' : 'text-stone-700'}`}
-                  >
-                    Solo Después
-                  </button>
-                </div>
-              </div>
-
-              {/* Image Frame */}
-              <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full rounded-2xl overflow-hidden shadow-inner bg-stone-900 select-none">
-                
-                {/* AFTER image (Full background layer) */}
+            {/* Split Image Canvas (7 cols) */}
+            <div className="lg:col-span-7">
+              <div
+                ref={containerRef}
+                className="relative h-[320px] sm:h-[400px] lg:h-[480px] w-full overflow-hidden rounded-2xl select-none cursor-ew-resize border border-zinc-300 shadow-md bg-zinc-900"
+                onMouseDown={() => setIsDragging(true)}
+                onMouseMove={handleMouseMove}
+                onTouchMove={handleTouchMove}
+              >
+                {/* AFTER IMAGE (Full Background - despues.jpg) */}
                 <img
-                  src={currentProject.afterImage}
-                  alt={`${currentProject.title} - Después`}
+                  src={activeCase.afterImage}
+                  alt={activeCase.afterLabel}
                   className="absolute inset-0 w-full h-full object-cover object-center"
                 />
 
-                {/* BEFORE image (Clipped overlay layer) */}
-                {viewMode !== 'after' && (
-                  <div
-                    className="absolute inset-0 overflow-hidden"
+                {/* AFTER BADGE (Top Right) */}
+                <div className="absolute top-4 right-4 z-10 px-4 py-2 rounded-xl bg-kotai-800 text-white text-xs sm:text-sm font-bold shadow-md uppercase tracking-wider backdrop-blur-sm">
+                  DESPUÉS (Kotai)
+                </div>
+
+                {/* BEFORE IMAGE (Clipped Layer - antes.jpg) */}
+                <div
+                  className="absolute inset-0 overflow-hidden"
+                  style={{ width: `${sliderPosition}%` }}
+                >
+                  <img
+                    src={activeCase.beforeImage}
+                    alt={activeCase.beforeLabel}
+                    className="absolute inset-0 w-full h-full object-cover object-center max-w-none"
                     style={{
-                      width: viewMode === 'before' ? '100%' : `${sliderPos}%`,
-                      transition: viewMode === 'compare' ? 'none' : 'width 0.3s ease',
+                      width: containerRef.current ? `${containerRef.current.clientWidth}px` : '100%',
+                      height: '100%',
                     }}
-                  >
-                    <img
-                      src={currentProject.beforeImage}
-                      alt={`${currentProject.title} - Antes`}
-                      className="absolute inset-0 w-full h-full object-cover object-center max-w-none"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                      }}
-                    />
-                    {/* Shadow border separating before and after */}
-                    <div className="absolute right-0 top-0 bottom-0 w-1 bg-white shadow-[0_0_12px_rgba(0,0,0,0.8)]" />
+                  />
+
+                  {/* BEFORE BADGE (Top Left) */}
+                  <div className="absolute top-4 left-4 z-10 px-4 py-2 rounded-xl bg-zinc-900/90 text-white text-xs sm:text-sm font-bold shadow-md uppercase tracking-wider backdrop-blur-sm border border-white/20">
+                    ANTES
                   </div>
-                )}
-
-                {/* Floating Labels for clarity */}
-                <div className="absolute top-4 left-4 z-20 bg-stone-900/85 text-white text-xs sm:text-sm font-black px-3 py-1.5 rounded-lg backdrop-blur-sm border border-stone-700 shadow">
-                  🔴 ESTADO INICIAL (ANTES)
                 </div>
 
-                <div className="absolute top-4 right-4 z-20 bg-emerald-700/90 text-white text-xs sm:text-sm font-black px-3 py-1.5 rounded-lg backdrop-blur-sm border border-emerald-500 shadow">
-                  🟢 TRABAJO KOTAI (DESPUÉS)
-                </div>
-
-                {/* Slider divider line with draggable circle icon */}
-                {viewMode === 'compare' && (
-                  <div
-                    className="absolute top-0 bottom-0 pointer-events-none z-20"
-                    style={{ left: `${sliderPos}%` }}
-                  >
-                    <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-kotai-800 text-white flex items-center justify-center shadow-2xl border-2 border-white ring-4 ring-black/20">
-                      <ArrowRightLeft className="w-5 h-5" />
+                {/* SLIDER DIVIDER LINE & HANDLE */}
+                <div
+                  className="absolute top-0 bottom-0 z-20 w-1.5 bg-white cursor-ew-resize shadow-[0_0_12px_rgba(0,0,0,0.6)]"
+                  style={{ left: `${sliderPosition}%` }}
+                >
+                  <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-kotai-800 border-2 border-white shadow-xl flex items-center justify-center text-white">
+                    <div className="flex items-center gap-0.5">
+                      <ChevronLeft className="w-4 h-4" />
+                      <ChevronRight className="w-4 h-4" />
                     </div>
                   </div>
-                )}
-
-                {/* Native Range Slider for smooth touch & mouse interaction */}
-                {viewMode === 'compare' && (
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={sliderPos}
-                    onChange={handleSliderMove}
-                    aria-label="Comparar antes y después con barra deslizante"
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
-                  />
-                )}
-              </div>
-
-              {/* Navigation buttons below image */}
-              <div className="flex items-center justify-between pt-1">
-                <button
-                  onClick={handlePrev}
-                  className="flex items-center gap-1.5 text-stone-700 hover:text-kotai-800 font-bold text-sm bg-stone-100 hover:bg-stone-200 px-4 py-2 rounded-xl transition"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                  <span>Proyecto Anterior</span>
-                </button>
-
-                <div className="text-xs font-semibold text-stone-500">
-                  {selectedIdx + 1} de {BEFORE_AFTER_PROJECTS.length}
                 </div>
 
-                <button
-                  onClick={handleNext}
-                  className="flex items-center gap-1.5 text-stone-700 hover:text-kotai-800 font-bold text-sm bg-stone-100 hover:bg-stone-200 px-4 py-2 rounded-xl transition"
-                >
-                  <span>Siguiente Proyecto</span>
-                  <ChevronRight className="w-5 h-5" />
-                </button>
+                {/* Helper hint */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 px-4 py-1.5 rounded-full bg-zinc-950/80 text-xs sm:text-sm font-medium text-white backdrop-blur-sm pointer-events-none">
+                  Mueve la barra central para comparar
+                </div>
               </div>
-
             </div>
 
-            {/* Project Details (5 cols on lg) */}
+            {/* Information Card (5 cols) with Larger Text */}
             <div className="lg:col-span-5 space-y-5">
-              
-              <div className="flex items-center gap-2">
-                <span className="bg-kotai-100 text-kotai-900 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                  {currentProject.category}
+              <div>
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-kotai-800">
+                  {activeCase.category}
                 </span>
-                <span className="text-stone-500 text-xs flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-kotai-600" />
-                  {currentProject.location}
-                </span>
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-stone-900 leading-tight">
-                {currentProject.title}
-              </h3>
-
-              <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
-                {currentProject.description}
-              </p>
-
-              {/* Highlights */}
-              <div className="space-y-3 pt-2">
-                <h4 className="text-sm font-bold text-stone-900 uppercase tracking-wide">
-                  Aspectos Clave de la Obra:
-                </h4>
-                <div className="space-y-2">
-                  {currentProject.highlights.map((item, i) => (
-                    <div key={i} className="flex items-start gap-2.5 text-stone-800 font-medium text-sm sm:text-base">
-                      <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 mt-1 leading-snug">
+                  {activeCase.title}
+                </h3>
+                <div className="flex items-center gap-2 text-sm text-zinc-500 mt-2">
+                  <MapPin className="w-4 h-4 text-kotai-800" />
+                  <span>{activeCase.location}</span>
                 </div>
               </div>
 
-              {/* Direct WhatsApp quotation for this exact kind of project */}
-              <div className="pt-4 border-t border-stone-200">
-                <a
-                  href={`https://wa.me/56987654321?text=Hola,%20vi%20el%20proyecto%20"${encodeURIComponent(currentProject.title)}"%20y%20me%20gustaría%20saber%20el%20costo%20aproximado%20para%20un%20trabajo%20similar`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl shadow transition"
-                >
-                  <span>Consultar por un trabajo como este</span>
-                </a>
+              <p className="text-base sm:text-lg text-zinc-600 leading-relaxed font-normal">
+                {activeCase.description}
+              </p>
+
+              <div className="space-y-2.5 pt-2">
+                <div className="text-xs sm:text-sm font-bold uppercase text-zinc-500">
+                  Beneficios Directos Obtenidos
+                </div>
+                {activeCase.features.map((feat, fIdx) => (
+                  <div key={fIdx} className="flex items-start gap-2.5 text-sm sm:text-base font-medium text-zinc-800">
+                    <CheckCircle className="w-5 h-5 text-kotai-800 shrink-0 mt-0.5" />
+                    <span>{feat}</span>
+                  </div>
+                ))}
               </div>
 
+              <div className="p-4 rounded-2xl bg-kotai-50 border border-kotai-200 text-sm font-medium text-kotai-950 flex items-center gap-3">
+                <ShieldCheck className="w-6 h-6 text-kotai-800 shrink-0" />
+                <span>Subsidio estatal financia la mayor parte. Aporte familiar desde 1 UF (~$41.500 según tramo RSH HASTA el 60%).</span>
+              </div>
+
+              <div className="pt-2">
+                <a
+                  href="#contacto"
+                  onClick={(e) => handleSoftScroll(e, '#contacto')}
+                  className="inline-flex w-full items-center justify-center gap-2.5 px-6 py-4 rounded-2xl bg-kotai-800 hover:bg-kotai-700 text-white font-bold text-base shadow-crimson transition-all duration-200 active:scale-[0.98]"
+                >
+                  <span>Postula a este Subsidio con Kotai</span>
+                </a>
+              </div>
             </div>
 
           </div>
@@ -278,3 +181,5 @@ export const BeforeAfterSlider: React.FC = () => {
     </section>
   );
 };
+
+export default BeforeAfterSlider;

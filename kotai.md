@@ -17,3 +17,7 @@ Relativamente sencilla de usar ya que los usuarios son gente sin tanta experienc
 Bajar la dificultad, sin animaciones tediosas, solo visuales.
 
 Contador de personas que acceden a la pagina -> Fuera de la demo
+
+
+
+Solicitar cotizacion -> 
