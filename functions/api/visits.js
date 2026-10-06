@@ -30,11 +30,11 @@ export async function onRequest(context) {
     return new Response(JSON.stringify({
       configured: false,
       message: 'Cloudflare KV no vinculado aún en el dashboard de Pages (variable KOTAI_KV).',
-      total: 1248,
-      month: 382,
-      today: 46,
+      total: 0,
+      month: 0,
+      today: 0,
       history: [
-        { date: 'Hoy', visits: 46 }
+        { date: 'Hoy', visits: 0 }
       ]
     }), { headers });
   }
@@ -64,17 +64,17 @@ export async function onRequest(context) {
       if (!alreadyCounted) {
         // Incrementar contador total
         const totalRaw = await KV.get('stats:total');
-        const currentTotal = totalRaw ? parseInt(totalRaw, 10) : 1248;
+        const currentTotal = totalRaw ? parseInt(totalRaw, 10) : 0;
         await KV.put('stats:total', (currentTotal + 1).toString());
 
         // Incrementar contador mensual
         const monthRaw = await KV.get(`stats:month:${monthKey}`);
-        const currentMonth = monthRaw ? parseInt(monthRaw, 10) : 382;
+        const currentMonth = monthRaw ? parseInt(monthRaw, 10) : 0;
         await KV.put(`stats:month:${monthKey}`, (currentMonth + 1).toString());
 
         // Incrementar contador diario
         const dayRaw = await KV.get(`stats:day:${dateKey}`);
-        const currentDay = dayRaw ? parseInt(dayRaw, 10) : 46;
+        const currentDay = dayRaw ? parseInt(dayRaw, 10) : 0;
         await KV.put(`stats:day:${dateKey}`, (currentDay + 1).toString());
       }
     }
@@ -86,9 +86,9 @@ export async function onRequest(context) {
       KV.get(`stats:day:${dateKey}`)
     ]);
 
-    const total = totalVal ? parseInt(totalVal, 10) : 1248;
-    const month = monthVal ? parseInt(monthVal, 10) : 382;
-    const today = todayVal ? parseInt(todayVal, 10) : 46;
+    const total = totalVal ? parseInt(totalVal, 10) : 0;
+    const month = monthVal ? parseInt(monthVal, 10) : 0;
+    const today = todayVal ? parseInt(todayVal, 10) : 0;
 
     // Obtener los últimos 7 días para el gráfico
     const history = [];

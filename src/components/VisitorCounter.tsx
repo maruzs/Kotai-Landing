@@ -10,18 +10,10 @@ interface VisitStats {
 
 export const VisitorCounter: React.FC = () => {
   const [stats, setStats] = useState<VisitStats>({
-    total: 1248,
-    month: 382,
-    today: 46,
-    history: [
-      { date: 'Lun', visits: 38 },
-      { date: 'Mar', visits: 52 },
-      { date: 'Mié', visits: 45 },
-      { date: 'Jue', visits: 60 },
-      { date: 'Vie', visits: 55 },
-      { date: 'Sáb', visits: 32 },
-      { date: 'Hoy', visits: 46 },
-    ]
+    total: 0,
+    month: 0,
+    today: 0,
+    history: []
   });
 
   const [modalOpen, setModalOpen] = useState(false);
