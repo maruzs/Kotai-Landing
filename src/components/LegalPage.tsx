@@ -25,7 +25,7 @@ export const LegalPage: React.FC = () => {
   const getInitialTab = (): LegalTab => {
     if (currentPath.includes('privacidad')) return 'privacidad';
     if (currentPath.includes('cookie')) return 'cookies';
-    if (currentPath.includes('arcop')) return 'arcop';
+    if (currentPath.includes('arcop') || currentPath.includes('legal')) return 'arcop';
     return 'terminos';
   };
 
@@ -33,7 +33,6 @@ export const LegalPage: React.FC = () => {
 
   useEffect(() => {
     setActiveTab(getInitialTab());
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPath]);
 
   const handleTabChange = (tab: LegalTab) => {
@@ -41,7 +40,7 @@ export const LegalPage: React.FC = () => {
     if (tab === 'terminos') navigate('/terminos');
     else if (tab === 'privacidad') navigate('/privacidad');
     else if (tab === 'cookies') navigate('/cookies');
-    else if (tab === 'arcop') navigate('/legal');
+    else if (tab === 'arcop') navigate('/arcop');
   };
 
   return (

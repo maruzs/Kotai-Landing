@@ -22,6 +22,7 @@ export const App: React.FC = () => {
     currentPath === '/terminos' || 
     currentPath === '/privacidad' || 
     currentPath === '/cookies' || 
+    currentPath === '/arcop' || 
     currentPath === '/legal-compliance';
 
   return (

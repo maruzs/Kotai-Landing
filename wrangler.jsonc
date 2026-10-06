@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kotai-landing",
+  "compatibility_date": "2026-10-06",
+  "pages_build_output_dir": "./dist",
+  "kv_namespaces": [
+    {
+      "binding": "KOTAI_KV",
+      "id": "84e5d445882c499f88d74845055ad83f"
+    }
+  ]
+}

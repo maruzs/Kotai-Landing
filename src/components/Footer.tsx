@@ -215,10 +215,10 @@ export const Footer: React.FC = () => {
               </a>
               <span>·</span>
               <a
-                href="/legal"
+                href="/arcop"
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate('/legal');
+                  navigate('/arcop');
                 }}
                 className="text-zinc-300 hover:text-kotai-400 font-semibold transition-colors"
               >
