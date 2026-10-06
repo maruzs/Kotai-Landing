@@ -4,6 +4,24 @@
 
 Ocupan un sistema web para ver el correo.
 La pagina https://constructorakotai.cl/webmail
+Agregar el siguiente codigo al inicio de la landing para manejar la redireccion:
+
+```js
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+
+    // Redirigir accesos a webmail directo a la interfaz del hosting
+    if (url.pathname === "/webmail" || url.pathname.startsWith("/webmail/")) {
+      return Response.redirect("https://webmail.constructorakotai.cl", 301);
+    }
+
+    // ...resto del codigo de tu landing page
+  },
+};
+```
+
+Ya que https://constructorakotai.cl/webmail muestra la landing page y deberia mostrar lo de https://webmail.constructorakotai.cl/
 
 ### Tema 2 - Sugerencias
 
