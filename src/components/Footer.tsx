@@ -115,7 +115,7 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-zinc-300">
               <li className="font-bold text-white">Kotai (Acondicionamiento y Obras)</li>
-              <li>Secuoia (Ingeniería)</li>
+              <li>Sequoia (Ingeniería)</li>
               <li>Paulina (Comercializadora)</li>
               <li>RF (Vivienda)</li>
               <li>Los Aromos (Constructora)</li>

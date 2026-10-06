@@ -39,6 +39,7 @@ export const VideoSection: React.FC = () => {
             {/* Native Video Element */}
             <video
               src="/video_kotai_oficial.mp4"
+              poster="/video_poster.jpg"
               controls
               playsInline
               preload="metadata"

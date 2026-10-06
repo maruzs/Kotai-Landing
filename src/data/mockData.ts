@@ -314,8 +314,8 @@ export const HOLDING_COMPANIES = [
     isMain: true,
   },
   {
-    id: 'secuoia',
-    name: 'Secuoia',
+    id: 'sequoia',
+    name: 'Sequoia',
     category: 'Ingeniería y Construcción',
     tagline: 'Estudios geotécnicos de suelo, cálculo estructural avanzado y dirección técnica.',
     isMain: false,
