@@ -1,0 +1,18 @@
+# Robots.txt para Kotai Constructora (constructorakotai.cl)
+User-agent: *
+Allow: /
+Disallow: /webmail
+Disallow: /webmail/
+
+# AI Search Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap oficial
+Sitemap: https://constructorakotai.cl/sitemap.xml

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://constructorakotai.cl/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://constructorakotai.cl/og-image.jpg</image:loc>
+      <image:title>Kotai Constructora - Subsidio de Acondicionamiento Térmico Serviu MINVU</image:title>
+      <image:caption>Aislación térmica exterior EIFS, recambio de ventanas termopanel herméticas y colectores solares para viviendas en Ñuble, Biobío y Región Metropolitana.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://constructorakotai.cl/video_poster.jpg</image:loc>
+      <image:title>Requisitos y Postulación Subsidio Térmico Kotai</image:title>
+    </image:image>
+  </url>
+</urlset>
