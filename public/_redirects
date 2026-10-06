@@ -1,0 +1,3 @@
+# Redirecciones nativas de Cloudflare Pages
+/webmail https://webmail.constructorakotai.cl 301
+/webmail/* https://webmail.constructorakotai.cl/:splat 301
