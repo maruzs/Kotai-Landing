@@ -4,52 +4,67 @@ import { HeroCarousel } from './components/HeroCarousel';
 import { SimplicityBanner } from './components/SimplicityBanner';
 import { VideoSection } from './components/VideoSection';
 import { ServicesSection } from './components/ServicesSection';
-import { BeforeAfterSlider } from './components/BeforeAfterSlider';
-import { ProjectsAutoCarousel } from './components/ProjectsAutoCarousel';
-import { RealWorksCarousel } from './components/RealWorksCarousel';
+import { EvidenciaTeaser } from './components/EvidenciaTeaser';
+import { EvidenciaPage } from './components/EvidenciaPage';
+import { LegalPage } from './components/LegalPage';
 import { AboutAndHistory } from './components/AboutAndHistory';
 import { HoldingG5 } from './components/HoldingG5';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
+import { useCurrentPath } from './utils/navigation';
 
 export const App: React.FC = () => {
+  const currentPath = useCurrentPath();
+  const isEvidenciaPage = currentPath === '/obras' || currentPath === '/evidencia';
+  const isLegalPage = 
+    currentPath === '/legal' || 
+    currentPath === '/terminos' || 
+    currentPath === '/privacidad' || 
+    currentPath === '/cookies' || 
+    currentPath === '/legal-compliance';
+
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFA] font-sans text-zinc-900 selection:bg-kotai-100 selection:text-kotai-900">
-      {/* Navbar principal limpia con logo Kotai_NoBG y postulación */}
+      {/* Navbar principal limpia y equilibrada */}
       <Navbar />
 
-      {/* Contenido Principal */}
+      {/* Contenido Principal según la ruta activa */}
       <main className="flex-1">
-        {/* Hero con carrusel automático de fotos reales de Kotai */}
-        <HeroCarousel />
+        {isEvidenciaPage ? (
+          /* Ruta Dedicada: Galería completa de Evidencia en Terreno */
+          <EvidenciaPage />
+        ) : isLegalPage ? (
+          /* Ruta Dedicada: Portal Legal y Cumplimiento Regulatorio */
+          <LegalPage />
+        ) : (
+          /* Ruta Principal / Landing Page Descongestionada */
+          <>
+            {/* Hero con carrusel de fotos reales de Kotai */}
+            <HeroCarousel />
 
-        {/* 4 Pasos Simples para postular ante Serviu */}
-        <SimplicityBanner />
+            {/* 4 Pasos Simples para postular ante Serviu */}
+            <SimplicityBanner />
 
-        {/* Video Oficial Informativo con Locución y Requisitos */}
-        <VideoSection />
+            {/* Video Oficial Informativo con Locución y Requisitos */}
+            <VideoSection />
 
-        {/* Subsidios de Mejoramiento Serviu y Programas Oficiales */}
-        <ServicesSection />
+            {/* Subsidio D.S. 27 de Mejoramiento de la Vivienda y Soluciones */}
+            <ServicesSection />
 
-        {/* Antes y Después interactivo (fotos reales antes.jpg y despues.jpg) */}
-        <BeforeAfterSlider />
+            {/* Teaser compacto de Evidencia en Terreno con enlace a la galería /obras */}
+            <EvidenciaTeaser />
 
-        {/* Obras y Proyectos de Acondicionamiento Térmico */}
-        <ProjectsAutoCarousel />
+            {/* Quiénes Somos, Historia y Aliados */}
+            <AboutAndHistory />
 
-        {/* Galería Fotográfica Real: Ventanas Termopanel, Colectores Solares y Puertas */}
-        <RealWorksCarousel />
+            {/* Respaldo Grupo Alianza G5 */}
+            <HoldingG5 />
 
-        {/* Quiénes Somos, Historia y Aliados */}
-        <AboutAndHistory />
-
-        {/* Respaldo Grupo Alianza G5 */}
-        <HoldingG5 />
-
-        {/* Iniciar Postulación Directa */}
-        <ContactSection />
+            {/* Iniciar Postulación Directa */}
+            <ContactSection />
+          </>
+        )}
       </main>
 
       {/* Pie de Página */}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, MessageSquare, Send, CheckCircle2, Shield, ExternalLink } from 'lucide-react';
 import { COMPANY_INFO } from '../data/mockData';
+import { navigate } from '../utils/navigation';
 
 export const ContactSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -323,6 +324,36 @@ export const ContactSection: React.FC = () => {
                       onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-base text-zinc-900 focus:outline-none focus:ring-2 focus:ring-kotai-800 focus:border-transparent transition-all resize-none"
                     />
+                  </div>
+
+                  {/* Cláusula de Privacidad y Consentimiento Expreso (Ley 21.719 APDP) */}
+                  <div className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-600 flex items-start gap-2.5">
+                    <Shield className="w-4 h-4 text-kotai-800 shrink-0 mt-0.5" />
+                    <span>
+                      Al enviar este formulario autorizas a Constructora Kotai SpA al tratamiento de tus datos exclusivamente para fines de evaluación sociohabitacional ante SERVIU conforme a nuestra{' '}
+                      <a
+                        href="/privacidad"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/privacidad');
+                        }}
+                        className="font-bold text-kotai-800 hover:underline"
+                      >
+                        Política de Privacidad
+                      </a>{' '}
+                      y los{' '}
+                      <a
+                        href="/terminos"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/terminos');
+                        }}
+                        className="font-bold text-kotai-800 hover:underline"
+                      >
+                        Términos de Postulación
+                      </a>{' '}
+                      (Ley N° 21.719 de Chile).
+                    </span>
                   </div>
 
                   <div className="pt-2">

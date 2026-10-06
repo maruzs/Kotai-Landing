@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, Phone, ExternalLink, ShieldCheck } from 'lucide-react';
+import { Menu, X, ChevronRight, Phone, ExternalLink, ShieldCheck, Camera } from 'lucide-react';
 import { COMPANY_INFO } from '../data/mockData';
+import { useCurrentPath, navigate } from '../utils/navigation';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const currentPath = useCurrentPath();
+  const isEvidenciaPage = currentPath === '/obras' || currentPath === '/evidencia';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,20 +18,63 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { label: 'Video', href: '#video-explicativo' },
-    { label: 'Subsidio D.S. 27', href: '#servicios' },
-    { label: 'Obras y Fotos', href: '#proyectos' },
-    { label: 'Antes y Después', href: '#antes-despues' },
-    { label: 'Requisitos', href: '#requisitos' },
-    { label: 'Quiénes Somos', href: '#nosotros' },
+    { label: 'Subsidio D.S. 27', href: '#servicios', isRoute: false },
+    { label: 'Evidencia en Terreno', href: '/obras', isRoute: true, badge: 'Fotos Reales' },
+    { label: 'Requisitos', href: '#requisitos', isRoute: false },
+    { label: 'Quiénes Somos', href: '#nosotros', isRoute: false },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: typeof navLinks[0]) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (link.isRoute) {
+      navigate(link.href);
+      return;
+    }
+
+    if (isEvidenciaPage) {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.querySelector(link.href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 120);
+    } else {
+      const element = document.querySelector(link.href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    if (isEvidenciaPage) {
+      navigate('/');
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    if (isEvidenciaPage) {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.querySelector('#contacto');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 120);
+    } else {
+      const element = document.querySelector('#contacto');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   };
 
@@ -73,48 +119,64 @@ export const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             
-            {/* Brand Logo with Kotai_NoBG.png */}
+            {/* Brand Logo with generous separation */}
             <a
-              href="#inicio"
-              onClick={(e) => handleNavClick(e, '#inicio')}
-              className="flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-kotai-800 rounded-lg p-0.5"
+              href="/"
+              onClick={handleLogoClick}
+              className="flex items-center shrink-0 mr-6 xl:mr-10 group focus:outline-none focus-visible:ring-2 focus-visible:ring-kotai-800 rounded-lg p-0.5"
             >
               <img
                 src="/Kotai_NoBG.png"
                 alt="Kotai Constructora y Acondicionamiento Térmico D.S. 27"
-                className="h-11 sm:h-14 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+                className="h-11 sm:h-13 xl:h-14 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
               />
             </a>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-base font-bold text-zinc-700 hover:text-kotai-800 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-kotai-800 hover:after:w-full after:transition-all after:duration-200"
-                >
-                  {link.label}
-                </a>
-              ))}
+            {/* Desktop Navigation Links - Perfectly spaced without awkward wrapping */}
+            <nav className="hidden lg:flex items-center gap-5 xl:gap-8 shrink-0">
+              {navLinks.map((link) => {
+                const isActive = link.isRoute && isEvidenciaPage;
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link)}
+                    className={`text-sm xl:text-base font-bold whitespace-nowrap transition-all duration-150 py-1.5 px-2.5 rounded-xl relative flex items-center gap-1.5 ${
+                      isActive
+                        ? 'text-kotai-900 bg-kotai-50 border border-kotai-200/80'
+                        : 'text-zinc-700 hover:text-kotai-800 hover:bg-zinc-100/70'
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    {link.badge && (
+                      <span className={`text-[10px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded-md ${
+                        isActive
+                          ? 'bg-kotai-800 text-white'
+                          : 'bg-amber-100 text-amber-900 border border-amber-200'
+                      }`}>
+                        {link.badge}
+                      </span>
+                    )}
+                  </a>
+                );
+              })}
             </nav>
 
-            {/* Right Header Actions: TELÉFONO AL DOBLE DE TAMAÑO & Postula Aquí CTA */}
-            <div className="hidden sm:flex items-center gap-4">
+            {/* Right Header Actions: TELÉFONO DESTACADO & Postula Aquí CTA */}
+            <div className="hidden sm:flex items-center gap-3 xl:gap-5 shrink-0">
               <a
                 href={`tel:${COMPANY_INFO.phoneClean}`}
-                className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl hover:bg-zinc-100 transition-colors group"
+                className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl hover:bg-zinc-100 transition-colors group shrink-0"
                 title="Llamar directamente a Kotai Constructora"
               >
                 <div className="w-10 h-10 rounded-full bg-kotai-50 border border-kotai-200 flex items-center justify-center shrink-0 group-hover:bg-kotai-100 transition-colors">
                   <Phone className="w-5 h-5 text-kotai-800" />
                 </div>
-                <div className="flex flex-col text-left">
+                <div className="flex flex-col text-left whitespace-nowrap">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 leading-none">
                     Llámanos Directo
                   </span>
-                  <span className="text-xl xl:text-2xl font-black text-zinc-950 group-hover:text-kotai-800 tracking-tight leading-tight">
+                  <span className="text-lg xl:text-xl font-black text-zinc-950 group-hover:text-kotai-800 tracking-tight leading-tight">
                     {COMPANY_INFO.phone}
                   </span>
                 </div>
@@ -122,8 +184,8 @@ export const Navbar: React.FC = () => {
 
               <a
                 href="#contacto"
-                onClick={(e) => handleNavClick(e, '#contacto')}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-kotai-800 hover:bg-kotai-900 text-white text-sm font-bold tracking-wide shadow-sm hover:shadow transition-all duration-200 active:scale-[0.98]"
+                onClick={handleCtaClick}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-kotai-800 hover:bg-kotai-900 text-white text-sm font-bold tracking-wide shadow-sm hover:shadow transition-all duration-200 active:scale-[0.98] shrink-0 whitespace-nowrap"
               >
                 <span>Postula Aquí</span>
                 <ChevronRight className="w-4 h-4" />
@@ -134,8 +196,8 @@ export const Navbar: React.FC = () => {
             <div className="flex items-center gap-2 lg:hidden">
               <a
                 href="#contacto"
-                onClick={(e) => handleNavClick(e, '#contacto')}
-                className="sm:hidden px-3.5 py-2 rounded-lg bg-kotai-800 text-white text-xs font-bold"
+                onClick={handleCtaClick}
+                className="sm:hidden px-3.5 py-2 rounded-lg bg-kotai-800 text-white text-xs font-bold whitespace-nowrap"
               >
                 Postula Aquí
               </a>
@@ -159,12 +221,24 @@ export const Navbar: React.FC = () => {
           <div className="flex flex-col space-y-1">
             {navLinks.map((link) => (
               <a
-                key={link.href}
+                key={link.label}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="px-4 py-3.5 text-lg font-bold text-zinc-800 hover:text-kotai-800 hover:bg-kotai-50 rounded-lg transition-colors flex items-center justify-between"
+                onClick={(e) => handleNavClick(e, link)}
+                className={`px-4 py-3.5 text-base font-bold rounded-lg transition-colors flex items-center justify-between ${
+                  link.isRoute && isEvidenciaPage
+                    ? 'bg-kotai-50 text-kotai-800'
+                    : 'text-zinc-800 hover:text-kotai-800 hover:bg-zinc-50'
+                }`}
               >
-                <span>{link.label}</span>
+                <div className="flex items-center gap-2">
+                  {link.isRoute && <Camera className="w-4 h-4 text-kotai-800" />}
+                  <span>{link.label}</span>
+                  {link.badge && (
+                    <span className="text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-100 text-amber-900">
+                      {link.badge}
+                    </span>
+                  )}
+                </div>
                 <ChevronRight className="w-5 h-5 text-zinc-400" />
               </a>
             ))}
@@ -194,7 +268,7 @@ export const Navbar: React.FC = () => {
 
             <a
               href="#contacto"
-              onClick={(e) => handleNavClick(e, '#contacto')}
+              onClick={handleCtaClick}
               className="w-full text-center py-3.5 rounded-xl bg-kotai-800 text-white font-bold text-base shadow-sm"
             >
               Postula con Nosotros

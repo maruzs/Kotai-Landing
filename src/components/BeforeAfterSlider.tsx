@@ -17,15 +17,28 @@ export const BeforeAfterSlider: React.FC = () => {
     setSliderPosition(percentage);
   };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (e.touches[0]) {
-      handleMove(e.touches[0].clientX);
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    handleMove(e.clientX);
+    try {
+      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    } catch {
+      // Ignorar si el navegador no soporta capture
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (isDragging) {
       handleMove(e.clientX);
+    }
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    setIsDragging(false);
+    try {
+      (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch {
+      // Ignorar si el navegador no soporta capture
     }
   };
 
@@ -61,7 +74,7 @@ export const BeforeAfterSlider: React.FC = () => {
           </p>
         </div>
 
-        {/* Main Interactive Comparison Stage (Fixed Single Showcase, NOT a carousel) */}
+        {/* Main Interactive Comparison Stage */}
         <div className="bg-zinc-50 rounded-3xl border border-zinc-200 p-5 sm:p-8 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
@@ -69,36 +82,37 @@ export const BeforeAfterSlider: React.FC = () => {
             <div className="lg:col-span-7">
               <div
                 ref={containerRef}
-                className="relative h-[320px] sm:h-[400px] lg:h-[480px] w-full overflow-hidden rounded-2xl select-none cursor-ew-resize border border-zinc-300 shadow-md bg-zinc-900"
-                onMouseDown={() => setIsDragging(true)}
-                onMouseMove={handleMouseMove}
-                onTouchMove={handleTouchMove}
+                className="relative h-[320px] sm:h-[400px] lg:h-[480px] w-full overflow-hidden rounded-2xl select-none cursor-ew-resize border border-zinc-300 shadow-md bg-zinc-900 touch-none"
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerUp}
               >
-                {/* AFTER IMAGE (Full Background - despues.jpg) */}
+                {/* AFTER IMAGE (Base Layer) */}
                 <img
                   src={activeCase.afterImage}
                   alt={activeCase.afterLabel}
-                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+                  draggable={false}
                 />
 
                 {/* AFTER BADGE (Top Right) */}
-                <div className="absolute top-4 right-4 z-10 px-4 py-2 rounded-xl bg-kotai-800 text-white text-xs sm:text-sm font-bold shadow-md uppercase tracking-wider backdrop-blur-sm">
+                <div className="absolute top-4 right-4 z-10 px-4 py-2 rounded-xl bg-kotai-800 text-white text-xs sm:text-sm font-bold shadow-md uppercase tracking-wider backdrop-blur-sm pointer-events-none">
                   DESPUÉS (Kotai)
                 </div>
 
-                {/* BEFORE IMAGE (Clipped Layer - antes.jpg) */}
+                {/* BEFORE IMAGE (Full Size Layer, Clipped via hardware clipPath) */}
                 <div
-                  className="absolute inset-0 overflow-hidden"
-                  style={{ width: `${sliderPosition}%` }}
+                  className="absolute inset-0 pointer-events-none select-none"
+                  style={{
+                    clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
+                  }}
                 >
                   <img
                     src={activeCase.beforeImage}
                     alt={activeCase.beforeLabel}
-                    className="absolute inset-0 w-full h-full object-cover object-center max-w-none"
-                    style={{
-                      width: containerRef.current ? `${containerRef.current.clientWidth}px` : '100%',
-                      height: '100%',
-                    }}
+                    className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+                    draggable={false}
                   />
 
                   {/* BEFORE BADGE (Top Left) */}
@@ -109,7 +123,7 @@ export const BeforeAfterSlider: React.FC = () => {
 
                 {/* SLIDER DIVIDER LINE & HANDLE */}
                 <div
-                  className="absolute top-0 bottom-0 z-20 w-1.5 bg-white cursor-ew-resize shadow-[0_0_12px_rgba(0,0,0,0.6)]"
+                  className="absolute top-0 bottom-0 z-20 w-1 bg-white shadow-[0_0_12px_rgba(0,0,0,0.6)] pointer-events-none"
                   style={{ left: `${sliderPosition}%` }}
                 >
                   <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-kotai-800 border-2 border-white shadow-xl flex items-center justify-center text-white">

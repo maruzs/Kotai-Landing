@@ -1,6 +1,8 @@
 import React from 'react';
 import { Phone, Mail, MapPin, ArrowUp, ExternalLink, ShieldCheck } from 'lucide-react';
 import { COMPANY_INFO, HOLDING_COMPANIES } from '../data/mockData';
+import { navigate } from '../utils/navigation';
+import VisitorCounter from './VisitorCounter';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -49,7 +51,7 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Navigation Links with Soft-Scroll */}
+          {/* Navigation Links with Soft-Scroll & /obras route */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">
               Navegación
@@ -57,8 +59,12 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="#inicio"
-                  onClick={(e) => handleSoftScroll(e, '#inicio')}
+                  href="/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
                   className="hover:text-white transition-colors"
                 >
                   Inicio
@@ -75,20 +81,15 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#proyectos"
-                  onClick={(e) => handleSoftScroll(e, '#proyectos')}
-                  className="hover:text-white transition-colors"
+                  href="/obras"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/obras');
+                  }}
+                  className="hover:text-white text-kotai-400 font-semibold transition-colors flex items-center gap-1.5"
                 >
-                  Proyectos Térmicos
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#antes-despues"
-                  onClick={(e) => handleSoftScroll(e, '#antes-despues')}
-                  className="hover:text-white transition-colors"
-                >
-                  Antes y Después
+                  <span>Evidencia en Terreno</span>
+                  <span className="text-[10px] bg-kotai-900 border border-kotai-700 text-kotai-300 px-1.5 py-0.2 rounded">Fotos</span>
                 </a>
               </li>
               <li>
@@ -172,13 +173,62 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-14 pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-400">
-          <div>
-            © {new Date().getFullYear()} {COMPANY_INFO.name} (RUT: {COMPANY_INFO.rut}) · Norma D.S. N° 27 de 2016 (CS27) · Grupo Alianza G5 · Chillán, Chile.
+        {/* Bottom Bar con Enlaces Legales y Cumplimiento Normativo Ley 21.719 */}
+        <div className="mt-14 pt-8 border-t border-zinc-900 flex flex-col lg:flex-row items-center justify-between gap-6 text-xs text-zinc-400">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left">
+            <span>
+              © {new Date().getFullYear()} {COMPANY_INFO.name} (RUT: {COMPANY_INFO.rut}) · Chillán, Chile.
+            </span>
+            <span className="hidden sm:inline text-zinc-700">|</span>
+            <div className="flex flex-wrap items-center justify-center gap-2.5 font-medium text-zinc-400">
+              <a
+                href="/terminos"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/terminos');
+                }}
+                className="hover:text-white transition-colors"
+              >
+                Términos de Postulación
+              </a>
+              <span>·</span>
+              <a
+                href="/privacidad"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/privacidad');
+                }}
+                className="hover:text-white transition-colors"
+              >
+                Privacidad (Ley 21.719)
+              </a>
+              <span>·</span>
+              <a
+                href="/cookies"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/cookies');
+                }}
+                className="hover:text-white transition-colors"
+              >
+                Cookies
+              </a>
+              <span>·</span>
+              <a
+                href="/legal"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/legal');
+                }}
+                className="text-zinc-300 hover:text-kotai-400 font-semibold transition-colors"
+              >
+                Derechos ARCOP-B
+              </a>
+            </div>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
+            <VisitorCounter />
             <button
               onClick={scrollToTop}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white font-semibold transition-colors"
