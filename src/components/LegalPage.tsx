@@ -44,7 +44,7 @@ export const LegalPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#FAFAFA] min-h-screen py-10 sm:py-16">
+    <div className="bg-[#FAFAFA] min-h-screen pt-28 sm:pt-36 pb-16">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Navegación y Encabezado Superior */}
@@ -155,9 +155,9 @@ export const LegalPage: React.FC = () => {
               </div>
 
               {/* Banner de Asesoría Gratuita Innegociable */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start gap-3.5">
-                <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
-                <div className="text-sm text-emerald-950">
+              <div className="p-4 sm:p-5 rounded-2xl bg-kotai-50 border border-kotai-200 flex items-start gap-3.5">
+                <CheckCircle2 className="w-5 h-5 text-kotai-800 shrink-0 mt-0.5" />
+                <div className="text-sm text-kotai-950">
                   <strong className="font-bold">Principio de Asesoría 100% Gratuita:</strong> Constructora Kotai SpA y sus entidades patrocinantes aliadas del Grupo Alianza G5 <strong>NO cobran honorarios, comisiones ni cobros directos al beneficiario</strong> por orientaciones técnicas, diagnósticos en terreno ni confección de carpetas de postulación.
                 </div>
               </div>
@@ -413,9 +413,9 @@ export const LegalPage: React.FC = () => {
               </div>
 
               {/* Plazo legal fatal */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-amber-50 border border-amber-200 flex items-start gap-3.5">
-                <Clock className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
-                <div className="text-sm text-amber-950">
+              <div className="p-4 sm:p-5 rounded-2xl bg-kotai-50 border border-kotai-200 flex items-start gap-3.5">
+                <Clock className="w-5 h-5 text-kotai-800 shrink-0 mt-0.5" />
+                <div className="text-sm text-kotai-950">
                   <strong className="font-bold">Plazo Legal Fatal de 15 Días Corridos:</strong> Conforme al artículo 11 de la Ley N° 21.719 de Chile, Constructora Kotai SpA responderá formalmente a cualquier solicitud de derechos ARCOP-B en un plazo máximo e improrrogable de <strong>15 días corridos</strong> contados desde su recepción.
                 </div>
               </div>

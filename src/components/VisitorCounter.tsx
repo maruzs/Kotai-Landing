@@ -83,7 +83,7 @@ export const VisitorCounter: React.FC = () => {
         className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white text-xs font-semibold border border-zinc-800 transition-colors"
         title="Ver estadísticas y contador de visitas"
       >
-        <Eye className="w-3.5 h-3.5 text-emerald-400" />
+        <Eye className="w-3.5 h-3.5 text-kotai-400" />
         <span>Visitas: <strong>{stats.total.toLocaleString('es-CL')}</strong></span>
         <span className="hidden sm:inline text-zinc-600">·</span>
         <span className="hidden sm:inline text-zinc-400">Mes: {stats.month}</span>
@@ -126,7 +126,7 @@ export const VisitorCounter: React.FC = () => {
                 <div className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-1">
                   Hoy
                 </div>
-                <div className="text-2xl font-black text-emerald-400 font-mono">
+                <div className="text-2xl font-black text-kotai-400 font-mono">
                   {stats.today}
                 </div>
               </div>
@@ -154,10 +154,10 @@ export const VisitorCounter: React.FC = () => {
             <div className="space-y-3 pt-2">
               <div className="flex items-center justify-between text-xs font-semibold text-zinc-400">
                 <span className="flex items-center gap-1.5">
-                  <TrendingUp className="w-4 h-4 text-emerald-400" />
+                  <TrendingUp className="w-4 h-4 text-kotai-400" />
                   <span>Ingresos últimos 7 días</span>
                 </span>
-                <span>Promedio: ~{Math.round(stats.history.reduce((a, b) => a + b.visits, 0) / stats.history.length)} / día</span>
+                <span>Promedio: ~{stats.history.length > 0 ? Math.round(stats.history.reduce((a, b) => a + b.visits, 0) / stats.history.length) : 0} / día</span>
               </div>
 
               <div className="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
@@ -173,10 +173,10 @@ export const VisitorCounter: React.FC = () => {
                         <div
                           style={{ height: `${heightPercent}%` }}
                           className={`w-full max-w-[28px] rounded-t-md transition-all duration-300 ${
-                            isToday ? 'bg-emerald-500' : 'bg-kotai-700/80 hover:bg-kotai-600'
+                            isToday ? 'bg-kotai-600' : 'bg-zinc-700/80 hover:bg-zinc-600'
                           }`}
                         />
-                        <span className={`text-[10px] font-bold ${isToday ? 'text-emerald-400' : 'text-zinc-500'}`}>
+                        <span className={`text-[10px] font-bold ${isToday ? 'text-kotai-400' : 'text-zinc-500'}`}>
                           {item.date}
                         </span>
                       </div>

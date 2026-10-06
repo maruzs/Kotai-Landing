@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { REAL_BEFORE_AFTER } from '../data/mockData';
-import { Sparkles, MapPin, CheckCircle, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
+import { BEFORE_AFTER_CASES, BeforeAfterItem } from '../data/mockData';
+import { Sparkles, MapPin, CheckCircle, ChevronLeft, ChevronRight, ShieldCheck, Layers } from 'lucide-react';
 
 export const BeforeAfterSlider: React.FC = () => {
+  const [selectedCaseIndex, setSelectedCaseIndex] = useState(0);
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const activeCase = REAL_BEFORE_AFTER;
+  const activeCase: BeforeAfterItem = BEFORE_AFTER_CASES[selectedCaseIndex] || BEFORE_AFTER_CASES[0];
 
   const handleMove = (clientX: number) => {
     if (!containerRef.current) return;
@@ -61,7 +62,7 @@ export const BeforeAfterSlider: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header with Larger Text */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-kotai-50 border border-kotai-200 text-kotai-900 text-xs sm:text-sm font-bold uppercase tracking-wider mb-4">
             <Sparkles className="w-4 h-4 text-kotai-800" />
             <span>Transformación Real</span>
@@ -70,8 +71,32 @@ export const BeforeAfterSlider: React.FC = () => {
             Antes y Después: Acondicionamiento Térmico Kotai
           </h2>
           <p className="mt-4 text-lg sm:text-xl text-zinc-600 leading-relaxed font-normal">
-            Desliza la barra con el dedo o el mouse para comparar cómo era la casa y cómo quedó completamente aislada y renovada.
+            Desliza la barra con el dedo o el mouse para comparar cómo era la vivienda y cómo quedó completamente aislada y renovada.
           </p>
+
+          {/* Selector de Casos Reales */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+            {BEFORE_AFTER_CASES.map((item, idx) => {
+              const isSelected = idx === selectedCaseIndex;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setSelectedCaseIndex(idx);
+                    setSliderPosition(50);
+                  }}
+                  className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 ${
+                    isSelected
+                      ? 'bg-kotai-800 text-white shadow-md shadow-kotai-900/20 ring-2 ring-kotai-800'
+                      : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 border border-zinc-200'
+                  }`}
+                >
+                  <Layers className={`w-3.5 h-3.5 ${isSelected ? 'text-white' : 'text-kotai-800'}`} />
+                  <span>{item.category}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Main Interactive Comparison Stage */}
@@ -174,7 +199,7 @@ export const BeforeAfterSlider: React.FC = () => {
 
               <div className="p-4 rounded-2xl bg-kotai-50 border border-kotai-200 text-sm font-medium text-kotai-950 flex items-center gap-3">
                 <ShieldCheck className="w-6 h-6 text-kotai-800 shrink-0" />
-                <span>Subsidio estatal financia la mayor parte. Aporte familiar desde 1 UF (~$41.500 según tramo RSH HASTA el 60%).</span>
+                <span>Subsidio estatal financia la obra. Aporte familiar desde 3 UF (~$120.000 depositados en su propia libreta según tramo RSH).</span>
               </div>
 
               <div className="pt-2">

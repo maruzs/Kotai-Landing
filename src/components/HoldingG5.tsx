@@ -63,9 +63,6 @@ export const HoldingG5: React.FC = () => {
                   <span className="text-xs font-bold text-kotai-400 uppercase tracking-wider">
                     Alianza G5
                   </span>
-                  <span className="text-[10px] font-mono font-semibold text-zinc-400 bg-zinc-900 px-2 py-0.5 rounded border border-zinc-800">
-                    RUT {company.rut}
-                  </span>
                 </div>
                 <h4 className="text-lg font-bold text-white mb-1">
                   {company.name}
@@ -80,7 +77,7 @@ export const HoldingG5: React.FC = () => {
 
               <div className="mt-6 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[11px] text-zinc-500 font-medium">
                 <span>Empresa del Holding</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                <span className="w-1.5 h-1.5 rounded-full bg-kotai-500" />
               </div>
             </div>
           ))}

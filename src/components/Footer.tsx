@@ -21,10 +21,10 @@ export const Footer: React.FC = () => {
     <footer className="bg-zinc-950 text-zinc-400 text-sm border-t border-zinc-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
           
-          {/* Brand & Corporate (2 cols) */}
-          <div className="lg:col-span-2 space-y-4">
+          {/* Brand & Corporate (4 cols) */}
+          <div className="lg:col-span-4 space-y-4">
             <a
               href="#inicio"
               onClick={scrollToTop}
@@ -45,14 +45,14 @@ export const Footer: React.FC = () => {
               <span className="inline-block px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold">
                 Norma D.S. N° 27 / CS27 · Serviu MINVU
               </span>
-              <span className="inline-block px-3 py-1 rounded-lg bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-semibold">
+              <span className="inline-block px-3 py-1 rounded-lg bg-kotai-950/80 border border-kotai-800/60 text-kotai-300 font-semibold">
                 Asesoría 100% Gratuita
               </span>
             </div>
           </div>
 
-          {/* Navigation Links with Soft-Scroll & /obras route */}
-          <div className="space-y-3">
+          {/* Navigation Links with Soft-Scroll & /obras route (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">
               Navegación
             </h4>
@@ -89,7 +89,6 @@ export const Footer: React.FC = () => {
                   className="hover:text-white text-kotai-400 font-semibold transition-colors flex items-center gap-1.5"
                 >
                   <span>Evidencia en Terreno</span>
-                  <span className="text-[10px] bg-kotai-900 border border-kotai-700 text-kotai-300 px-1.5 py-0.2 rounded">Fotos</span>
                 </a>
               </li>
               <li>
@@ -113,18 +112,18 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Holding Companies with RUTs */}
-          <div className="space-y-3">
+          {/* Holding Companies without RUTs (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">
               Grupo Alianza G5
             </h4>
-            <ul className="space-y-2.5 text-zinc-300 text-xs sm:text-sm">
+            <ul className="space-y-2 text-zinc-300 text-xs sm:text-sm">
               <li className="font-bold text-white">
-                Kotai SpA <span className="text-[11px] font-mono text-zinc-400 font-normal">({COMPANY_INFO.rut})</span>
+                Kotai SpA
               </li>
               {HOLDING_COMPANIES.filter(c => !c.isMain).map(c => (
                 <li key={c.id}>
-                  {c.name.replace('Constructora ', '').replace('Ingeniería, Construcción y Comercializadora ', '').replace('Ingeniería y Construcción ', '')} <span className="text-[11px] font-mono text-zinc-500">({c.rut})</span>
+                  {c.name.replace('Constructora ', '').replace('Ingeniería, Construcción y Comercializadora ', '').replace('Ingeniería y Construcción ', '')}
                 </li>
               ))}
             </ul>
@@ -134,17 +133,17 @@ export const Footer: React.FC = () => {
                 href={COMPANY_INFO.rshUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-400 hover:text-sky-300 transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-kotai-400 hover:text-kotai-300 transition-colors"
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
+                <ShieldCheck className="w-3.5 h-3.5 text-kotai-400" />
                 <span>Portal Oficial RSH</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
           </div>
 
-          {/* Contact Details from Official Presentation */}
-          <div className="space-y-3">
+          {/* Contact Details from Official Presentation (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">
               Contacto Oficial
             </h4>
@@ -157,7 +156,7 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-kotai-500 shrink-0" />
-                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white text-zinc-300 transition-colors break-all">
+                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white text-zinc-300 transition-colors whitespace-nowrap text-xs xl:text-sm">
                   {COMPANY_INFO.email}
                 </a>
               </li>

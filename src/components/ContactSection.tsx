@@ -72,7 +72,7 @@ export const ContactSection: React.FC = () => {
                 <h3 className="text-2xl font-bold text-zinc-900">
                   Canales Oficiales Kotai
                 </h3>
-                <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                <span className="text-xs font-bold text-kotai-800 bg-kotai-50 px-2.5 py-1 rounded-full border border-kotai-200">
                   Asesoría Gratuita
                 </span>
               </div>
@@ -151,7 +151,7 @@ export const ContactSection: React.FC = () => {
                   href={`https://wa.me/${COMPANY_INFO.phoneClean}?text=Hola%20Kotai,%20quisiera%20consultar%20por%20la%20postulacion%20gratuita%20al%20subsidio%20termico%20Serviu%20D.S.%2027`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2.5 px-5 py-4 rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-bold transition-colors duration-200 shadow-sm"
+                  className="w-full inline-flex items-center justify-center gap-2.5 px-5 py-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white text-sm font-bold transition-colors duration-200 shadow-sm"
                 >
                   <MessageSquare className="w-5 h-5 text-white" />
                   <span>Escribir por WhatsApp ({COMPANY_INFO.phone})</span>
@@ -159,16 +159,16 @@ export const ContactSection: React.FC = () => {
               </div>
 
               {/* Registro Social de Hogares Link */}
-              <div className="p-4 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-between">
                 <div>
-                  <div className="text-xs font-bold text-sky-950">Link Oficial RSH</div>
-                  <div className="text-[11px] text-sky-800">Consulta tu tramo con tu ClaveÚnica</div>
+                  <div className="text-xs font-bold text-zinc-900">Link Oficial RSH</div>
+                  <div className="text-[11px] text-zinc-600">Consulta tu tramo con tu ClaveÚnica</div>
                 </div>
                 <a
                   href={COMPANY_INFO.rshUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-kotai-800 hover:bg-kotai-700 text-white text-xs font-bold transition-colors"
                 >
                   <span>Ir al RSH</span>
                   <ExternalLink className="w-3 h-3" />
@@ -204,7 +204,8 @@ export const ContactSection: React.FC = () => {
                         href={whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm sm:text-base font-bold shadow-md transition-colors"
+                        className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white text-sm sm:text-base font-bold shadow-md transition-colors"
+                        style={{ backgroundColor: '#25D366' }}
                       >
                         <MessageSquare className="w-5 h-5" />
                         <span>Abrir WhatsApp Ahora</span>

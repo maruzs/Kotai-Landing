@@ -210,27 +210,122 @@ export const REAL_WORKS_GALLERY: GalleryPhoto[] = [
     tag: 'Ventanas',
     image: '/images/termopanel10.jpg',
     description: 'Dormitorios cálidos y protegidos del ruido de la calle.'
+  },
+  {
+    id: 'gal-9',
+    title: 'Aislación y Renovación de Techumbre (PDA)',
+    tag: 'Techumbre',
+    image: '/images/pda/techumbre_terminada.png',
+    description: 'Instalación de aislante de alta densidad en techumbre y cubierta nueva, cortando hasta el 40% de fugas de calor.'
+  },
+  {
+    id: 'gal-10',
+    title: 'Vivienda Aislada Térmicamente Entregada',
+    tag: 'Envolvente Térmica',
+    image: '/images/pda/vivienda_obra_terminada.png',
+    description: 'Envolvente continua completa con sistema EIFS y siding bajo estándar D.S. N° 27 de 2016.'
+  },
+  {
+    id: 'gal-11',
+    title: 'Ventana Termopanel DVH en Obra Real',
+    tag: 'Ventanas',
+    image: '/images/pda/termopanel_obra.png',
+    description: 'Doble vidriado hermético con perfilería estanca y sellado perimetral contra viento y condensación.'
+  },
+  {
+    id: 'gal-12',
+    title: 'Puerta Exterior Hermética de Alta Eficiencia',
+    tag: 'Puertas',
+    image: '/images/pda/puerta_despues.jpg',
+    description: 'Puerta exterior reforzada con burletes de estanqueidad perimetral que bloquean el paso de aire frío.'
+  },
+  {
+    id: 'gal-13',
+    title: 'Extractor Mecánico en Zona Húmeda',
+    tag: 'Ventilación',
+    image: '/images/pda/extractor_aire.jpg',
+    description: 'Extracción de vapor y humedad en baños y cocinas para evitar proliferación de hongos y moho.'
+  },
+  {
+    id: 'gal-14',
+    title: 'Celosías y Aireadores Pasivos Reglamentarios',
+    tag: 'Ventilación Pasiva',
+    image: '/images/pda/celosia_ventilacion.jpg',
+    description: 'Renovación constante de aire interior sin pérdida de calefacción, exigida por el Plan de Descontaminación.'
+  },
+  {
+    id: 'gal-15',
+    title: 'Faena de Aislación de Techumbre en Ejecución',
+    tag: 'Techumbre',
+    image: '/images/pda/techumbre_proceso.jpg',
+    description: 'Colocación en entretecho de material aislante con espesor certificado bajo especificaciones SERVIU CS27.'
+  },
+  {
+    id: 'gal-16',
+    title: 'Barrera Térmica Continua en Muros Exteriores',
+    tag: 'Muros',
+    image: '/images/pda/material_aislacion.png',
+    description: 'Fijación de paneles térmicos continuos para suprimir completamente los puentes térmicos estructurales.'
   }
 ];
 
-// Caso real del Antes y Después (fotos reales antes.jpg y despues.jpg)
-export const REAL_BEFORE_AFTER: BeforeAfterItem = {
-  id: 'ba-real-1',
-  title: 'Acondicionamiento Térmico Integral bajo Norma D.S. N° 27',
-  category: 'Subsidio Serviu de Mejoramiento D.S. 27',
-  location: 'Obra Ejecutada por Kotai, Chillán',
-  description: 'Vivienda previa a la intervención presentaba graves filtraciones de frío, desprendimiento de revestimiento y severa condensación invernal. Kotai ejecutó la aislación exterior continua con sistema EIFS y siding, recambio integral a ventanas termopanel DVH, extractores, aireadores y techumbre hermética.',
-  beforeImage: '/images/antes.jpg',
-  afterImage: '/images/despues.jpg',
-  beforeLabel: 'Antes (Pérdida de calor, filtraciones y humedad)',
-  afterLabel: 'Después (Aislada térmicamente por Kotai bajo D.S. 27)',
-  features: [
-    'Aislación térmica continua en muros (Sistema EIFS en albañilería / Siding en madera y fibrocemento)',
-    'Termopaneles DVH con doble sello de Butilo y puertas exteriores herméticas',
-    'Techumbre aislada con lana de vidrio y ventilación pasiva/activa contra moho',
-    'Asesoría 100% gratuita de Kotai: el beneficiario solo aporta el ahorro reglamentario en su libreta'
-  ]
-};
+// Casos de Antes y Después (Fotos reales de obra y presentación oficial PDA 2026)
+export const BEFORE_AFTER_CASES: BeforeAfterItem[] = [
+  {
+    id: 'ba-vivienda',
+    title: 'Acondicionamiento Térmico Integral bajo Norma D.S. N° 27',
+    category: 'Vivienda Completa',
+    location: 'Chillán, Región de Ñuble',
+    description: 'Vivienda previa presentaba severas fugas de calor, desprendimiento de revestimiento y humedad. Kotai ejecutó la aislación exterior continua con sistema EIFS y siding, recambio a termopaneles DVH, extractores, aireadores y techumbre hermética.',
+    beforeImage: '/images/antes.jpg',
+    afterImage: '/images/despues.jpg',
+    beforeLabel: 'Antes (Pérdida de calor, filtraciones y humedad)',
+    afterLabel: 'Después (Aislada por Kotai bajo D.S. 27)',
+    features: [
+      'Aislación térmica continua en muros (Sistema EIFS y Siding)',
+      'Termopaneles DVH con doble sello de Butilo y puertas herméticas',
+      'Techumbre aislada con lana de vidrio y ventilación pasiva/activa contra moho',
+      'Asesoría 100% gratuita de Kotai: el beneficiario solo aporta el ahorro en su libreta'
+    ]
+  },
+  {
+    id: 'ba-muros',
+    title: 'Renovación de Muros y Revestimiento Térmico EIFS / Siding',
+    category: 'Muros y Envolvente',
+    location: 'Chillán Viejo, Región de Ñuble',
+    description: 'Recambio de fachada deteriorada por revestimiento con placas aislantes de alta densidad, fibrocemento y terminación sellada contra viento y lluvia.',
+    beforeImage: '/images/pda/revestimiento_antes.png',
+    afterImage: '/images/pda/revestimiento_despues.png',
+    beforeLabel: 'Antes (Muro sin aislación con deterioro exterior)',
+    afterLabel: 'Después (Fachada renovada y aislada térmicamente)',
+    features: [
+      'Barrera térmica exterior continua que corta puentes térmicos',
+      'Materiales certificados que protegen contra la lluvia y humedad',
+      'Mayor durabilidad, resistencia mecánica y terminación moderna',
+      'Cumplimiento con estándar de transmitancia térmica SERVIU CS27'
+    ]
+  },
+  {
+    id: 'ba-puertas',
+    title: 'Recambio de Puerta de Acceso a Puerta Hermética de Alta Eficiencia',
+    category: 'Puertas y Accesos',
+    location: 'Concepción, Región del Biobío',
+    description: 'Sustitución de puerta antigua permeable al viento y polvo por puerta reforzada con sellos perimetrales y burletes de estanqueidad.',
+    beforeImage: '/images/pda/puerta_antes.jpg',
+    afterImage: '/images/pda/puerta_despues.jpg',
+    beforeLabel: 'Antes (Puerta desajustada con filtración de corrientes)',
+    afterLabel: 'Después (Puerta hermética con sellos perimetrales)',
+    features: [
+      'Sellado perimetral estanco que elimina corrientes de aire helado',
+      'Cerradura de seguridad y mayor aislamiento acústico',
+      'Material resistente al clima sureño sin deformaciones',
+      'Reglamentaria bajo estándar de eficiencia energética D.S. 27'
+    ]
+  }
+];
+
+// Caso real por defecto para retrocompatibilidad
+export const REAL_BEFORE_AFTER: BeforeAfterItem = BEFORE_AFTER_CASES[0];
 
 // Requisitos oficiales según presentación oficial D.S. N° 27 de 2016 (PDA 2026)
 export const SUBSIDY_REQUIREMENTS = [
@@ -290,47 +385,54 @@ export const REQUIRED_DOCUMENTS = [
   }
 ];
 
-// Mejoras a las que acceden las familias bajo D.S. N° 27 (Presentación PDA 2026)
 export const MEJORAS_PDA_DS27 = [
   {
     title: 'Regularización Parcial',
-    desc: 'Sin costo adicional para las familias postulantes.',
-    tag: 'Gratuito'
+    desc: 'Sin costo adicional para las familias postulantes dentro del proceso de subsidio.',
+    tag: 'Gratuito',
+    image: '/images/despues.jpg'
   },
   {
     title: 'Aislación Térmica de Muros',
-    desc: 'Cambio de revestimiento exterior con poliestireno expandido de alta densidad, fibrocemento, OSB, fieltro asfáltico, siding en madera o sistema EIFS en albañilería.',
-    tag: 'Envolvente'
+    desc: 'Cambio de revestimiento con poliestireno expandido de alta densidad, fibrocemento, OSB, siding o sistema EIFS.',
+    tag: 'Envolvente',
+    image: '/images/pda/revestimiento_despues.png'
   },
   {
     title: 'Ventanas Termopanel (DVH)',
-    desc: 'Cambio de todas las ventanas por Doble Vidriado Hermético con doble sello de Butilo (corta frío, calor y ruidos molestos).',
-    tag: 'Ventanas'
+    desc: 'Cambio integral a Doble Vidriado Hermético con doble sello de Butilo (corta frío, calor y ruidos molestos).',
+    tag: 'Ventanas',
+    image: '/images/pda/termopanel_obra.png'
   },
   {
     title: 'Cambio de Puertas Exteriores',
-    desc: 'Puertas herméticas con sellos perimetrales que cortan corrientes de aire frío.',
-    tag: 'Accesos'
+    desc: 'Puertas herméticas con sellos perimetrales y burletes de estanqueidad contra corrientes frías.',
+    tag: 'Accesos',
+    image: '/images/pda/puerta_despues.jpg'
   },
   {
     title: 'Extractores de Aire',
-    desc: 'Instalación de extractores mecánicos de humedad en baño y cocina para evitar moho.',
-    tag: 'Ventilación'
+    desc: 'Instalación de extractores mecánicos de humedad en baño y cocina para evitar moho y condensación.',
+    tag: 'Ventilación',
+    image: '/images/pda/extractor_aire.jpg'
   },
   {
     title: 'Aireadores y Celosías Pasivas',
-    desc: 'Instalación de aireadores pasivos en Living, Comedor y Dormitorios para circulación de aire puro sin pérdida de calor.',
-    tag: 'Calidad de Aire'
+    desc: 'Aireadores pasivos en dormitorios y living para ventilación continua y aire puro sin fuga de calor.',
+    tag: 'Calidad de Aire',
+    image: '/images/pda/celosia_ventilacion.jpg'
   },
   {
     title: 'Aislación de Techumbre',
-    desc: 'Instalación de lana de vidrio de alta densidad y recambio de cubierta si se encuentra en malas condiciones.',
-    tag: 'Cubierta'
+    desc: 'Instalación de lana de vidrio de alta densidad y recambio de cubierta si se encuentra deteriorada.',
+    tag: 'Techumbre',
+    image: '/images/pda/techumbre_terminada.png'
   },
   {
-    title: 'Piso Ventilado',
-    desc: 'Cambio de piso si lo amerita técnicamente en viviendas con piso ventilado.',
-    tag: 'Estructura'
+    title: 'Piso Ventilado y Estructura',
+    desc: 'Aislación y mejoramiento técnico en viviendas que cuentan con piso ventilado.',
+    tag: 'Estructura',
+    image: '/images/pda/material_aislacion.png'
   }
 ];
 

@@ -57,7 +57,7 @@ export const EvidenciaPage: React.FC = () => {
                 <span>Chillán, San Carlos, Concepción y comunas</span>
               </span>
               <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <ShieldCheck className="w-3.5 h-3.5 text-kotai-400" />
                 <span>Norma D.S. N° 27 Serviu</span>
               </span>
               <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800">
@@ -82,8 +82,8 @@ export const EvidenciaPage: React.FC = () => {
       {/* Call to Action Final de Evidencia */}
       <section className="py-16 sm:py-20 bg-zinc-900 text-white border-t border-zinc-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950 border border-emerald-800 text-emerald-300 text-xs sm:text-sm font-bold uppercase tracking-wider">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-kotai-950 border border-kotai-800 text-kotai-300 text-xs sm:text-sm font-bold uppercase tracking-wider">
+            <ShieldCheck className="w-4 h-4 text-kotai-400" />
             <span>Asesoría 100% Gratuita para Beneficiarios</span>
           </div>
 

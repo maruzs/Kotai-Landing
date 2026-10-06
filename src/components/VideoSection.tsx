@@ -79,8 +79,8 @@ export const VideoSection: React.FC = () => {
             </div>
 
             <div className="p-5 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-2">
-              <div className="flex items-center gap-2.5 text-emerald-400 text-sm font-bold uppercase tracking-wider">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="flex items-center gap-2.5 text-kotai-400 text-sm font-bold uppercase tracking-wider">
+                <CheckCircle2 className="w-4 h-4 text-kotai-400 shrink-0" />
                 <span>Asesoría Gratuita</span>
               </div>
               <h3 className="text-lg font-bold text-white">
@@ -117,7 +117,7 @@ export const VideoSection: React.FC = () => {
                 href="https://wa.me/56931018612?text=Hola%20Kotai,%20vi%20el%20video%20explicativo%20y%20deseo%20saber%20si%20mi%20casa%20califica%20al%20subsidio%20termico%20D.S.%2027"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-200 active:scale-95"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-200 active:scale-95"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>WhatsApp Oficial</span>

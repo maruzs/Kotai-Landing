@@ -71,8 +71,8 @@ export const SimplicityBanner: React.FC = () => {
         {/* Reassurance Callout Box with Larger Text & Direct RSH Link */}
         <div className="mt-14 rounded-3xl bg-zinc-900 text-white p-7 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 border border-zinc-800">
           <div className="space-y-2 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/80 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-700/50">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-kotai-900/80 text-kotai-300 text-xs font-bold uppercase tracking-wider border border-kotai-700/50">
+              <ShieldCheck className="w-3.5 h-3.5 text-kotai-400" />
               <span>Asesoría 100% Gratuita · Regiones de Ñuble y Biobío</span>
             </div>
             <h4 className="text-xl sm:text-2xl font-bold">
@@ -91,7 +91,7 @@ export const SimplicityBanner: React.FC = () => {
               className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-white text-base font-bold transition-all duration-200 border border-zinc-700"
             >
               <span>Consultar en RSH</span>
-              <span className="text-xs text-sky-400">↗</span>
+              <span className="text-xs text-kotai-400">↗</span>
             </a>
 
             <a

@@ -75,16 +75,16 @@ export const ServicesSection: React.FC = () => {
         </div>
 
         {/* Banner Destacado: Asesoría 100% Gratuita */}
-        <div className="mb-14 rounded-3xl bg-gradient-to-r from-emerald-900 via-emerald-850 to-teal-950 text-white p-7 sm:p-9 shadow-lg border border-emerald-700/60 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mb-14 rounded-3xl bg-gradient-to-r from-kotai-950 via-kotai-900 to-zinc-950 text-white p-7 sm:p-9 shadow-lg border border-kotai-700/60 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-800/80 text-emerald-200 text-xs font-bold uppercase tracking-wider border border-emerald-600/50">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-kotai-800/80 text-kotai-200 text-xs font-bold uppercase tracking-wider border border-kotai-600/50">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Garantía de Transparencia Kotai</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-black text-white">
               Asesoría y Postulación 100% Gratuita
             </h3>
-            <p className="text-sm sm:text-base text-emerald-100 max-w-3xl leading-relaxed">
+            <p className="text-sm sm:text-base text-zinc-200 max-w-3xl leading-relaxed">
               El beneficiario <strong>no paga absolutamente nada</strong> por la asesoría, visita técnica ni formulación del proyecto. Ni la constructora ni la entidad patrocinante cobran honorarios. El único desembolso requerido corresponde al ahorro reglamentario exigido por SERVIU en tu propia libreta de ahorro de BancoEstado.
             </p>
           </div>
@@ -92,7 +92,7 @@ export const ServicesSection: React.FC = () => {
           <a
             href="#contacto"
             onClick={(e) => handleSoftScroll(e, '#contacto')}
-            className="shrink-0 inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-white text-emerald-950 font-black text-sm sm:text-base shadow hover:bg-emerald-50 transition-colors"
+            className="shrink-0 inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-white text-kotai-950 font-black text-sm sm:text-base shadow hover:bg-zinc-100 transition-colors"
           >
             <span>Postula Gratis Ahora</span>
             <ArrowRight className="w-4 h-4" />
@@ -140,7 +140,7 @@ export const ServicesSection: React.FC = () => {
               </div>
 
               <div className="mt-8 pt-5 border-t border-zinc-100 flex items-center justify-between">
-                <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">
+                <span className="text-xs font-bold text-kotai-800 bg-kotai-50 px-2.5 py-1 rounded-lg">
                   Subsidio cubre la obra
                 </span>
                 <a
@@ -172,17 +172,30 @@ export const ServicesSection: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {MEJORAS_PDA_DS27.map((mejora, mIdx) => (
-              <div key={mIdx} className="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col justify-between hover:border-kotai-300 transition-colors">
-                <div>
-                  <span className="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-kotai-100 text-kotai-800 mb-2">
-                    {mejora.tag}
-                  </span>
-                  <h4 className="text-base font-bold text-zinc-900 mb-2">
-                    {mejora.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed">
-                    {mejora.desc}
-                  </p>
+              <div key={mIdx} className="rounded-2xl bg-zinc-50 border border-zinc-200 overflow-hidden flex flex-col justify-between hover:border-kotai-300 hover:shadow-md transition-all duration-200">
+                {mejora.image && (
+                  <div className="h-32 sm:h-36 w-full overflow-hidden bg-zinc-900 relative">
+                    <img
+                      src={mejora.image}
+                      alt={mejora.title}
+                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-2.5 left-2.5">
+                      <span className="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-zinc-900/90 text-white backdrop-blur-sm border border-white/20">
+                        {mejora.tag}
+                      </span>
+                    </div>
+                  </div>
+                )}
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h4 className="text-base font-bold text-zinc-900 mb-1.5 leading-snug">
+                      {mejora.title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
+                      {mejora.desc}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -209,7 +222,7 @@ export const ServicesSection: React.FC = () => {
                   <div key={aIdx} className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/15">
                     <div className="text-xs font-bold uppercase text-kotai-300">{item.tramo}</div>
                     <div className="text-3xl font-black text-white mt-1">{item.ahorroUF}</div>
-                    <div className="text-sm font-semibold text-emerald-300">{item.ahorroPesos}</div>
+                    <div className="text-sm font-semibold text-zinc-100">{item.ahorroPesos}</div>
                     <div className="text-[11px] text-zinc-300 mt-1">{item.descripcion}</div>
                   </div>
                 ))}
@@ -221,7 +234,7 @@ export const ServicesSection: React.FC = () => {
                 Consulta Oficial de Vulnerabilidad
               </div>
               <div className="text-lg sm:text-xl font-bold text-white flex items-center gap-2.5">
-                <ShieldCheck className="w-6 h-6 text-emerald-400 shrink-0" />
+                <ShieldCheck className="w-6 h-6 text-kotai-400 shrink-0" />
                 <span>Hasta el 70% en el RSH</span>
               </div>
               <p className="text-sm text-zinc-300 leading-relaxed">
@@ -233,7 +246,7 @@ export const ServicesSection: React.FC = () => {
                   href={COMPANY_INFO.rshUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-sm font-bold transition-colors shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-kotai-800 hover:bg-kotai-700 text-white text-sm font-bold transition-colors shadow-sm"
                 >
                   <span>Revisar mi Cartola en registrosocial.gob.cl</span>
                   <ExternalLink className="w-4 h-4" />
@@ -284,15 +297,15 @@ export const ServicesSection: React.FC = () => {
             ))}
 
             {/* Tarjeta de ayuda RSH directa */}
-            <div className="p-5 rounded-2xl bg-sky-50 border border-sky-200 flex flex-col justify-between">
+            <div className="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col justify-between">
               <div>
-                <div className="w-8 h-8 rounded-xl bg-sky-100 text-sky-800 flex items-center justify-center text-sm font-bold mb-3">
+                <div className="w-8 h-8 rounded-xl bg-kotai-50 text-kotai-800 flex items-center justify-center text-sm font-bold mb-3">
                   <HelpCircle className="w-4 h-4" />
                 </div>
-                <h5 className="text-sm font-bold text-sky-950 mb-1.5">
+                <h5 className="text-sm font-bold text-zinc-900 mb-1.5">
                   ¿No tienes tu Cartola RSH?
                 </h5>
-                <p className="text-xs text-sky-800 leading-relaxed mb-3">
+                <p className="text-xs text-zinc-600 leading-relaxed mb-3">
                   Puedes descargarla gratis en línea con tu ClaveÚnica o solicitarla en la DIDECO de tu municipio.
                 </p>
               </div>
@@ -300,7 +313,7 @@ export const ServicesSection: React.FC = () => {
                 href={COMPANY_INFO.rshUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-900 hover:text-sky-700 underline"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-kotai-800 hover:text-kotai-950 underline"
               >
                 <span>Descargar en registrosocial.gob.cl</span>
                 <ExternalLink className="w-3.5 h-3.5" />

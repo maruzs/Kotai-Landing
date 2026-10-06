@@ -124,7 +124,7 @@ export const HeroCarousel: React.FC = () => {
                 <span>RSH hasta el 70% (D.S. 27)</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-kotai-400 shrink-0" />
                 <span>Asesoría 100% Gratuita</span>
               </div>
               <div className="flex items-center gap-2.5">

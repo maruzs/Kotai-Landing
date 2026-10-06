@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, Phone, ExternalLink, ShieldCheck, Camera } from 'lucide-react';
+import { Menu, X, ChevronRight, Phone, Camera, ExternalLink, ShieldCheck } from 'lucide-react';
 import { COMPANY_INFO } from '../data/mockData';
 import { useCurrentPath, navigate } from '../utils/navigation';
 
@@ -7,6 +7,7 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const currentPath = useCurrentPath();
+  const isHome = currentPath === '/';
   const isEvidenciaPage = currentPath === '/obras' || currentPath === '/evidencia';
 
   useEffect(() => {
@@ -19,7 +20,7 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { label: 'Subsidio D.S. 27', href: '#servicios', isRoute: false },
-    { label: 'Evidencia en Terreno', href: '/obras', isRoute: true, badge: 'Fotos Reales' },
+    { label: 'Evidencia en Terreno', href: '/obras', isRoute: true },
     { label: 'Requisitos', href: '#requisitos', isRoute: false },
     { label: 'Quiénes Somos', href: '#nosotros', isRoute: false },
   ];
@@ -33,14 +34,14 @@ export const Navbar: React.FC = () => {
       return;
     }
 
-    if (isEvidenciaPage) {
+    if (!isHome) {
       navigate('/');
       setTimeout(() => {
         const element = document.querySelector(link.href);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 120);
+      }, 150);
     } else {
       const element = document.querySelector(link.href);
       if (element) {
@@ -52,7 +53,7 @@ export const Navbar: React.FC = () => {
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    if (isEvidenciaPage) {
+    if (!isHome) {
       navigate('/');
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -62,14 +63,14 @@ export const Navbar: React.FC = () => {
   const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    if (isEvidenciaPage) {
+    if (!isHome) {
       navigate('/');
       setTimeout(() => {
         const element = document.querySelector('#contacto');
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 120);
+      }, 150);
     } else {
       const element = document.querySelector('#contacto');
       if (element) {
@@ -80,40 +81,12 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* Top Utility Banner: Chillán, Ñuble & Biobío, D.S. 27, Asesoría Gratuita y Link RSH */}
-      <div className="bg-zinc-900 text-white text-xs border-b border-zinc-800 py-1.5 px-4">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2 text-zinc-300 font-medium text-[11px] sm:text-xs">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-            <span>Sede Chillán · Cobertura <strong>Regiones de Ñuble y Biobío</strong></span>
-            <span className="hidden sm:inline text-zinc-600">|</span>
-            <span className="hidden sm:inline text-zinc-300">Norma <strong>D.S. N° 27 (CS27)</strong></span>
-            <span className="hidden md:inline text-zinc-600">|</span>
-            <span className="hidden md:inline text-emerald-400 font-bold">Asesoría 100% Gratuita</span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <a
-              href={COMPANY_INFO.rshUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-sky-300 hover:text-white transition-colors"
-              title="Ir al portal oficial del Registro Social de Hogares"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
-              <span>Consultar Registro Social (RSH)</span>
-              <ExternalLink className="w-3 h-3 text-sky-300" />
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navbar */}
       <div
         className={`transition-all duration-300 ${
           isScrolled
             ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-zinc-200/80 py-2.5'
-            : 'bg-white/90 backdrop-blur-sm border-b border-zinc-100 py-3.5'
+            : 'bg-white/95 backdrop-blur-sm border-b border-zinc-100 py-3.5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -132,7 +105,7 @@ export const Navbar: React.FC = () => {
               />
             </a>
 
-            {/* Desktop Navigation Links - Perfectly spaced without awkward wrapping */}
+            {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-5 xl:gap-8 shrink-0">
               {navLinks.map((link) => {
                 const isActive = link.isRoute && isEvidenciaPage;
@@ -148,15 +121,6 @@ export const Navbar: React.FC = () => {
                     }`}
                   >
                     <span>{link.label}</span>
-                    {link.badge && (
-                      <span className={`text-[10px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded-md ${
-                        isActive
-                          ? 'bg-kotai-800 text-white'
-                          : 'bg-amber-100 text-amber-900 border border-amber-200'
-                      }`}>
-                        {link.badge}
-                      </span>
-                    )}
                   </a>
                 );
               })}
@@ -172,8 +136,8 @@ export const Navbar: React.FC = () => {
                 <div className="w-10 h-10 rounded-full bg-kotai-50 border border-kotai-200 flex items-center justify-center shrink-0 group-hover:bg-kotai-100 transition-colors">
                   <Phone className="w-5 h-5 text-kotai-800" />
                 </div>
-                <div className="flex flex-col text-left whitespace-nowrap">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 leading-none">
+                <div className="flex flex-col items-center text-center whitespace-nowrap">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 leading-none mb-1">
                     Llámanos Directo
                   </span>
                   <span className="text-lg xl:text-xl font-black text-zinc-950 group-hover:text-kotai-800 tracking-tight leading-tight">
@@ -233,11 +197,6 @@ export const Navbar: React.FC = () => {
                 <div className="flex items-center gap-2">
                   {link.isRoute && <Camera className="w-4 h-4 text-kotai-800" />}
                   <span>{link.label}</span>
-                  {link.badge && (
-                    <span className="text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-100 text-amber-900">
-                      {link.badge}
-                    </span>
-                  )}
                 </div>
                 <ChevronRight className="w-5 h-5 text-zinc-400" />
               </a>
@@ -259,11 +218,11 @@ export const Navbar: React.FC = () => {
               href={COMPANY_INFO.rshUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-2.5 rounded-xl border border-sky-200 text-sky-900 font-bold text-sm bg-sky-50"
+              className="flex items-center justify-center gap-2 py-2.5 rounded-xl border border-zinc-200 text-zinc-800 font-bold text-sm bg-zinc-50 hover:bg-zinc-100"
             >
-              <ShieldCheck className="w-4 h-4 text-sky-600" />
+              <ShieldCheck className="w-4 h-4 text-kotai-800" />
               <span>Consultar Registro Social de Hogares</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <ExternalLink className="w-3.5 h-3.5 text-zinc-500" />
             </a>
 
             <a
