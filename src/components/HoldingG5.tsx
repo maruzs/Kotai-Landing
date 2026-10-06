@@ -1,5 +1,5 @@
 import React from 'react';
-import { HOLDING_COMPANIES } from '../data/mockData';
+import { HOLDING_COMPANIES, COMPANY_INFO } from '../data/mockData';
 import { Building, ShieldCheck, CheckCircle } from 'lucide-react';
 
 export const HoldingG5: React.FC = () => {
@@ -14,10 +14,10 @@ export const HoldingG5: React.FC = () => {
             <span>Respaldo Corporativo</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Perteneciente al Grupo Alianza G5
+            Grupo Empresarial “ALIANZA G5”
           </h2>
           <p className="mt-3 text-base text-zinc-300 leading-relaxed">
-            Kotai forma parte de un holding empresarial multisectorial que entrega solidez financiera, abastecimiento prioritario e ingeniería integrada para garantizar cada obra.
+            Kotai forma parte de un holding multisectorial que entrega solvencia técnica, solidez financiera, abastecimiento prioritario y garantía de continuidad de obra en cada proyecto Serviu.
           </p>
         </div>
 
@@ -28,20 +28,20 @@ export const HoldingG5: React.FC = () => {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             <div className="lg:col-span-8 space-y-3">
               <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-kotai-800 text-white text-[11px] font-bold uppercase tracking-wider">
-                Empresa Operativa Principal
+                Empresa Operativa de Acondicionamiento Térmico · RUT {COMPANY_INFO.rut}
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                Kotai · Constructora y Montaje
+                {COMPANY_INFO.name}
               </h3>
               <p className="text-sm text-zinc-300 max-w-2xl leading-relaxed">
-                Es la empresa encargada de ejecutar en terreno: montaje de estructuras pesadas de acero, galpones industriales, construcción de viviendas y ampliaciones habitacionales con cuadrillas propias.
+                Empresa del holding encargada de la formulación técnica, licitación y ejecución de subsidios de eficiencia energética D.S. N° 27 de 2016 (CS27) Serviu, con cuadrillas de terreno propias y supervisión diaria. Representante Legal: <strong>{COMPANY_INFO.representative}</strong>.
               </p>
             </div>
 
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
               <div className="flex items-center gap-2 text-xs text-zinc-200 bg-black/30 p-2.5 rounded-xl border border-white/10">
                 <ShieldCheck className="w-4 h-4 text-kotai-400 shrink-0" />
-                <span>Solvencia y Respaldo G5</span>
+                <span>Solvencia y Respaldo Holding G5</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-zinc-200 bg-black/30 p-2.5 rounded-xl border border-white/10">
                 <CheckCircle className="w-4 h-4 text-kotai-400 shrink-0" />
@@ -51,18 +51,23 @@ export const HoldingG5: React.FC = () => {
           </div>
         </div>
 
-        {/* Other Companies in Holding Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Other Companies in Holding Grid with real RUTs */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
           {HOLDING_COMPANIES.filter(c => !c.isMain).map((company) => (
             <div
               key={company.id}
               className="bg-zinc-950/70 border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between hover:border-zinc-700 transition-colors"
             >
               <div>
-                <div className="text-xs font-bold text-kotai-400 uppercase tracking-wider mb-2">
-                  Alianza G5
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-bold text-kotai-400 uppercase tracking-wider">
+                    Alianza G5
+                  </span>
+                  <span className="text-[10px] font-mono font-semibold text-zinc-400 bg-zinc-900 px-2 py-0.5 rounded border border-zinc-800">
+                    RUT {company.rut}
+                  </span>
                 </div>
-                <h4 className="text-xl font-bold text-white mb-1">
+                <h4 className="text-lg font-bold text-white mb-1">
                   {company.name}
                 </h4>
                 <div className="text-xs font-semibold text-zinc-400 mb-3">
@@ -74,16 +79,65 @@ export const HoldingG5: React.FC = () => {
               </div>
 
               <div className="mt-6 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[11px] text-zinc-500 font-medium">
-                <span>Empresa Colaboradora</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-zinc-600" />
+                <span>Empresa del Holding</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom Holding Trust Strip */}
-        <div className="mt-12 text-center text-xs text-zinc-400 max-w-xl mx-auto">
-          Grupo Alianza G5 · Sinergia técnica, comercial y constructiva al servicio de nuestros clientes en todo Chile.
+        {/* Ciclo de Trabajo SERVIU y Departamentos */}
+        <div className="bg-zinc-950/90 border border-zinc-800 rounded-3xl p-7 sm:p-9">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <span className="text-xs font-bold uppercase tracking-wider text-kotai-400">
+              Metodología de Trabajo SERVIU
+            </span>
+            <h4 className="text-xl sm:text-2xl font-bold text-white mt-1">
+              Ciclo de Gestión y Ejecución Profesional
+            </h4>
+            <p className="text-xs sm:text-sm text-zinc-400 mt-1">
+              Flujo integrado entre las áreas del holding para asegurar cumplimiento técnico y administrativo sin contratiempos.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-kotai-900 text-kotai-300 font-bold flex items-center justify-center text-sm shrink-0">1</div>
+              <div>
+                <div className="text-sm font-bold text-white">Social</div>
+                <div className="text-[11px] text-zinc-400">Captación y vínculo comunitario</div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-kotai-900 text-kotai-300 font-bold flex items-center justify-center text-sm shrink-0">2</div>
+              <div>
+                <div className="text-sm font-bold text-white">Administración</div>
+                <div className="text-[11px] text-zinc-400">Presupuestos y validación de fondos</div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-kotai-900 text-kotai-300 font-bold flex items-center justify-center text-sm shrink-0">3</div>
+              <div>
+                <div className="text-sm font-bold text-white">Técnica</div>
+                <div className="text-[11px] text-zinc-400">Planimetría y presentación Serviu</div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-kotai-900 text-kotai-300 font-bold flex items-center justify-center text-sm shrink-0">4</div>
+              <div>
+                <div className="text-sm font-bold text-white">Operaciones</div>
+                <div className="text-[11px] text-zinc-400">Ejecución en terreno y entrega</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Holding Trust Strip */}
+          <div className="text-center text-xs text-zinc-400 pt-4 border-t border-zinc-800/80">
+            Grupo Empresarial Alianza G5 · Sinergia técnica, comercial y constructiva en las Regiones de Ñuble y Biobío.
+          </div>
         </div>
 
       </div>

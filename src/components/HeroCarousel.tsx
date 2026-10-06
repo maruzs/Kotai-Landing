@@ -49,7 +49,7 @@ export const HeroCarousel: React.FC = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-[90vh] flex items-center bg-zinc-950 text-white overflow-hidden pt-20"
+      className="relative min-h-[90vh] flex items-center bg-zinc-950 text-white overflow-hidden pt-28 sm:pt-36"
       aria-roledescription="carousel"
       aria-label="Subsidios y acondicionamiento térmico Kotai"
     >
@@ -121,15 +121,15 @@ export const HeroCarousel: React.FC = () => {
             <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/15 text-sm font-semibold text-zinc-200">
               <div className="flex items-center gap-2.5">
                 <ShieldCheck className="w-5 h-5 text-kotai-400 shrink-0" />
-                <span>Tramo HASTA el 60% RSH</span>
+                <span>RSH hasta el 70% (D.S. 27)</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-kotai-400 shrink-0" />
-                <span>Aporte desde 1 UF (~$41.500)</span>
+                <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                <span>Asesoría 100% Gratuita</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-kotai-400 shrink-0" />
-                <span>Acompañamiento en tu Postulación</span>
+                <span>Aporte en libreta: 3 a 5 UF</span>
               </div>
             </div>
 

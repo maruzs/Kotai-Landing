@@ -68,24 +68,41 @@ export const SimplicityBanner: React.FC = () => {
           ))}
         </div>
 
-        {/* Reassurance Callout Box with Larger Text */}
+        {/* Reassurance Callout Box with Larger Text & Direct RSH Link */}
         <div className="mt-14 rounded-3xl bg-zinc-900 text-white p-7 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 border border-zinc-800">
           <div className="space-y-2 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/80 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-700/50">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Asesoría 100% Gratuita · Regiones de Ñuble y Biobío</span>
+            </div>
             <h4 className="text-xl sm:text-2xl font-bold">
               ¿No sabes si cumples con tu Registro Social de Hogares?
             </h4>
             <p className="text-base sm:text-lg text-zinc-300">
-              Escríbenos o llámanos; revisamos tu cartola y te orientamos paso a paso con amabilidad.
+              Revisamos tu cartola sin costo alguno. El beneficiario no paga nada a Kotai ni a la entidad patrocinante.
             </p>
           </div>
-          <a
-            href="#contacto"
-            onClick={(e) => handleSoftScroll(e, '#contacto')}
-            className="shrink-0 inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-kotai-800 hover:bg-kotai-700 text-white text-base font-bold transition-all duration-200 active:scale-[0.98] shadow-sm"
-          >
-            <span>Postula con Nosotros</span>
-            <ArrowRight className="w-5 h-5" />
-          </a>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+            <a
+              href="https://registrosocial.gob.cl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-white text-base font-bold transition-all duration-200 border border-zinc-700"
+            >
+              <span>Consultar en RSH</span>
+              <span className="text-xs text-sky-400">↗</span>
+            </a>
+
+            <a
+              href="#contacto"
+              onClick={(e) => handleSoftScroll(e, '#contacto')}
+              className="inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-kotai-800 hover:bg-kotai-700 text-white text-base font-bold transition-all duration-200 active:scale-[0.98] shadow-sm"
+            >
+              <span>Postula con Nosotros</span>
+              <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
         </div>
 
       </div>

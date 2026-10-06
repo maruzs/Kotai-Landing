@@ -17,25 +17,25 @@ export const AboutAndHistory: React.FC = () => {
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 tracking-tight leading-snug">
-              Nacidos para Construir con Verdad y Calidad
+              Nacidos para Construir con Verdad y Calidad en Ñuble y Biobío
             </h2>
 
             <p className="text-base text-zinc-600 leading-relaxed">
-              Kotai nació con un propósito claro: permitir que las familias de esfuerzo accedan a viviendas dignas, abrigadas y eficientes a través de los programas y subsidios de acondicionamiento térmico del Serviu (MINVU).
+              Kotai nació con un propósito claro: permitir que las familias de esfuerzo accedan a viviendas dignas, abrigadas y energéticamente eficientes a través del <strong className="text-zinc-900">Programa de Mejoramiento de Viviendas y Barrios D.S. N° 27 de 2016 (CS27)</strong> del MINVU y SERVIU.
             </p>
 
             <p className="text-sm text-zinc-600 leading-relaxed">
-              Sabemos lo difícil que es vivir con frío, goteras, hongos o pagar cuentas desmedidas de gas y leña. Por eso, nos encargamos de todo el proceso: formulamos el proyecto técnico, postulamos a las licitaciones estatales y ejecutamos el aislamiento EIFS, ventanas termopanel y colectores solares con cuadrillas especializadas. Como parte del <strong className="text-zinc-900 font-semibold">Grupo Alianza G5</strong>, entregamos cada obra con contrato por escrito, materiales certificados y garantía real.
+              Con sede en <strong>Chillán (José Joaquín Prieto N° 269)</strong> y atención en toda la Región de Ñuble y Región del Biobío, nos encargamos de todo el proceso: formulación técnica, planimetría, presentación de carpetas ante el SERVIU y ejecución de la aislación térmica EIFS, ventanas termopanel DVH y colectores solares. Como parte del <strong className="text-zinc-900 font-semibold">Grupo Alianza G5</strong>, entregamos cada obra con contrato por escrito, materiales certificados y garantía real.
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-2">
               <div className="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
-                <div className="text-2xl font-black text-kotai-800 font-mono">100%</div>
-                <div className="text-xs text-zinc-600 font-medium mt-1">Obras terminadas y entregadas a conformidad</div>
+                <div className="text-2xl font-black text-kotai-800 font-mono">D.S. 27</div>
+                <div className="text-xs text-zinc-600 font-medium mt-1">Cumplimiento estricto de norma térmica Serviu</div>
               </div>
               <div className="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
-                <div className="text-2xl font-black text-kotai-800 font-mono">NCh433</div>
-                <div className="text-xs text-zinc-600 font-medium mt-1">Cumplimiento estricto de norma chilena sísmica</div>
+                <div className="text-2xl font-black text-kotai-800 font-mono">100%</div>
+                <div className="text-xs text-zinc-600 font-medium mt-1">Obras terminadas y entregadas a conformidad</div>
               </div>
             </div>
           </div>
@@ -50,10 +50,10 @@ export const AboutAndHistory: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent flex items-end p-6">
                 <div className="text-white space-y-1">
                   <div className="text-xs font-bold uppercase tracking-wider text-kotai-300">
-                    Compromiso en Terreno
+                    Compromiso en Terreno · Chillán y Biobío
                   </div>
                   <div className="text-base sm:text-lg font-bold">
-                    Supervisión diaria y trato directo con nuestros clientes
+                    Supervisión diaria y trato directo con nuestros vecinos
                   </div>
                 </div>
               </div>
@@ -67,49 +67,53 @@ export const AboutAndHistory: React.FC = () => {
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-kotai-50 border border-kotai-200 text-kotai-900 text-xs font-bold uppercase tracking-wider mb-2">
               <Users className="w-3.5 h-3.5 text-kotai-800" />
-              <span>Equipo Humano</span>
+              <span>Equipo y Departamentos</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 tracking-tight">
-              Las Caras Detrás de Cada Obra
+              Las Caras Detrás de Cada Obra Kotai
             </h3>
             <p className="mt-2 text-sm text-zinc-600">
-              Personas con experiencia real de vida y oficio que cuidarán tu inversión en cada detalle.
+              Estructura profesional de planta que acompaña a familias y comités desde la visita técnica hasta la entrega final.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {TEAM_MEMBERS.map((member) => (
               <div
                 key={member.id}
-                className="bg-zinc-50 rounded-2xl border border-zinc-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 flex flex-col"
+                className="bg-zinc-50 rounded-2xl border border-zinc-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between"
               >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-zinc-200 relative">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover object-top"
-                  />
-                  <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-zinc-900/85 text-white text-[11px] font-semibold backdrop-blur-sm border border-white/20">
-                    {member.experience}
+                <div>
+                  <div className="aspect-[4/3] w-full overflow-hidden bg-zinc-200 relative">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <div className="absolute bottom-2.5 left-2.5 px-2 py-0.5 rounded-md bg-zinc-900/85 text-white text-[10px] font-semibold backdrop-blur-sm border border-white/20">
+                      {member.experience}
+                    </div>
                   </div>
-                </div>
 
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-kotai-800">
-                      {member.specialty}
-                    </span>
-                    <h4 className="text-lg font-bold text-zinc-900 mt-0.5">
+                  <div className="p-5 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-kotai-800 bg-kotai-100/70 px-2 py-0.5 rounded">
+                        {member.department}
+                      </span>
+                    </div>
+                    <h4 className="text-base font-bold text-zinc-900">
                       {member.name}
                     </h4>
-                    <p className="text-xs font-semibold text-zinc-500 mb-3">
+                    <p className="text-xs font-semibold text-zinc-500">
                       {member.role}
                     </p>
-                    <p className="text-xs text-zinc-600 leading-relaxed">
+                    <p className="text-xs text-zinc-600 leading-relaxed pt-1">
                       {member.bio}
                     </p>
                   </div>
+                </div>
 
+                <div className="p-5 pt-0">
                   <div className="pt-3 border-t border-zinc-200 flex items-center gap-1.5 text-[11px] font-semibold text-zinc-700">
                     <CheckCircle2 className="w-3.5 h-3.5 text-kotai-800" />
                     <span>Personal de planta Kotai</span>

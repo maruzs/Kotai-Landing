@@ -1,5 +1,6 @@
 import React from 'react';
-import { Phone, Mail, MapPin, ArrowUp } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowUp, ExternalLink, ShieldCheck } from 'lucide-react';
+import { COMPANY_INFO, HOLDING_COMPANIES } from '../data/mockData';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -29,18 +30,21 @@ export const Footer: React.FC = () => {
             >
               <img
                 src="/Kotai_NoBG.png"
-                alt="Kotai Constructora y Acondicionamiento"
+                alt="Kotai Constructora y Acondicionamiento Térmico D.S. 27"
                 className="h-14 sm:h-16 w-auto object-contain bg-white rounded-2xl p-2"
               />
             </a>
 
             <p className="text-zinc-300 text-sm leading-relaxed max-w-sm">
-              Empresa especialista en licitaciones y ejecución de proyectos de acondicionamiento térmico y mejoramiento habitacional a través de subsidios Serviu. Perteneciente al Grupo Alianza G5.
+              Empresa constructora especialista en licitaciones y ejecución de proyectos de acondicionamiento térmico Serviu bajo la norma <strong>D.S. N° 27 de 2016 (CS27)</strong>. Perteneciente al Grupo Empresarial Alianza G5.
             </p>
 
-            <div className="pt-2 text-xs text-zinc-400">
+            <div className="pt-1 flex flex-wrap gap-2 text-xs">
               <span className="inline-block px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold">
-                Subsidios MINVU / Serviu · Eficiencia Energética
+                Norma D.S. N° 27 / CS27 · Serviu MINVU
+              </span>
+              <span className="inline-block px-3 py-1 rounded-lg bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-semibold">
+                Asesoría 100% Gratuita
               </span>
             </div>
           </div>
@@ -66,7 +70,7 @@ export const Footer: React.FC = () => {
                   onClick={(e) => handleSoftScroll(e, '#servicios')}
                   className="hover:text-white transition-colors"
                 >
-                  Subsidios y Programas
+                  Subsidio D.S. 27
                 </a>
               </li>
               <li>
@@ -108,21 +112,37 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Holding Companies */}
+          {/* Holding Companies with RUTs */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">
               Grupo Alianza G5
             </h4>
-            <ul className="space-y-2.5 text-zinc-300">
-              <li className="font-bold text-white">Kotai (Acondicionamiento y Obras)</li>
-              <li>Sequoia (Ingeniería)</li>
-              <li>Paulina (Comercializadora)</li>
-              <li>RF (Vivienda)</li>
-              <li>Los Aromos (Constructora)</li>
+            <ul className="space-y-2.5 text-zinc-300 text-xs sm:text-sm">
+              <li className="font-bold text-white">
+                Kotai SpA <span className="text-[11px] font-mono text-zinc-400 font-normal">({COMPANY_INFO.rut})</span>
+              </li>
+              {HOLDING_COMPANIES.filter(c => !c.isMain).map(c => (
+                <li key={c.id}>
+                  {c.name.replace('Constructora ', '').replace('Ingeniería, Construcción y Comercializadora ', '').replace('Ingeniería y Construcción ', '')} <span className="text-[11px] font-mono text-zinc-500">({c.rut})</span>
+                </li>
+              ))}
             </ul>
+
+            <div className="pt-2">
+              <a
+                href={COMPANY_INFO.rshUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-400 hover:text-sky-300 transition-colors"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
+                <span>Portal Oficial RSH</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
           </div>
 
-          {/* Contact Details from Flyers */}
+          {/* Contact Details from Official Presentation */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">
               Contacto Oficial
@@ -130,25 +150,22 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-kotai-500 shrink-0" />
-                <a href="tel:+56950501231" className="hover:text-white font-semibold text-zinc-200 transition-colors">
-                  +56 9 5050 1231
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-kotai-500 shrink-0" />
-                <a href="tel:+56975762347" className="hover:text-white font-semibold text-zinc-200 transition-colors">
-                  +56 9 7576 2347
+                <a href={`tel:${COMPANY_INFO.phoneClean}`} className="hover:text-white font-black text-base text-zinc-100 transition-colors">
+                  {COMPANY_INFO.phone}
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-kotai-500 shrink-0" />
-                <a href="mailto:contacto@kotaiconstructora.cl" className="hover:text-white transition-colors">
-                  contacto@kotaiconstructora.cl
+                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white text-zinc-300 transition-colors break-all">
+                  {COMPANY_INFO.email}
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-kotai-500 shrink-0 mt-0.5" />
-                <span>Región Metropolitana y Zona Central, Chile</span>
+                <div className="text-zinc-300 leading-snug">
+                  <div>{COMPANY_INFO.address}</div>
+                  <div className="text-xs text-kotai-400 font-semibold mt-0.5">{COMPANY_INFO.regions}</div>
+                </div>
               </li>
             </ul>
           </div>
@@ -158,7 +175,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="mt-14 pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-400">
           <div>
-            © {new Date().getFullYear()} Kotai Constructora · Especialistas en Acondicionamiento Térmico Serviu · Grupo Alianza G5.
+            © {new Date().getFullYear()} {COMPANY_INFO.name} (RUT: {COMPANY_INFO.rut}) · Norma D.S. N° 27 de 2016 (CS27) · Grupo Alianza G5 · Chillán, Chile.
           </div>
 
           <div className="flex items-center gap-4">

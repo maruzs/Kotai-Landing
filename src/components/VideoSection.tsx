@@ -68,26 +68,26 @@ export const VideoSection: React.FC = () => {
             <div className="p-5 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-2">
               <div className="flex items-center gap-2.5 text-kotai-400 text-sm font-bold uppercase tracking-wider">
                 <ShieldCheck className="w-4 h-4 text-kotai-400 shrink-0" />
-                <span>Requisitos Claros</span>
+                <span>Norma D.S. 27</span>
               </div>
               <h3 className="text-lg font-bold text-white">
-                RSH Hasta el 60%
+                RSH Hasta el 70%
               </h3>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                Libreta para la vivienda con ahorro desde 1 UF (~$41.500) y ser dueño/a o heredero/a de la casa.
+                Libreta para la vivienda con ahorro de 3 a 5 UF en BancoEstado y ser propietario/a de la vivienda hasta 90 m².
               </p>
             </div>
 
             <div className="p-5 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-2">
-              <div className="flex items-center gap-2.5 text-kotai-400 text-sm font-bold uppercase tracking-wider">
-                <CheckCircle2 className="w-4 h-4 text-kotai-400 shrink-0" />
-                <span>Asesoría Kotai</span>
+              <div className="flex items-center gap-2.5 text-emerald-400 text-sm font-bold uppercase tracking-wider">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Asesoría Gratuita</span>
               </div>
               <h3 className="text-lg font-bold text-white">
-                Acompañamiento a Vecinos
+                Cero Costo de Postulación
               </h3>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                Revisión técnica en terreno, verificación de cartola RSH y postulación de tu carpeta ante el Serviu.
+                Revisión técnica en terreno en Ñuble y Biobío, confección de planos y postulación de tu carpeta ante el Serviu.
               </p>
             </div>
 
@@ -100,7 +100,7 @@ export const VideoSection: React.FC = () => {
                 ¿Quieres saber si tu casa califica hoy mismo?
               </div>
               <div className="text-xs sm:text-sm text-zinc-400">
-                Llámanos a los teléfonos oficiales o escríbenos por WhatsApp para asesorarte.
+                Llámanos a los canales oficiales o escríbenos por WhatsApp para orientarte sin costo.
               </div>
             </div>
 
@@ -114,7 +114,7 @@ export const VideoSection: React.FC = () => {
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
-                href="https://wa.me/56950501231?text=Hola%20Kotai,%20vi%20el%20video%20explicativo%20y%20deseo%20saber%20si%20mi%20casa%20califica%20al%20subsidio%20termico"
+                href="https://wa.me/56931018612?text=Hola%20Kotai,%20vi%20el%20video%20explicativo%20y%20deseo%20saber%20si%20mi%20casa%20califica%20al%20subsidio%20termico%20D.S.%2027"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-200 active:scale-95"

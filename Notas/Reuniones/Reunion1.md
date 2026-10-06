@@ -24,7 +24,7 @@ export default {
 Ya que https://constructorakotai.cl/webmail muestra la landing page y deberia mostrar lo de https://webmail.constructorakotai.cl/
 
 ### Tema 2 - Sugerencias
-
+Utilizar la informacion de los PDF/pptx de la carpeta Documentos/ (Presentacion Oficina y PRESENTACION PDA 2026)
 Link de interes -> Al registro social de hogares directamente
 Trabajan bajo el CS27 -> Ponerlo en la pagina para mostrar que trabajan bajo ciertas normas.
 Cambiar el correo electronico al real
@@ -36,24 +36,24 @@ Agregar 'Asesoria gratuita', el beneficiario no paga absolutamente nada, a menos
 ### Tema 3 - Implementacion de CRM (Client Relationship Management)
 
 La idea es convertir el excel que tienen actualmente a un software web propio para poder llevar registro de los clientes, sus datos, su situacion socioeconomica, etc.
-
+(Por ahora no, es un proyecto futuro)
 ### Tema 4 - Videos
-
+(Por ahora no cambiar nada, esperaremos las nuevas fotos)
 Mas fotos, Mas dinamico, que el texto no este quieto por tanto rato.
 
 #### Otros videos recomendados:
-
+(Por ahora ignorar, faltan el contenido)
 Video de como fabricar las ventanas.
 Ficha tecnica de los colectores, tema electrico y el PDA para que pueda sacar imagenes y cosas tecnicas.
 
 Donde ponerlos? -> Separarlo por tipo de subsidios, poner un video en el carrusel de cada cosa con el video especifico.
 
 ### Tema 5 - Dominio alianzag5.cl
-
+(Lo hare yo por mi lado)
 Comprar dominio y configurar correos
 
 ### Tema 6 - Contador de visitas a la pagina
-
+(Implementar, pero ver como hacer la version basica sin CRM o sistema de administracion)
 Quieren saber cuantas personas visitaron mi pagina.
 No solo la cantidad de personas que envian el formulario.
 Con dashboard y graficos de la cantidad de personas que ingresan por mes, anio y dia.

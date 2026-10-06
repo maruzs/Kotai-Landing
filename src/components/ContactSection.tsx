@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, MessageSquare, Send, CheckCircle2, Shield } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, MessageSquare, Send, CheckCircle2, Shield, ExternalLink } from 'lucide-react';
+import { COMPANY_INFO } from '../data/mockData';
 
 export const ContactSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -7,8 +8,8 @@ export const ContactSection: React.FC = () => {
     nombre: '',
     telefono: '',
     comuna: '',
-    tramoRsh: 'Hasta el 60% RSH',
-    tipoProyecto: 'Acondicionamiento Térmico (Aislamiento)',
+    tramoRsh: 'Familias entre 40% y 60% RSH (3 UF de ahorro)',
+    tipoProyecto: 'Acondicionamiento Térmico D.S. 27 (Muros EIFS, Ventanas Termopanel, Techo)',
     mensaje: '',
   });
 
@@ -18,7 +19,7 @@ export const ContactSection: React.FC = () => {
     e.preventDefault();
 
     const textLines = [
-      '📋 *SOLICITUD DE POSTULACIÓN SUBSIDIO SERVIU - KOTAI*',
+      '📋 *SOLICITUD DE POSTULACIÓN SUBSIDIO SERVIU D.S. 27 - KOTAI*',
       '',
       `👤 *Nombre:* ${formData.nombre.trim()}`,
       `📞 *Teléfono:* ${formData.telefono.trim()}`,
@@ -31,10 +32,10 @@ export const ContactSection: React.FC = () => {
       textLines.push(`💬 *Mensaje:* ${formData.mensaje.trim()}`);
     }
 
-    textLines.push('', 'Agradezco su orientación para verificar mis requisitos y postular.');
+    textLines.push('', 'Agradezco su orientación para verificar mis requisitos y postular con asesoría gratuita.');
 
     const message = encodeURIComponent(textLines.join('\n'));
-    const url = `https://wa.me/56950501231?text=${message}`;
+    const url = `https://wa.me/${COMPANY_INFO.phoneClean}?text=${message}`;
     setWhatsappLink(url);
     setSubmitted(true);
 
@@ -53,22 +54,27 @@ export const ContactSection: React.FC = () => {
             <span>Postula con Nosotros</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight">
-            Inicia tu Postulación al Subsidio Térmico
+            Inicia tu Postulación al Subsidio Térmico D.S. 27
           </h2>
           <p className="mt-4 text-lg sm:text-xl text-zinc-600 leading-relaxed font-normal">
-            Déjanos tus datos o comunícate con nosotros. Revisamos tu Registro Social de Hogares y te orientamos paso a paso con amabilidad y transparencia.
+            Déjanos tus datos o comunícate con nosotros. Revisamos tu Registro Social de Hogares y te orientamos paso a paso con amabilidad, cercanía y <strong>100% libre de costo</strong>.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           
-          {/* Left Column: Direct Contact Info from Flyers (5 cols) */}
+          {/* Left Column: Direct Contact Info from Official Presentations (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             
             <div className="bg-zinc-50 border border-zinc-200 rounded-3xl p-7 sm:p-9 space-y-7">
-              <h3 className="text-2xl font-bold text-zinc-900">
-                Teléfonos y Canales Oficiales
-              </h3>
+              <div className="flex items-center justify-between">
+                <h3 className="text-2xl font-bold text-zinc-900">
+                  Canales Oficiales Kotai
+                </h3>
+                <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                  Asesoría Gratuita
+                </span>
+              </div>
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -77,17 +83,14 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <div>
                     <div className="text-xs font-bold text-zinc-500 uppercase tracking-wider">
-                      Teléfonos de Coordinación
+                      Teléfono Oficial de Contacto
                     </div>
                     <div className="flex flex-col gap-1.5 mt-1">
-                      <a href="tel:+56950501231" className="text-lg font-extrabold text-zinc-900 hover:text-kotai-800 transition-colors">
-                        +56 9 5050 1231
-                      </a>
-                      <a href="tel:+56975762347" className="text-lg font-extrabold text-zinc-900 hover:text-kotai-800 transition-colors">
-                        +56 9 7576 2347
+                      <a href={`tel:${COMPANY_INFO.phoneClean}`} className="text-xl sm:text-2xl font-black text-zinc-900 hover:text-kotai-800 transition-colors">
+                        {COMPANY_INFO.phone}
                       </a>
                     </div>
-                    <p className="text-xs sm:text-sm text-zinc-500 mt-1">Llamadas directas y consultas de postulantes</p>
+                    <p className="text-xs sm:text-sm text-zinc-500 mt-1">Llamadas directas y orientación personalizada a vecinos</p>
                   </div>
                 </div>
 
@@ -97,17 +100,14 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <div>
                     <div className="text-xs font-bold text-zinc-500 uppercase tracking-wider">
-                      Correo Electrónico
+                      Correo Electrónico Oficial
                     </div>
                     <div className="flex flex-col gap-1 mt-1">
-                      <a href="mailto:contacto@kotaiconstructora.cl" className="text-base font-bold text-zinc-900 hover:text-kotai-800 transition-colors">
-                        contacto@kotaiconstructora.cl
-                      </a>
-                      <a href="mailto:correo@alianzag5.cl" className="text-sm font-medium text-zinc-600 hover:text-kotai-800 transition-colors">
-                        correo@alianzag5.cl
+                      <a href={`mailto:${COMPANY_INFO.email}`} className="text-base font-bold text-zinc-900 hover:text-kotai-800 transition-colors">
+                        {COMPANY_INFO.email}
                       </a>
                     </div>
-                    <p className="text-xs sm:text-sm text-zinc-500 mt-1">Envío de cartolas y certificados de postulación</p>
+                    <p className="text-xs sm:text-sm text-zinc-500 mt-1">Envío formal de antecedentes y cartolas RSH</p>
                   </div>
                 </div>
 
@@ -117,12 +117,15 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <div>
                     <div className="text-xs font-bold text-zinc-500 uppercase tracking-wider">
-                      Cobertura y Operación
+                      Sede Oficial y Cobertura
                     </div>
-                    <span className="text-base font-bold text-zinc-900">
-                      Región Metropolitana y Zona Central
+                    <span className="text-base font-bold text-zinc-900 block mt-0.5">
+                      {COMPANY_INFO.address}
                     </span>
-                    <p className="text-xs sm:text-sm text-zinc-500 mt-0.5">Visitas a terreno y atención a comités</p>
+                    <p className="text-xs sm:text-sm font-semibold text-kotai-800 mt-1">
+                      Cobertura en toda la Región de Ñuble y Región del Biobío
+                    </p>
+                    <p className="text-xs text-zinc-500 mt-0.5">Visitas a terreno y atención presencial a dirigentes y comités</p>
                   </div>
                 </div>
 
@@ -141,22 +144,39 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Official WhatsApp Button from flyer */}
+              {/* Official WhatsApp Button */}
               <div className="pt-4 border-t border-zinc-200">
                 <a
-                  href="https://wa.me/56950501231?text=Hola%20Kotai,%20quisiera%20consultar%20por%20la%20postulacion%20al%20subsidio%20termico%20Serviu"
+                  href={`https://wa.me/${COMPANY_INFO.phoneClean}?text=Hola%20Kotai,%20quisiera%20consultar%20por%20la%20postulacion%20gratuita%20al%20subsidio%20termico%20Serviu%20D.S.%2027`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2.5 px-5 py-4 rounded-2xl bg-zinc-900 hover:bg-emerald-700 text-white text-sm font-bold transition-colors duration-200 shadow-sm"
+                  className="w-full inline-flex items-center justify-center gap-2.5 px-5 py-4 rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-bold transition-colors duration-200 shadow-sm"
                 >
-                  <MessageSquare className="w-5 h-5 text-emerald-400" />
-                  <span>Escribir por WhatsApp (+56 9 5050 1231)</span>
+                  <MessageSquare className="w-5 h-5 text-white" />
+                  <span>Escribir por WhatsApp ({COMPANY_INFO.phone})</span>
+                </a>
+              </div>
+
+              {/* Registro Social de Hogares Link */}
+              <div className="p-4 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-between">
+                <div>
+                  <div className="text-xs font-bold text-sky-950">Link Oficial RSH</div>
+                  <div className="text-[11px] text-sky-800">Consulta tu tramo con tu ClaveÚnica</div>
+                </div>
+                <a
+                  href={COMPANY_INFO.rshUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold transition-colors"
+                >
+                  <span>Ir al RSH</span>
+                  <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
 
               <div className="flex items-center gap-2 text-xs text-zinc-500 justify-center">
                 <Shield className="w-4 h-4 text-kotai-800" />
-                <span>Tus datos son tratados con total privacidad y respeto</span>
+                <span>Tus datos son tratados con estricta confidencialidad bajo Ley 21.719</span>
               </div>
             </div>
 
@@ -243,12 +263,12 @@ export const ContactSection: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="comuna" className="block text-sm font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
-                        Comuna o Localidad
+                        Comuna o Localidad (Ñuble y Biobío)
                       </label>
                       <input
                         id="comuna"
                         type="text"
-                        placeholder="Ej. San Bernardo, Melipilla, etc."
+                        placeholder="Ej. Chillán, San Carlos, Concepción, etc."
                         value={formData.comuna}
                         onChange={(e) => setFormData({ ...formData, comuna: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-base text-zinc-900 focus:outline-none focus:ring-2 focus:ring-kotai-800 focus:border-transparent transition-all"
@@ -265,10 +285,10 @@ export const ContactSection: React.FC = () => {
                         onChange={(e) => setFormData({ ...formData, tramoRsh: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-base text-zinc-900 focus:outline-none focus:ring-2 focus:ring-kotai-800 focus:border-transparent transition-all"
                       >
-                        <option value="Hasta el 40% (1 UF ahorro previo)">Hasta el 40% RSH (Califica con 1 UF de ahorro)</option>
-                        <option value="Entre 41% y 60% (1.5 a 3 UF)">Entre 41% y 60% RSH (Califica con 1.5 a 3 UF)</option>
-                        <option value="Sobre 60% (Revisar caso especial)">Sobre 60% RSH (Revisar caso especial)</option>
-                        <option value="No sé mi porcentaje aún">No sé mi porcentaje aún</option>
+                        <option value="Familias entre 40% y 60% RSH (3 UF de ahorro)">Entre 40% y 60% RSH (Ahorro exigido: 3 UF en libreta)</option>
+                        <option value="Familias en el 70% RSH (5 UF de ahorro)">70% RSH (Ahorro exigido: 5 UF en libreta)</option>
+                        <option value="Sobre 70% RSH (Revisar caso especial)">Sobre 70% RSH (Revisar caso especial)</option>
+                        <option value="No sé mi porcentaje aún (Revisar en registrosocial.gob.cl)">No sé mi porcentaje aún (Revisar en RSH)</option>
                       </select>
                     </div>
                   </div>

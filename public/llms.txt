@@ -1,16 +1,19 @@
-# Kotai Constructora
+# Kotai Constructora (Constructora Kotai SpA)
 
-> Empresa constructora y entidad patrocinante especialista en subsidios de acondicionamiento térmico Serviu (MINVU), mejoramiento de vivienda, aislación EIFS y eficiencia energética en Chile. Perteneciente al Grupo Alianza G5.
+> Empresa constructora especialista en licitaciones y ejecución de subsidios de acondicionamiento térmico Serviu (MINVU) bajo la norma D.S. N° 27 de 2016 (CS27), aislación EIFS y mejoramiento habitacional en las regiones de Ñuble y Biobío. Perteneciente al Grupo Empresarial Alianza G5.
 
 ## Resumen Ejecutivo y Servicios
-- **Acondicionamiento Térmico (PDA y Serviu):** Aislación térmica continua exterior (EIFS y siding bajo norma CS27 / NCh853), recambio integral por ventanas termopanel herméticas, recambio de puertas y aislación en techumbres con lana mineral.
+- **Acondicionamiento Térmico (D.S. 27 / CS27):** Aislación térmica continua exterior (EIFS y siding de poliestireno alta densidad), recambio integral a ventanas termopanel herméticas (DVH doble sello Butilo), puertas exteriores herméticas, extractores en baño/cocina, aireadores de ventilación pasiva y techumbre con lana de vidrio.
 - **Sistemas Solares Térmicos:** Colectores solares para agua caliente sanitaria con hasta 80% de ahorro en gas, autorizados bajo norma SEC.
 - **Mejoramiento Eléctrico:** Tableros nuevos con protecciones diferenciales y recableado reglamentario.
-- **Cobertura Operativa:** Región de Ñuble, Región del Biobío, Región Metropolitana y Zona Central de Chile.
-- **Costo de Asesoría:** Asesoría técnica y acompañamiento de postulación 100% sin cobro a los postulantes; el único aporte corresponde al ahorro previo regulado por el Serviu (desde 1 UF a 3 UF según RSH).
+- **Sede Principal y Cobertura:** José Joaquín Prieto N° 269, Chillán. Cobertura en toda la Región de Ñuble y Región del Biobío.
+- **Asesoría 100% Gratuita:** La asesoría técnica, visita a terreno y postulación ante SERVIU son gratuitas para el beneficiario. El único desembolso exigido corresponde al ahorro previo regulado por Serviu en la Libreta de Ahorro para la Vivienda de BancoEstado (3 UF para 40%-60% RSH y 5 UF para 70% RSH).
 
 ## Contacto y Canales Oficiales
 - **Sitio Web Oficial:** https://constructorakotai.cl
-- **Teléfonos de Coordinación:** +56 9 5050 1231 | +56 9 7576 2347
-- **Correo Electrónico:** contacto@constructorakotai.cl
-- **Holding Corporativo:** Grupo Alianza G5 (Kotai, Sequoia, Paulina, RF, Los Aromos)
+- **Representante Legal:** Claudio García Pereira
+- **RUT Empresa:** 78.117.748-2
+- **Teléfono Oficial:** +56 9 3101 8612
+- **Correo Electrónico Oficial:** cgarcia@constructorakotai.cl
+- **Holding Corporativo:** Grupo Empresarial Alianza G5 (Kotai, Los Aromos, Paulina, Sequoia, RF)
+- **Consulta Registro Social:** https://registrosocial.gob.cl/

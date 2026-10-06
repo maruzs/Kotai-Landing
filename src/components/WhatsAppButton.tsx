@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { COMPANY_INFO } from '../data/mockData';
 
 export const WhatsAppButton: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(false);
-  // Número oficial de los flyers de Kotai
-  const phoneNumber = '56950501231';
-  const defaultMessage = encodeURIComponent('Hola Kotai Constructora, me gustaría consultar por la postulación al subsidio de acondicionamiento térmico Serviu.');
+  // Número oficial de Kotai (+56 9 3101 8612)
+  const phoneNumber = COMPANY_INFO.phoneClean;
+  const defaultMessage = encodeURIComponent('Hola Kotai Constructora, me gustaría consultar por la postulación gratuita al subsidio de acondicionamiento térmico Serviu D.S. 27.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
 
   return (
@@ -26,7 +27,7 @@ export const WhatsAppButton: React.FC = () => {
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
         className="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
-        aria-label="Contactar a Kotai por WhatsApp (+56 9 5050 1231)"
+        aria-label={`Contactar a Kotai por WhatsApp (${COMPANY_INFO.phone})`}
       >
         {/* Subtle breathing animation pulse */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-25 pointer-events-none" />
