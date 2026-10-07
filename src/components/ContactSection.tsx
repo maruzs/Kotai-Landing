@@ -1,95 +1,383 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Phone, Mail, MapPin, Clock, MessageCircle, ArrowRight, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Mail, Phone, MapPin, Clock, MessageSquare, Send, CheckCircle2, Shield, ExternalLink } from 'lucide-react';
 import { COMPANY_INFO } from '../data/mockData';
-import { SiteLink } from './SiteLink';
 
-const programs = ['Acondicionamiento térmico', 'Sistema solar térmico', 'Mejoramiento eléctrico', 'Postulación colectiva', 'No sé todavía'];
 export const ContactSection: React.FC = () => {
-  const [data, setData] = useState({ nombre: '', telefono: '', comuna: '', tramoRsh: 'No sé mi porcentaje', tipoProyecto: programs[0], mensaje: '' });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [validationAttempt, setValidationAttempt] = useState(0);
-  const [consent, setConsent] = useState(false);
-  const [link, setLink] = useState('');
-  const [prepared, setPrepared] = useState(false);
-  const summary = useRef<HTMLDivElement>(null);
-  const result = useRef<HTMLHeadingElement>(null);
-  useEffect(() => { if (prepared) result.current?.focus(); }, [prepared]);
-  useEffect(() => { if (validationAttempt > 0) summary.current?.focus(); }, [validationAttempt]);
-  const update = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-    setErrors(prev => { const next = { ...prev }; delete next[e.target.name]; return next; });
-  };
-  const submit = (e: React.FormEvent) => {
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    nombre: '',
+    telefono: '',
+    comuna: '',
+    tramoRsh: 'No sé mi porcentaje aún (Kotai te orienta sin costo)',
+    tipoProyecto: 'Acondicionamiento Térmico (Aislamiento)',
+    mensaje: '',
+  });
+
+  const [whatsappLink, setWhatsappLink] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const next: Record<string, string> = {};
-    if (data.nombre.trim().length < 2) next.nombre = 'Escribe tu nombre para que podamos dirigirnos a ti.';
-    if (!/^[+\d\s().-]+$/.test(data.telefono) || data.telefono.replace(/\D/g, '').length < 9 || data.telefono.replace(/\D/g, '').length > 15) next.telefono = 'Escribe un teléfono válido, por ejemplo 9 5050 1231.';
-    if (!consent) next.consentimiento = 'Marca la autorización para continuar con tus datos.';
-    setErrors(next);
-    if (Object.keys(next).length) { setValidationAttempt(attempt => attempt + 1); return; }
-    const message = ['Hola Kotai, quisiera orientación para postular al subsidio D.S. 27.', '',
-      `Nombre: ${data.nombre.trim()}`, `Teléfono: ${data.telefono.trim()}`,
-      `Comuna: ${data.comuna.trim() || 'No indicada'}`, `RSH: ${data.tramoRsh}`,
-      `Programa: ${data.tipoProyecto}`, data.mensaje.trim() ? `Consulta: ${data.mensaje.trim()}` : ''].filter(Boolean).join('\n');
-    setLink(`https://wa.me/${COMPANY_INFO.phoneClean}?text=${encodeURIComponent(message)}`);
-    setPrepared(true);
+
+    const textLines = [
+      '📋 *SOLICITUD DE POSTULACIÓN SUBSIDIO SERVIU D.S. 27 - KOTAI*',
+      '',
+      `👤 *Nombre:* ${formData.nombre.trim()}`,
+      `📞 *Teléfono:* ${formData.telefono.trim()}`,
+      `📍 *Comuna:* ${formData.comuna.trim() || 'No especificada'}`,
+      `📊 *Tramo RSH:* ${formData.tramoRsh}`,
+      `🛠️ *Programa:* ${formData.tipoProyecto}`,
+    ];
+
+    if (formData.mensaje.trim()) {
+      textLines.push(`💬 *Mensaje:* ${formData.mensaje.trim()}`);
+    }
+
+    textLines.push('', 'Agradezco su orientación para verificar mis requisitos y postular con asesoría gratuita.');
+
+    const message = encodeURIComponent(textLines.join('\n'));
+    const url = `https://wa.me/${COMPANY_INFO.phoneClean}?text=${message}`;
+    setWhatsappLink(url);
+    setSubmitted(true);
+
+
   };
-  const fieldProps = (name: string) => ({ name, id: name, onChange: update, 'aria-invalid': !!errors[name], 'aria-describedby': errors[name] ? `${name}-error` : undefined });
-  return <section id="contacto" className="section-space">
-    <div className="site-container">
-      <div className="section-heading">
-        <p className="eyebrow">Te acompañamos paso a paso</p>
-        <h1 tabIndex={-1}>Conversemos sobre tu vivienda</h1>
-        <p className="intro">La orientación es gratuita. Puedes llamarnos directamente o preparar tu consulta para enviarla por WhatsApp.</p>
-      </div>
-      <div className="contact-layout">
-        <div className="contact-form panel">
-          {prepared ? <div className="prepared-message">
-            <MessageCircle size={40} aria-hidden="true" />
-            <h3 ref={result} tabIndex={-1}>Tu mensaje está preparado</h3>
-            <p>Todavía no se ha enviado. Abre WhatsApp y presiona Enviar para que el equipo de Kotai reciba tu consulta.</p>
-            <a href={link} target="_blank" rel="noopener noreferrer" className="button-whatsapp">Abrir WhatsApp <ExternalLink size={20} aria-hidden="true" /></a>
-            <p className="field-hint">Si WhatsApp no abre, puedes llamar al {COMPANY_INFO.phone}.</p>
-            <button className="button-secondary" onClick={() => { setPrepared(false); requestAnimationFrame(() => document.getElementById('nombre')?.focus()); }}>Volver y corregir mis datos</button>
-          </div> : <form onSubmit={submit} noValidate>
-            <h3>Prepara tu consulta</h3>
-            <p className="field-hint">Solo el nombre y el teléfono son obligatorios.</p>
-            {!!Object.keys(errors).length && <div className="error-summary" ref={summary} tabIndex={-1} role="alert">
-              <strong>Revisa estos datos:</strong><ul>{Object.entries(errors).map(([key, error]) => <li key={key}><a href={`#${key}`} onClick={e => { e.preventDefault(); document.getElementById(key)?.focus(); }}>{error}</a></li>)}</ul>
-            </div>}
-            <div className="form-grid">
-              <div><label htmlFor="nombre">Nombre completo <span>(obligatorio)</span></label><input {...fieldProps('nombre')} value={data.nombre} autoComplete="name" maxLength={100} required />{errors.nombre && <p id="nombre-error" className="field-error">{errors.nombre}</p>}</div>
-              <div><label htmlFor="telefono">Teléfono <span>(obligatorio)</span></label><input {...fieldProps('telefono')} type="tel" inputMode="tel" value={data.telefono} autoComplete="tel" placeholder="Ej. 9 5050 1231" maxLength={25} required />{errors.telefono && <p id="telefono-error" className="field-error">{errors.telefono}</p>}</div>
-              <div><label htmlFor="comuna">Comuna o localidad</label><input {...fieldProps('comuna')} value={data.comuna} autoComplete="address-level2" maxLength={100} /></div>
-              <div><label htmlFor="tramoRsh">Registro Social de Hogares</label><select {...fieldProps('tramoRsh')} value={data.tramoRsh}><option>No sé mi porcentaje</option><option>Hasta el 70%</option><option>Sobre el 70%</option></select></div>
-            </div>
-            <label htmlFor="tipoProyecto">¿En qué necesitas ayuda?</label><select {...fieldProps('tipoProyecto')} value={data.tipoProyecto}>{programs.map(p => <option key={p}>{p}</option>)}</select>
-            <label htmlFor="mensaje">Tu consulta <span>(opcional)</span></label><textarea {...fieldProps('mensaje')} rows={3} value={data.mensaje} maxLength={1000} placeholder="Cuéntanos qué necesitas mejorar o qué dudas tienes." />
-            <div className="consent-row">
-              <input id="consentimiento" type="checkbox" checked={consent} onChange={e => { setConsent(e.target.checked); setErrors(prev => { const next = { ...prev }; delete next.consentimiento; return next; }); }} aria-invalid={!!errors.consentimiento} aria-describedby={errors.consentimiento ? 'consentimiento-error' : undefined} />
-              <label htmlFor="consentimiento">Autorizo a Kotai a utilizar estos datos para atender mi consulta. <SiteLink href="/privacidad" target="_blank">Leer Política de Privacidad (otra pestaña)</SiteLink>.</label>
-            </div>
-            {errors.consentimiento && <p id="consentimiento-error" className="field-error">{errors.consentimiento}</p>}
-            <button type="submit" className="button-primary form-submit">Preparar mensaje para WhatsApp <ArrowRight size={20} aria-hidden="true" /></button>
-            <p className="field-hint">Revisarás el mensaje antes de enviarlo. Este formulario no confirma una postulación ante SERVIU.</p>
-          </form>}
+
+  useEffect(() => {
+    if (submitted) document.getElementById('prepared-message')?.focus();
+  }, [submitted]);
+
+  return (
+    <section id="contacto" className="py-16 sm:py-24 bg-white border-b border-zinc-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Section Header with Larger Text */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-kotai-50 border border-kotai-200 text-kotai-900 text-xs sm:text-sm font-bold uppercase tracking-wider mb-4">
+            <MessageSquare className="w-4 h-4 text-kotai-800" />
+            <span>Postula con Nosotros</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight">
+            Inicia tu Postulación al Subsidio Térmico D.S. 27
+          </h2>
+          <p className="mt-4 text-lg sm:text-xl text-zinc-600 leading-relaxed font-normal">
+            Déjanos tus datos o comunícate con nosotros. Revisamos tu Registro Social de Hogares y te orientamos paso a paso con amabilidad, cercanía y <strong>100% libre de costo</strong>.
+          </p>
         </div>
-        <aside className="contact-options">
-          <div className="panel">
-            <h3>¿Prefieres hablar con nosotros?</h3>
-            <a className="contact-phone" href={`tel:${COMPANY_INFO.phoneClean}`}><Phone size={24} aria-hidden="true" />{COMPANY_INFO.phone}</a>
-            <p><Clock size={20} aria-hidden="true" />{COMPANY_INFO.schedule}</p>
-            <a className="button-whatsapp" href={`https://wa.me/${COMPANY_INFO.phoneClean}`} target="_blank" rel="noopener noreferrer"><MessageCircle size={20} aria-hidden="true" />Escribir por WhatsApp</a>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+          {/* Left Column: Direct Contact Info from Official Presentations (5 cols) */}
+          <div className="lg:col-span-5 space-y-6 order-2 lg:order-1">
+
+            <div className="bg-zinc-50 border border-zinc-200 rounded-3xl p-7 sm:p-9 space-y-7">
+              <div className="flex items-center justify-between">
+                <h3 className="text-2xl font-bold text-zinc-900">
+                  Canales Oficiales Kotai
+                </h3>
+                <span className="text-xs font-bold text-kotai-800 bg-kotai-50 px-2.5 py-1 rounded-full border border-kotai-200">
+                  Asesoría Gratuita
+                </span>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-kotai-50 border border-kotai-100 flex items-center justify-center shrink-0 text-kotai-800">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-zinc-500 uppercase tracking-wider">
+                      Teléfono Oficial de Contacto
+                    </div>
+                    <div className="flex flex-col gap-1.5 mt-1">
+                      <a href={`tel:${COMPANY_INFO.phoneClean}`} className="text-xl sm:text-2xl font-black text-zinc-900 hover:text-kotai-800 transition-colors">
+                        {COMPANY_INFO.phone}
+                      </a>
+                    </div>
+                    <p className="text-xs sm:text-sm text-zinc-500 mt-1">Llamadas directas y orientación personalizada a vecinos</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-kotai-50 border border-kotai-100 flex items-center justify-center shrink-0 text-kotai-800">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-zinc-500 uppercase tracking-wider">
+                      Correo Electrónico Oficial
+                    </div>
+                    <div className="flex flex-col gap-1 mt-1">
+                      <a href={`mailto:${COMPANY_INFO.email}`} className="text-base font-bold text-zinc-900 hover:text-kotai-800 transition-colors">
+                        {COMPANY_INFO.email}
+                      </a>
+                    </div>
+                    <p className="text-xs sm:text-sm text-zinc-500 mt-1">Envío formal de antecedentes y cartolas RSH</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-kotai-50 border border-kotai-100 flex items-center justify-center shrink-0 text-kotai-800">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-zinc-500 uppercase tracking-wider">
+                      Sede Oficial y Cobertura
+                    </div>
+                    <span className="text-base font-bold text-zinc-900 block mt-0.5">
+                      {COMPANY_INFO.address}
+                    </span>
+                    <p className="text-xs sm:text-sm font-semibold text-kotai-800 mt-1">
+                      Cobertura en toda la Región de Ñuble y Región del Biobío
+                    </p>
+                    <p className="text-xs text-zinc-500 mt-0.5">Visitas a terreno y atención presencial a dirigentes y comités</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-kotai-50 border border-kotai-100 flex items-center justify-center shrink-0 text-kotai-800">
+                    <Clock className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-zinc-500 uppercase tracking-wider">
+                      Horario de Atención
+                    </div>
+                    <span className="text-base font-bold text-zinc-900">
+                      Lunes a Viernes: 08:30 a 17:30 hrs
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Official WhatsApp Button */}
+              <div className="pt-4 border-t border-zinc-200">
+                <a
+                  href={`https://wa.me/${COMPANY_INFO.phoneClean}?text=Hola%20Kotai,%20quisiera%20consultar%20por%20la%20postulacion%20gratuita%20al%20subsidio%20termico%20Serviu%20D.S.%2027`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2.5 px-5 py-4 rounded-2xl bg-[#146c40] hover:bg-[#0e512e] text-white text-sm font-bold transition-colors duration-200 shadow-sm"
+                >
+                  <MessageSquare className="w-5 h-5 text-white" />
+                  <span>Escribir por WhatsApp ({COMPANY_INFO.phone})</span>
+                </a>
+              </div>
+
+              {/* Registro Social de Hogares Link */}
+              <div className="p-4 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-between">
+                <div>
+                  <div className="text-xs font-bold text-zinc-900">Link Oficial RSH</div>
+                  <div className="text-[11px] text-zinc-600">Consulta tu tramo con tu ClaveÚnica</div>
+                </div>
+                <a
+                  href={COMPANY_INFO.rshUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-kotai-800 hover:bg-kotai-700 text-white text-xs font-bold transition-colors"
+                >
+                  <span>Ir al RSH</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs text-zinc-500 justify-center">
+                <Shield className="w-4 h-4 text-kotai-800" />
+                <span>Tus datos son tratados con estricta confidencialidad bajo Ley 21.719</span>
+              </div>
+            </div>
+
           </div>
-          <div className="panel contact-details">
-            <h3>Contacto y ubicación</h3>
-            <a href={`mailto:${COMPANY_INFO.email}`}><Mail size={20} aria-hidden="true" /><span>{COMPANY_INFO.email}</span></a>
-            <p><MapPin size={20} aria-hidden="true" /><span>{COMPANY_INFO.address}</span></p>
-            <p>Atendemos en Ñuble y Biobío.</p>
-            <a className="text-link" href={COMPANY_INFO.rshUrl} target="_blank" rel="noopener noreferrer">Consultar mi RSH <ExternalLink size={18} aria-hidden="true" /></a>
+
+          {/* Right Column: Postulación Form (7 cols) */}
+          <div className="lg:col-span-7 order-1 lg:order-2">
+            <div className="bg-zinc-50 border border-zinc-200 rounded-3xl p-7 sm:p-9 shadow-sm">
+
+              {submitted ? (
+                <div className="py-14 text-center space-y-5">
+                  <div className="w-20 h-20 rounded-full bg-kotai-50 text-kotai-800 border border-kotai-200 flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-10 h-10 text-kotai-800" />
+                  </div>
+                  <h3 id="prepared-message" tabIndex={-1} className="text-2xl sm:text-3xl font-bold text-zinc-900">
+                    Tu mensaje está preparado
+                  </h3>
+                  <p className="text-base sm:text-lg text-zinc-600 max-w-lg mx-auto leading-relaxed">
+                    Todavía no se ha enviado. Abre WhatsApp, revisa tus datos y presiona Enviar para comunicarte con el equipo de Kotai.
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                    {whatsappLink && (
+                      <a
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-[#146c40] hover:bg-[#0e512e] text-white text-sm sm:text-base font-bold shadow-md transition-colors"
+                        style={{ backgroundColor: '#146c40' }}
+                      >
+                        <MessageSquare className="w-5 h-5" />
+                        <span>Abrir WhatsApp Ahora</span>
+                      </a>
+                    )}
+                    <button
+                      onClick={() => { setSubmitted(false); requestAnimationFrame(() => document.getElementById('nombre')?.focus()); }}
+                      className="px-6 py-3.5 rounded-2xl bg-zinc-200 text-zinc-800 text-sm font-bold hover:bg-zinc-300 transition-colors"
+                    >
+                      Volver y corregir mis datos
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="border-b border-zinc-200 pb-4 mb-2">
+                    <h3 className="text-2xl font-bold text-zinc-900">
+                      Formulario de Postulación a Subsidio Serviu
+                    </h3>
+                    <p className="text-sm sm:text-base text-zinc-500 mt-1 font-normal">
+                      Completa tus datos para saber si tu hogar califica al subsidio de aislamiento térmico.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="nombre" className="block text-sm font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
+                        Nombre Completo *
+                      </label>
+                      <input
+                        id="nombre"
+                        autoComplete="name"
+                        maxLength={120}
+                        type="text"
+                        required
+                        placeholder="Ej. María González"
+                        value={formData.nombre}
+                        onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-base text-zinc-900 focus:outline-none focus:ring-2 focus:ring-kotai-800 focus:border-transparent transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="telefono" className="block text-sm font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
+                        Teléfono o WhatsApp *
+                      </label>
+                      <input
+                        id="telefono"
+                        autoComplete="tel"
+                        maxLength={30}
+                        type="tel"
+                        required
+                        placeholder="Ej. +56 9 9876 5432"
+                        value={formData.telefono}
+                        onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-base text-zinc-900 focus:outline-none focus:ring-2 focus:ring-kotai-800 focus:border-transparent transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="comuna" className="block text-sm font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
+                        Comuna o Localidad (Ñuble y Biobío)
+                      </label>
+                      <input
+                        id="comuna"
+                        type="text"
+                        placeholder="Ej. Chillán, San Carlos, Concepción, etc."
+                        value={formData.comuna}
+                        onChange={(e) => setFormData({ ...formData, comuna: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-base text-zinc-900 focus:outline-none focus:ring-2 focus:ring-kotai-800 focus:border-transparent transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="tramoRsh" className="block text-sm font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
+                        Tramo Registro Social (RSH)
+                      </label>
+                      <select
+                        id="tramoRsh"
+                        value={formData.tramoRsh}
+                        onChange={(e) => setFormData({ ...formData, tramoRsh: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-base text-zinc-900 focus:outline-none focus:ring-2 focus:ring-kotai-800 focus:border-transparent transition-all"
+                      >
+                        <option value="Familias hasta el 70% RSH">Hasta el 70% RSH</option>
+                        <option value="Sobre 70% RSH (Revisar caso especial con Kotai)">Sobre 70% RSH (Revisar caso especial con Kotai)</option>
+                        <option value="No sé mi porcentaje aún (Kotai te orienta sin costo)">No sé mi porcentaje aún (Kotai te orienta sin costo)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="tipoProyecto" className="block text-sm font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
+                      Programa al que Deseas Postular
+                    </label>
+                    <select
+                      id="tipoProyecto"
+                      value={formData.tipoProyecto}
+                      onChange={(e) => setFormData({ ...formData, tipoProyecto: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-base text-zinc-900 focus:outline-none focus:ring-2 focus:ring-kotai-800 focus:border-transparent transition-all"
+                    >
+                      <option value="Acondicionamiento Térmico (Aislamiento)">Acondicionamiento Térmico (Muros EIFS, Ventanas Termopanel, Techo)</option>
+                      <option value="Sistema Solar Térmico (Agua Caliente Solar)">Sistema Solar Térmico (Panel Solar para Agua Caliente)</option>
+                      <option value="Mejoramiento Eléctrico y Seguridad SEC">Mejoramiento Eléctrico y Seguridad SEC</option>
+                      <option value="Postulación Colectiva (Comité de Vivienda)">Postulación Colectiva (Comité o Junta de Vecinos)</option>
+                      <option value="Otro / Consulta General">Otro / Consulta General</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="mensaje" className="block text-sm font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
+                      Cuéntanos sobre tu casa o dudas que tengas
+                    </label>
+                    <textarea
+                      id="mensaje"
+                      rows={3}
+                      placeholder="Ej. Mi casa es muy fría en invierno y los vidrios transpiran mucho. Quisiera saber si califico..."
+                      value={formData.mensaje}
+                      onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-base text-zinc-900 focus:outline-none focus:ring-2 focus:ring-kotai-800 focus:border-transparent transition-all resize-none"
+                    />
+                  </div>
+
+                  {/* Cláusula de Privacidad y Consentimiento Expreso (Ley 21.719 APDP) */}
+                  <div className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-600 flex items-start gap-2.5">
+                    <Shield className="w-4 h-4 text-kotai-800 shrink-0 mt-0.5" />
+                    <label className="flex gap-3">
+                      <input type="checkbox" required aria-label="Autorizo el uso de mis datos para recibir orientación" className="mt-1 w-5 h-5 shrink-0 accent-kotai-800" />
+                      <span>Autorizo a Constructora Kotai SpA al tratamiento de mis datos exclusivamente para fines de evaluación sociohabitacional ante SERVIU conforme a nuestra{' '}
+                      <a
+                        href="/privacidad"
+                        target="_blank" rel="noopener noreferrer"
+                        className="font-bold text-kotai-800 hover:underline"
+                      >
+                        Política de Privacidad
+                      </a>{' '}
+                      y los{' '}
+                      <a
+                        href="/terminos"
+                        target="_blank" rel="noopener noreferrer"
+                        className="font-bold text-kotai-800 hover:underline"
+                      >
+                        Términos de Postulación
+                      </a>{' '}
+                      .
+                      </span>
+                    </label>
+                  </div>
+
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-kotai-800 hover:bg-kotai-700 text-white font-bold text-base shadow-crimson transition-all duration-200 active:scale-[0.98]"
+                    >
+                      <Send className="w-5 h-5" />
+                      <span>Preparar mensaje para WhatsApp</span>
+                    </button>
+                  </div>
+                </form>
+              )}
+
+            </div>
           </div>
-        </aside>
+
+        </div>
+
       </div>
-    </div>
-  </section>;
+    </section>
+  );
 };
+
+export default ContactSection;

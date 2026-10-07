@@ -1,8 +1,8 @@
 # Kotai-Landing
 
-Sitio de Constructora Kotai en React 18, TypeScript, Vite y Tailwind.
+Sitio de Constructora Kotai en React, TypeScript, Vite y Tailwind.
 
-## Desarrollo y compilación
+## Desarrollo
 
 ```powershell
 npm ci
@@ -11,31 +11,28 @@ npm run build
 npm run preview
 ```
 
-La compilación se genera en `dist/`. El proyecto conserva las redirecciones de webmail y las funciones de visitas existentes.
+La compilación se genera en `dist/`.
 
-## Navegación
+## Navegación actual
 
-- `/`: portada breve, proceso de acompañamiento y acceso a orientación.
-- `/servicios`: mejoras de vivienda y video explicativo.
-- `/requisitos`: requisitos, documentos y guía imprimible.
-- `/obras`: comparación antes/después, filtros y fotografías ampliables.
-- `/proveedor`: Vidriería y Ferretería Valey, fotografías y videos.
-- `/nosotros`: equipo y organización Alianza G5.
-- `/contacto`: llamada directa y preparación de consulta por WhatsApp.
-- Se conservan las páginas legales y el alias `/evidencia`.
+La portada conserva el diseño anterior y reúne la información principal. El menú usa anchors:
 
-Los enlaces anteriores a secciones principales se resuelven a las páginas correspondientes. El servidor que publique el sitio debe admitir las rutas de la SPA; Cloudflare Pages ofrece ese comportamiento cuando no se agrega un `404.html` personalizado.
+- `/#servicios`: programas y mejoras de vivienda.
+- `/#requisitos`: condiciones y documentos para preparar.
+- `/#proveedor`: Valey, fotografías y videos.
+- `/#nosotros`: equipo; Alianza G5 también aparece en inicio.
+- `/#contacto`: formulario, llamada y otros canales de contacto.
 
-## Contenido
+Solo la galería completa (`/obras`, alias `/evidencia`) y las páginas legales conservan rutas independientes. Las rutas del rediseño descartado (`/servicios`, `/requisitos`, `/proveedor`, `/nosotros`, `/contacto`) redirigen en la SPA a las secciones correspondientes. El hosting debe admitir las rutas de la SPA.
 
-Usar únicamente el material de `Notas/`, `Images/` y `video_assets/` para nuevos contenidos. Las notas más recientes tienen prioridad para teléfono, correo, horario y RSH. Los recursos en `public/` son las copias y derivados ya existentes que utiliza la web.
+## Contenido y funcionalidad
 
-Las fotografías actuales del equipo se conservan por instrucción del propietario. El teléfono de la cabecera conserva 20 px en todos los tamaños.
+Usar únicamente `Notas/`, `Images/` y `video_assets/` para nuevo contenido. Se incorporan las tres fotografías reales y las reseñas de `Images/Integrantes empresa/`. El teléfono de cabecera conserva 20 px. El ahorro está pendiente de confirmación; el video anterior incluye un aviso de consulta.
 
-El ahorro requerido está pendiente de confirmación. No reemplazarlo por una cifra definitiva hasta recibir confirmación del propietario. El video anterior no fue reeditado y muestra un aviso sobre los montos pendientes.
+El formulario prepara el mensaje localmente. El visitante revisa los datos, abre WhatsApp y presiona Enviar. La web no confirma recepción ni postulación ante SERVIU.
 
-## Validación de interfaz
+Los carruseles se controlan manualmente. La ampliación de fotografías mantiene el diálogo accesible con Escape y restauración de foco. El comparador tiene un control nativo para teclado. Los enlaces de secciones funcionan también desde Obras.
 
-Ver [detalle de mejoras](MEJORAS_INTERFAZ.md) y [resultados de navegador](revision-interfaz-2026-10-07/pruebas-interfaz.json). Las capturas de notebook, móvil, contacto y proveedor están en esa misma carpeta.
+## Verificación
 
-La consulta se prepara en el navegador. El usuario debe abrir WhatsApp y enviar el mensaje; el formulario no confirma recepción ni postulación ante SERVIU.
+La decisión actual se documenta en `MEJORAS_INTERFAZ.md`. Las capturas y resultados de esta corrección están en `revision-interfaz-2026-10-07/` con nombres `portada-restaurada-*` y `pruebas-anchors.json`. Los archivos anteriores de esa carpeta corresponden al rediseño descartado.

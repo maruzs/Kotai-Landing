@@ -1,3 +1,18 @@
+# Corrección vigente: portada completa y anchor links
+Fecha: 7 de octubre de 2026. Solicitud posterior del propietario y preferencia del cliente.
+
+Se recuperaron el diseño y las secciones de la portada anterior al rediseño. Servicios, requisitos, proveedor, equipo, Alianza G5, video y contacto se leen desde inicio. El menú vuelve a usar anchor links. Solo Obras y las páginas legales conservan rutas independientes.
+
+Se mantienen las correcciones útiles: cabecera responsive sin cortar botones, teléfono de 20 px, menú móvil con Escape, navegación a secciones desde Obras y rutas antiguas compatibles, fotografías ampliables con diálogo accesible, controles manuales de carrusel, filtros con contenido, comparador con teclado, contraste de WhatsApp y formulario que prepara el mensaje sin declarar que ya fue enviado. El ahorro sigue pendiente de confirmación. Se incorporan las fotografías reales de Claudio García, José Prieto y Jorge Rosales, con las reseñas entregadas por el cliente. Claudio y José muestran sus títulos académicos; el de Jorge queda pendiente de confirmación porque no aparece en la fuente.
+
+Verificación de esta corrección: compilación de producción y pruebas de navegador documentadas en `revision-interfaz-2026-10-07/pruebas-anchors.json`. Las capturas `portada-restaurada-*` muestran la versión vigente.
+
+---
+
+## Registro histórico del rediseño descartado
+
+La propuesta y las pruebas siguientes corresponden al rediseño anterior. No describen la navegación vigente.
+
 # Mejoras de interfaz de Kotai
 Fecha: 7 de octubre de 2026.
 

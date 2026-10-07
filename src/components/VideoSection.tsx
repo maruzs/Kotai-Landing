@@ -1,13 +1,135 @@
-import React, { useState, useRef } from 'react';
-import { SiteLink } from './SiteLink';
+import { navigate } from '../utils/navigation';
+import React from 'react';
+import { ShieldCheck, CheckCircle2, ArrowRight, MessageSquare, Sparkles } from 'lucide-react';
+import { COMPANY_INFO } from '../data/mockData';
+
 export const VideoSection: React.FC = () => {
-  const [error, setError] = useState(false);
-  const video = useRef<HTMLVideoElement>(null);
-  return <section id="video-explicativo" className="section-space bg-white border-t border-zinc-200"><div className="site-container narrow-content">
-    <div className="section-heading"><h2>Conoce el mejoramiento térmico</h2><p className="intro">Un video explicativo sobre las mejoras y el acompañamiento de Kotai.</p></div>
-    <video ref={video} src="/video_kotai_oficial.mp4" poster="/video_poster.jpg" controls playsInline preload="none" className="w-full aspect-video rounded-xl bg-zinc-900" onError={() => setError(true)} />
-    {error && <div role="alert" className="media-error"><p>No pudimos cargar el video.</p><button className="button-secondary" onClick={() => { setError(false); video.current?.load(); }}>Volver a intentar</button></div>}
-    <p className="field-hint mt-4">El material fue preparado anteriormente. Los montos de ahorro que aparecen en el video están pendientes de confirmación. Consulta las condiciones de tu caso con el equipo.</p>
-    <SiteLink href="/contacto" className="text-link mt-4">Resolver mis dudas con Kotai →</SiteLink>
-  </div></section>;
+
+  const handleSoftScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    navigate(`/${href}`);
+  };
+
+  return (
+    <section id="video-explicativo" className="py-16 sm:py-24 bg-zinc-950 text-white relative overflow-hidden border-b border-zinc-800">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-kotai-800/20 blur-[140px] pointer-events-none rounded-full" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-kotai-900/80 border border-kotai-700/60 text-kotai-300 text-xs sm:text-sm font-bold uppercase tracking-wider mb-4 shadow-sm">
+            <Sparkles className="w-4 h-4 text-kotai-400" />
+            <span>Video Informativo Oficial</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+            Conoce el Subsidio Térmico en 1 Minuto
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-zinc-300 leading-relaxed font-normal">
+            Mira este breve video explicativo con locución y fotos reales. Conoce qué incluye el proyecto, los 3 requisitos obligatorios para calificar y cómo Kotai te acompaña en tu postulación.
+          </p>
+        </div>
+
+        {/* Video Player Card */}
+        <div className="max-w-5xl mx-auto">
+          <div className="relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/15 shadow-2xl group">
+
+            {/* Native Video Element */}
+            <video
+              src="/video_kotai_oficial.mp4"
+              poster="/video_poster.jpg"
+              controls
+              playsInline
+              preload="metadata"
+              className="w-full aspect-video object-cover bg-black"
+            />
+
+
+          </div>
+
+          <p className="mt-4 text-base text-zinc-200">El monto de ahorro mencionado en el video debe confirmarse con Kotai para el llamado correspondiente.</p>
+          {/* Highlights Row below video */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+            <div className="p-5 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-2">
+              <div className="flex items-center gap-2.5 text-kotai-400 text-sm font-bold uppercase tracking-wider">
+                <CheckCircle2 className="w-4 h-4 text-kotai-400 shrink-0" />
+                <span>Obras Reales</span>
+              </div>
+              <h3 className="text-lg font-bold text-white">
+                Termopaneles y Aislación
+              </h3>
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                Recambio completo por ventanas de doble vidrio hermético, revestimiento de muros y agua caliente solar.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-2">
+              <div className="flex items-center gap-2.5 text-kotai-400 text-sm font-bold uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4 text-kotai-400 shrink-0" />
+                <span>Norma D.S. 27</span>
+              </div>
+              <h3 className="text-lg font-bold text-white">
+                RSH Hasta el 70%
+              </h3>
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                Libreta para la vivienda con ahorro a confirmar con Kotai y ser propietario/a de la vivienda hasta 90 m².
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-2">
+              <div className="flex items-center gap-2.5 text-kotai-400 text-sm font-bold uppercase tracking-wider">
+                <CheckCircle2 className="w-4 h-4 text-kotai-400 shrink-0" />
+                <span>Asesoría Gratuita</span>
+              </div>
+              <h3 className="text-lg font-bold text-white">
+                Cero Costo de Postulación
+              </h3>
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                Revisión técnica en terreno en Ñuble y Biobío, confección de planos y postulación de tu carpeta ante el Serviu.
+              </p>
+            </div>
+
+          </div>
+
+          {/* Action Call below video */}
+          <div className="mt-8 p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <div className="text-base sm:text-lg font-extrabold text-white">
+                ¿Quieres saber si tu casa califica hoy mismo?
+              </div>
+              <div className="text-xs sm:text-sm text-zinc-400">
+                Llámanos a los canales oficiales o escríbenos por WhatsApp para orientarte sin costo.
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 shrink-0">
+              <a
+                href="/#contacto"
+                onClick={(e) => handleSoftScroll(e, '#contacto')}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-kotai-800 hover:bg-kotai-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-200 active:scale-95"
+              >
+                <span>Postular Ahora</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href={`https://wa.me/${COMPANY_INFO.phoneClean}?text=Hola%20Kotai,%20vi%20el%20video%20explicativo%20y%20deseo%20saber%20si%20mi%20casa%20califica%20al%20subsidio%20termico%20D.S.%2027`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#146c40] hover:bg-[#0e512e] text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-200 active:scale-95"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>WhatsApp Oficial</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
 };
+
+export default VideoSection;

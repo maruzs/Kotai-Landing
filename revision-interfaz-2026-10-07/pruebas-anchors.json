@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-07",
+  "build": "npm run build: correcto",
+  "checks": [
+    {
+      "check": "Recarga con anchor y offset de cabecera",
+      "pass": true
+    },
+    {
+      "check": "Cabecera 1280 px sin desbordar, teléfono 20 px",
+      "pass": true
+    },
+    {
+      "check": "Menú Servicios",
+      "hash": "#servicios",
+      "pass": true,
+      "path": "/"
+    },
+    {
+      "check": "Menú Proveedor",
+      "hash": "#proveedor",
+      "pass": true,
+      "path": "/"
+    },
+    {
+      "check": "Menú Nosotros",
+      "hash": "#nosotros",
+      "pass": true,
+      "path": "/"
+    },
+    {
+      "check": "Comparador con teclado",
+      "pass": true
+    },
+    {
+      "check": "Cerrar galería con Escape y restaurar foco",
+      "pass": true
+    },
+    {
+      "check": "Mensaje preparado y foco sin confirmar envío",
+      "hash": "#contacto",
+      "pass": true,
+      "path": "/"
+    },
+    {
+      "check": "Editar conserva datos",
+      "pass": true
+    },
+    {
+      "check": "Anchor de footer desde Obras",
+      "hash": "",
+      "pass": true,
+      "path": "/obras",
+      "note": "Corregido ampliando el área de pulsación del enlace del pie."
+    },
+    {
+      "check": "Footer desde Obras con área continua de pulsación",
+      "pass": true
+    },
+    {
+      "check": "Móvil 375 px sin desbordamiento",
+      "pass": true
+    },
+    {
+      "check": "Menú móvil cierra con Escape",
+      "pass": true
+    },
+    {
+      "check": "Retratos reales cargados y títulos según reseña",
+      "pass": true
+    },
+    {
+      "check": "Tablet 1024 px con menú móvil y teléfono 20 px",
+      "pass": true
+    },
+    {
+      "check": "Ruta antigua /requisitos vuelve a anchor",
+      "pass": true
+    }
+  ],
+  "notes": [
+    "Datos sintéticos en formulario; sin abrir ni enviar WhatsApp.",
+    "Título académico de Jorge Rosales pendiente: no figura en reseña."
+  ]
+}

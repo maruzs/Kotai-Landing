@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://constructorakotai.cl/</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://constructorakotai.cl/servicios</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://constructorakotai.cl/requisitos</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://constructorakotai.cl/obras</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://constructorakotai.cl/proveedor</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://constructorakotai.cl/nosotros</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://constructorakotai.cl/contacto</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://constructorakotai.cl/terminos</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://constructorakotai.cl/privacidad</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://constructorakotai.cl/cookies</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://constructorakotai.cl/arcop</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://constructorakotai.cl/</loc><lastmod>2026-10-07</lastmod><priority>1.0</priority></url>
+  <url><loc>https://constructorakotai.cl/obras</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
+  <url><loc>https://constructorakotai.cl/privacidad</loc><priority>0.3</priority></url>
+  <url><loc>https://constructorakotai.cl/terminos</loc><priority>0.3</priority></url>
 </urlset>

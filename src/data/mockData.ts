@@ -22,6 +22,7 @@ export interface BeforeAfterItem {
 }
 
 export interface TeamMember {
+  academicTitle?: string;
   id: string;
   name: string;
   role: string;
@@ -471,45 +472,25 @@ export const MEJORAS_PDA_DS27 = [
 // Integrantes del equipo humano y departamentos (Presentación Oficina Alianza G5)
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: 'team-1',
-    name: 'Don Claudio García Pereira',
-    role: 'Gerente General & Representante Legal',
-    department: 'Gerencia',
-    experience: 'Liderazgo y Gestión de Holding',
-    bio: 'Supervigila el funcionamiento de todos los departamentos y representa a Constructora Kotai y empresas de Alianza G5 ante el SERVIU y entidades públicas.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
-    specialty: 'Dirección General & SERVIU'
+    id: 'team-1', name: 'Claudio García Pereira',
+    role: 'Gerente General y Representante Legal', academicTitle: 'Constructor Civil',
+    department: 'Gerencia', experience: 'Dirección y representación',
+    bio: 'Cuenta con diversas certificaciones en el área de la construcción. Supervisa el funcionamiento de todos los departamentos y representa a Constructora Kotai y a las empresas del Grupo Alianza G5 ante SERVIU y entidades públicas.',
+    image: '/images/equipo/claudio-garcia.jpeg', specialty: 'Dirección General y SERVIU',
   },
   {
-    id: 'team-2',
-    name: 'Don José Prieto & Equipo Técnico',
-    role: 'Jefatura de Departamento Técnico',
-    department: 'Departamento Técnico',
-    experience: 'Cálculo, Planimetría y Normativa CS27',
-    bio: 'Equipo conformado por Don José Prieto, Srta. Monserrat Parra y Don David Fierro. Realizan visitas técnicas, confección de planos, presupuestos y presentación del proyecto ante SERVIU.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80',
-    specialty: 'Planimetría & Proyectos SERVIU'
+    id: 'team-2', name: 'José Prieto Toledo',
+    role: 'Gerente Técnico', academicTitle: 'Ingeniero Constructor',
+    department: 'Departamento Técnico', experience: 'Proyectos y planimetría',
+    bio: 'Lidera el equipo técnico integrado por Monserrath Parra y David Fierro, ambos constructores civiles. Realizan visitas técnicas, levantamiento de planimetría, planos, presupuestos y presentación de proyectos ante SERVIU y el sector privado.',
+    image: '/images/equipo/jose-prieto.jpeg', specialty: 'Planimetría y proyectos SERVIU',
   },
   {
-    id: 'team-3',
-    name: 'Señora Sandra & Área Social',
-    role: 'Coordinación con la Comunidad',
-    department: 'Departamento Social',
-    experience: 'Vínculo Directo con Beneficiarios',
-    bio: 'Integrado por Señora Sandra, Sebastián y Srta. Monserrat. Encargados de captación, digitalización, administración de bases de datos y acompañamiento humano a dirigentes y vecinos.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
-    specialty: 'Atención a Familias & RSH'
+    id: 'team-4', name: 'Jorge Rosales', role: 'Gerente de Proyectos',
+    department: 'Proyectos y Operaciones', experience: 'Supervisión de obras',
+    bio: 'Lidera la adquisición de materiales y el reclutamiento de personal calificado para la construcción. Realiza la cubicación y coordina el uso eficiente de materiales. Supervisa la correcta ejecución de obras y proyectos de SERVIU y del sector privado.',
+    image: '/images/equipo/jorge-rosales.jpeg', specialty: 'Operaciones y ejecución de obras',
   },
-  {
-    id: 'team-4',
-    name: 'Don Jorge Rosales',
-    role: 'Jefe de Operaciones y Cuadrillas',
-    department: 'Departamento de Operaciones',
-    experience: 'Supervisión en Terreno',
-    bio: 'Lidera cotizaciones, adquisición de materiales, reclutamiento de cuadrillas de terreno (maestros), cubicación y supervigilancia de la ejecución de cada proyecto SERVIU.',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80',
-    specialty: 'Operaciones y Faenas'
-  }
 ];
 
 // Aliados estratégicos y normas técnicas
