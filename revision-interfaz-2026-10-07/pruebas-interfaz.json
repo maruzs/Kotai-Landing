@@ -1,0 +1,215 @@
+[
+  {
+    "test": "header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 312,
+    "width": 320
+  },
+  {
+    "test": "header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 367,
+    "width": 375
+  },
+  {
+    "test": "header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 760,
+    "width": 768
+  },
+  {
+    "test": "header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 1016,
+    "width": 1024
+  },
+  {
+    "test": "header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 1272,
+    "width": 1280
+  },
+  {
+    "test": "header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 1358,
+    "width": 1366
+  },
+  {
+    "test": "header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 1432,
+    "width": 1440
+  },
+  {
+    "test": "header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 1912,
+    "width": 1920
+  },
+  {
+    "test": "menu Escape",
+    "passed": true
+  },
+  {
+    "test": "form errors and prepared message",
+    "passed": true,
+    "errors": 3
+  },
+  {
+    "test": "mobile form first and retained values",
+    "formOffset": 473,
+    "overflow": false
+  },
+  {
+    "test": "modal trap, arrows, Escape, focus restoration",
+    "passed": true
+  },
+  {
+    "test": "comparison keyboard, button alternatives, filter and load more",
+    "passed": true
+  },
+  {
+    "test": "footer route",
+    "h1": "Servicios",
+    "h1Count": 1,
+    "overflow": false,
+    "path": "/servicios"
+  },
+  {
+    "test": "footer route",
+    "h1": "Quiénes somos",
+    "h1Count": 1,
+    "overflow": false,
+    "path": "/nosotros"
+  },
+  {
+    "test": "footer route",
+    "h1": "Orientación gratuita",
+    "h1Count": 1,
+    "overflow": false,
+    "path": "/contacto"
+  },
+  {
+    "test": "footer route",
+    "h1": "Una casa más abrigada para tu familia",
+    "h1Count": 1,
+    "overflow": false,
+    "path": "/"
+  },
+  {
+    "test": "final header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 312,
+    "width": 320
+  },
+  {
+    "test": "final header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 367,
+    "width": 375
+  },
+  {
+    "test": "final header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 760,
+    "width": 768
+  },
+  {
+    "test": "final header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 1016,
+    "width": 1024
+  },
+  {
+    "test": "final header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 1192,
+    "width": 1200
+  },
+  {
+    "test": "final header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 1272,
+    "width": 1280
+  },
+  {
+    "test": "final header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 1358,
+    "width": 1366
+  },
+  {
+    "test": "final header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 1432,
+    "width": 1440
+  },
+  {
+    "test": "final header responsive",
+    "header": true,
+    "phoneSize": "20px",
+    "scroll": 1912,
+    "width": 1920
+  },
+  {
+    "test": "validation does not steal focus while typing",
+    "passed": true
+  },
+  {
+    "test": "final contact mobile",
+    "floatDisplay": "none",
+    "formOffset": 478,
+    "h1Count": 1,
+    "nameTop": 678,
+    "overflow": false
+  },
+  {
+    "test": "direct route reload",
+    "passed": true
+  },
+  {
+    "test": "history back forward",
+    "passed": true
+  },
+  {
+    "test": "legacy home anchor resolves to contact route",
+    "passed": true
+  },
+  {
+    "test": "unknown page has clear fallback",
+    "passed": true
+  },
+  {
+    "test": "existing team portraits preserved",
+    "passed": true
+  },
+  {
+    "test": "compiled production contact flow without transmission",
+    "passed": true
+  },
+  {
+    "test": "compiled production direct route and modal",
+    "passed": true
+  },
+  {
+    "test": "fresh production page has no console errors",
+    "passed": true
+  }
+]

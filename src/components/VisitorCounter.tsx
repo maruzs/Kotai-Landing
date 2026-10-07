@@ -20,6 +20,7 @@ export const VisitorCounter: React.FC = () => {
 
   useEffect(() => {
     const fetchStats = async () => {
+      if (['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname)) return;
       try {
         const STORAGE_KEY = 'kotai_site_analytics_v1';
         const SESSION_FLAG = 'kotai_session_active';
@@ -94,7 +95,7 @@ export const VisitorCounter: React.FC = () => {
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="bg-zinc-900 border border-zinc-700 rounded-3xl max-w-lg w-full p-6 sm:p-8 text-white shadow-2xl relative">
-            
+
             {/* Header Modal */}
             <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
               <div className="flex items-center gap-2.5">

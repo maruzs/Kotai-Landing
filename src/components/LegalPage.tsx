@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ShieldCheck, 
-  FileText, 
-  Lock, 
-  Cookie, 
-  ArrowLeft, 
-  Scale, 
-  CheckCircle2, 
-  Mail, 
-  Phone, 
+import {
+  ShieldCheck,
+  FileText,
+  Lock,
+  Cookie,
+  ArrowLeft,
+  Scale,
+  CheckCircle2,
+  Mail,
+  Phone,
   ExternalLink,
   Clock,
   Building
@@ -46,7 +46,7 @@ export const LegalPage: React.FC = () => {
   return (
     <div className="bg-[#FAFAFA] min-h-screen pt-28 sm:pt-36 pb-16">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Navegación y Encabezado Superior */}
         <div className="mb-10">
           <button
@@ -63,7 +63,7 @@ export const LegalPage: React.FC = () => {
                 <Scale className="w-3.5 h-3.5 text-kotai-800" />
                 <span>Marco Regulatorio y Transparencia Legal</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 tracking-tight">
+              <h1 tabIndex={-1} className="text-3xl sm:text-4xl font-extrabold text-zinc-900 tracking-tight">
                 Documentación y Cumplimiento Legal
               </h1>
               <p className="text-sm sm:text-base text-zinc-600 mt-1">
@@ -136,7 +136,7 @@ export const LegalPage: React.FC = () => {
 
         {/* Contenedor Principal de Lectura */}
         <div className="bg-white rounded-3xl border border-zinc-200 p-6 sm:p-10 shadow-sm text-zinc-700 leading-relaxed space-y-8">
-          
+
           {/* ========================================================================= */}
           {/* 1. TÉRMINOS Y CONDICIONES DEL SERVICIO Y POSTULACIÓN D.S. 27             */}
           {/* ========================================================================= */}
@@ -183,7 +183,7 @@ export const LegalPage: React.FC = () => {
                 </p>
                 <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base text-zinc-600">
                   <li>El Estado de Chile financia el costo mayoritario de las obras mediante subsidio fiscal no reembolsable.</li>
-                  <li>El beneficiario solo debe aportar el ahorro previo obligatorio normado por el MINVU (habitualmente entre <strong>1 y 3 UF</strong> según el tramo de vulnerabilidad socioeconómica del Registro Social de Hogares).</li>
+                  <li>El beneficiario solo debe aportar el ahorro previo obligatorio normado por el MINVU (<strong>monto pendiente de confirmación</strong> según las condiciones del llamado correspondiente).</li>
                   <li>Dicho ahorro debe permanecer en la cuenta de ahorro para la vivienda propia del postulante (en BancoEstado u otra entidad habilitada) y no es transferido a Kotai SpA sino hasta la asignación formal del subsidio y autorización expresa de los organismos públicos competentes.</li>
                 </ul>
               </section>
@@ -422,7 +422,7 @@ export const LegalPage: React.FC = () => {
 
               <section className="space-y-3">
                 <h3 className="text-lg font-bold text-zinc-900">Catálogo de Derechos Reconocidos por Ley</h3>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 rounded-2xl border border-zinc-200 bg-zinc-50">
                     <div className="font-bold text-zinc-900 text-sm flex items-center gap-2">
