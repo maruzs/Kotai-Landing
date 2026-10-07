@@ -4,6 +4,7 @@ import { HeroCarousel } from './components/HeroCarousel';
 import { SimplicityBanner } from './components/SimplicityBanner';
 import { VideoSection } from './components/VideoSection';
 import { ServicesSection } from './components/ServicesSection';
+import { ProviderShowcase } from './components/ProviderShowcase';
 import { EvidenciaTeaser } from './components/EvidenciaTeaser';
 import { EvidenciaPage } from './components/EvidenciaPage';
 import { LegalPage } from './components/LegalPage';
@@ -52,6 +53,9 @@ export const App: React.FC = () => {
 
             {/* Subsidio D.S. 27 de Mejoramiento de la Vivienda y Soluciones */}
             <ServicesSection />
+
+            {/* Fábrica Oficial de Ventanas & Proveedor Principal (Vidriería & Ferretería Valey) */}
+            <ProviderShowcase />
 
             {/* Teaser compacto de Evidencia en Terreno con enlace a la galería /obras */}
             <EvidenciaTeaser />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, ArrowUp, ExternalLink, ShieldCheck } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ArrowUp, ExternalLink, ShieldCheck } from 'lucide-react';
 import { COMPANY_INFO, HOLDING_COMPANIES } from '../data/mockData';
 import { navigate } from '../utils/navigation';
 import VisitorCounter from './VisitorCounter';
@@ -93,6 +93,15 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
+                  href="#proveedor"
+                  onClick={(e) => handleSoftScroll(e, '#proveedor')}
+                  className="hover:text-white transition-colors"
+                >
+                  Fábrica & Proveedor
+                </a>
+              </li>
+              <li>
+                <a
                   href="#requisitos"
                   onClick={(e) => handleSoftScroll(e, '#requisitos')}
                   className="hover:text-white transition-colors"
@@ -166,6 +175,12 @@ export const Footer: React.FC = () => {
                   <div>{COMPANY_INFO.address}</div>
                   <div className="text-xs text-kotai-400 font-semibold mt-0.5">{COMPANY_INFO.regions}</div>
                 </div>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Clock className="w-4 h-4 text-kotai-500 shrink-0" />
+                <span className="text-zinc-300 text-xs sm:text-sm">
+                  {COMPANY_INFO.schedule}
+                </span>
               </li>
             </ul>
           </div>

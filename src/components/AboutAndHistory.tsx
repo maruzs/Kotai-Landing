@@ -143,12 +143,35 @@ export const AboutAndHistory: React.FC = () => {
             {STRATEGIC_ALLIES.map((ally, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-2xl bg-white border border-zinc-200 shadow-sm hover:border-kotai-300 transition-colors flex flex-col justify-between"
+                className={`p-5 rounded-2xl bg-white border shadow-sm transition-all duration-200 flex flex-col justify-between ${
+                  ally.highlight
+                    ? 'border-kotai-300 ring-1 ring-kotai-100 hover:shadow-md'
+                    : 'border-zinc-200 hover:border-kotai-300'
+                }`}
               >
                 <div>
-                  <div className="w-10 h-10 rounded-xl bg-kotai-50 border border-kotai-100 flex items-center justify-center text-kotai-800 mb-4">
-                    <ShieldCheck className="w-5 h-5 text-kotai-800" />
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    {ally.logo ? (
+                      <div className="h-12 w-28 bg-white rounded-xl border border-zinc-100 p-1 flex items-center justify-center overflow-hidden shadow-xs">
+                        <img
+                          src={ally.logo}
+                          alt={ally.name}
+                          className="h-full w-auto object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-10 h-10 rounded-xl bg-kotai-50 border border-kotai-100 flex items-center justify-center text-kotai-800">
+                        <ShieldCheck className="w-5 h-5 text-kotai-800" />
+                      </div>
+                    )}
+
+                    {ally.badge && (
+                      <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-kotai-50 text-kotai-900 border border-kotai-200 text-right">
+                        {ally.badge}
+                      </span>
+                    )}
                   </div>
+
                   <h4 className="text-sm font-bold text-zinc-900 mb-1">
                     {ally.name}
                   </h4>

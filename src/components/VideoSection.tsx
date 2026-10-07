@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShieldCheck, CheckCircle2, ArrowRight, MessageSquare, Sparkles } from 'lucide-react';
+import { COMPANY_INFO } from '../data/mockData';
 
 export const VideoSection: React.FC = () => {
 
@@ -74,7 +75,7 @@ export const VideoSection: React.FC = () => {
                 RSH Hasta el 70%
               </h3>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                Libreta para la vivienda con ahorro de 3 a 5 UF en BancoEstado y ser propietario/a de la vivienda hasta 90 m².
+                Libreta para la vivienda con ahorro reglamentario de 3 UF en BancoEstado y ser propietario/a de la vivienda hasta 90 m².
               </p>
             </div>
 
@@ -114,7 +115,7 @@ export const VideoSection: React.FC = () => {
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
-                href="https://wa.me/56931018612?text=Hola%20Kotai,%20vi%20el%20video%20explicativo%20y%20deseo%20saber%20si%20mi%20casa%20califica%20al%20subsidio%20termico%20D.S.%2027"
+                href={`https://wa.me/${COMPANY_INFO.phoneClean}?text=Hola%20Kotai,%20vi%20el%20video%20explicativo%20y%20deseo%20saber%20si%20mi%20casa%20califica%20al%20subsidio%20termico%20D.S.%2027`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-200 active:scale-95"

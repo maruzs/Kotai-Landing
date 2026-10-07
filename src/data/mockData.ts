@@ -37,6 +37,9 @@ export interface StrategicAlly {
   category: string;
   description: string;
   norma: string;
+  logo?: string;
+  badge?: string;
+  highlight?: boolean;
 }
 
 export interface GalleryPhoto {
@@ -55,9 +58,10 @@ export const COMPANY_INFO = {
   address: 'José Joaquín Prieto N° 269, Comuna de Chillán, Región de Ñuble',
   commune: 'Chillán',
   regions: 'Región de Ñuble y Región del Biobío',
-  phone: '+56 9 3101 8612',
-  phoneClean: '56931018612',
-  email: 'cgarcia@constructorakotai.cl',
+  phone: '+56 9 5050 1231',
+  phoneClean: '56950501231',
+  email: 'contacto@constructorakotai.cl',
+  schedule: 'Lunes a Viernes de 8:30 a 17:30 hrs',
   website: 'https://constructorakotai.cl',
   rshUrl: 'https://registrosocial.gob.cl/',
   norma: 'D.S. N° 27 de 2016 (CS27) - MINVU / SERVIU',
@@ -266,6 +270,34 @@ export const REAL_WORKS_GALLERY: GalleryPhoto[] = [
     tag: 'Muros',
     image: '/images/pda/material_aislacion.png',
     description: 'Fijación de paneles térmicos continuos para suprimir completamente los puentes térmicos estructurales.'
+  },
+  {
+    id: 'gal-17',
+    title: 'Puertas Herméticas con Termopanel en Madera Noble',
+    tag: 'Puertas & Ventanas',
+    image: '/images/proveedor/valey_puertas_termopanel_nogal.jpg',
+    description: 'Puertas exteriores de alta eficiencia con doble vidriado hermético y terminación premium tipo nogal fabricadas a medida.'
+  },
+  {
+    id: 'gal-18',
+    title: 'Despacho de Ventanas Termopanel Certificadas DVH',
+    tag: 'Logística & Taller',
+    image: '/images/proveedor/valey_camion_despacho_ventanas.jpg',
+    description: 'Transporte técnico en camión con caballete para asegurar la integridad de los termopaneles antes de su montaje.'
+  },
+  {
+    id: 'gal-19',
+    title: 'Puerta Corredera Hermética y Ventanales Interiores',
+    tag: 'Terminación Final',
+    image: '/images/proveedor/valey_puerta_corredera_instalada.jpg',
+    description: 'Instalación y terminación estanca de correderas y ventanales sin filtraciones de aire ni ruidos exteriores.'
+  },
+  {
+    id: 'gal-20',
+    title: 'Ventanales Termopanel DVH en Caballete de Taller',
+    tag: 'Fábrica de Ventanas',
+    image: '/images/proveedor/valey_ventanas_certificadas_dvh.jpg',
+    description: 'Ventanas con doble vidrio y sellos térmicos ensambladas en planta bajo certificación Serviu D.S. 27.'
   }
 ];
 
@@ -333,23 +365,23 @@ export const SUBSIDY_REQUIREMENTS = [
   'Acreditar una vivienda que cuente con permiso de edificación y recepción definitiva hasta el año 2009.',
   'Viviendas cuyo avalúo fiscal sea inferior a 1.375 UF.',
   'Contar con Registro Social de Hogares (RSH) con la misma dirección (donde postula y donde reside) hasta el 70%.',
-  'Tener libreta de ahorro para la vivienda en BancoEstado con el ahorro mínimo exigido por SERVIU (3 UF para tramo 40%-60%, 5 UF para tramo 70%).',
+  'Tener libreta de ahorro para la vivienda en BancoEstado con el ahorro reglamentario exigido por SERVIU (3 UF para familias hasta el 70% RSH).',
   'Que la vivienda no exceda los 90 m² (previa evaluación en visita técnica).'
 ];
 
-// Ahorro reglamentario según tramo RSH (Presentación PDA 2026)
+// Ahorro reglamentario según tramo RSH generalizado (D.S. N° 27 / PDA 2026)
 export const AHORRO_RSH_TABLE = [
   {
-    tramo: 'Familias entre 40% y 60% RSH',
+    tramo: 'Familias hasta el 70% RSH',
     ahorroUF: '3 UF',
     ahorroPesos: '~$120.000 Aprox.',
-    descripcion: 'Ahorro depositado en su propia libreta de ahorro para la vivienda de BancoEstado.'
+    descripcion: 'Ahorro reglamentario depositado en su propia libreta para la vivienda en BancoEstado. Califican todas las familias con RSH vigente hasta el 70%.'
   },
   {
-    tramo: 'Familias en el 70% RSH',
-    ahorroUF: '5 UF',
-    ahorroPesos: '~$194.000 Aprox.',
-    descripcion: 'Ahorro depositado en su propia libreta de ahorro para la vivienda de BancoEstado.'
+    tramo: 'Asesoría y Postulación Kotai',
+    ahorroUF: '$0',
+    ahorroPesos: '100% Gratuito',
+    descripcion: 'Ni la constructora ni la entidad patrocinante cobran honorarios al beneficiario. La postulación y asesoría técnica son totalmente gratuitas.'
   }
 ];
 
@@ -483,28 +515,34 @@ export const TEAM_MEMBERS: TeamMember[] = [
 // Aliados estratégicos y normas técnicas
 export const STRATEGIC_ALLIES: StrategicAlly[] = [
   {
+    name: 'Vidriería Valey',
+    category: 'Fábrica Oficial de Ventanas Termopanel',
+    description: 'Fábrica de ventanas altamente recomendada para todas las constructoras del sector. Ventanas 100% certificadas Serviu, doble vidriado hermético (DVH), doble sello de Butilo y perfiles de PVC Winhouse y aluminio reforzado.',
+    norma: 'Ventanas Certificadas Serviu D.S. 27',
+    logo: '/images/valey/logo_vidrieria_valey.png',
+    badge: 'Fábrica Altamente Recomendada',
+    highlight: true,
+  },
+  {
+    name: 'Ferretería Valey (Grupo Valey)',
+    category: 'Proveedor Principal de Materiales',
+    description: 'Proveedor principal altamente recomendado para todas las empresas constructoras de la región. Abastecimiento continuo de aislantes térmicos EIFS, lana de vidrio, fibrocemento, siding y perfilería estructural.',
+    norma: 'Proveedor Líder del Sector',
+    logo: '/images/valey/logo_ferreteria_valey.png',
+    badge: 'Proveedor Principal Recomendado',
+    highlight: true,
+  },
+  {
     name: 'Sistemas EIFS & Revestimientos',
     category: 'Aislación Térmica Continua',
     description: 'Poliestireno expandido de alta densidad, fibra de vidrio y morteros elastoméricos bajo norma NCh853 y D.S. 27.',
-    norma: 'Aislación Certificada Serviu'
+    norma: 'Aislación Certificada Serviu',
   },
   {
-    name: 'Ventanas Termopanel Doble Sello',
-    category: 'Vidrios Doble Hermético (DVH)',
-    description: 'Cámara de aire seco encapsulada y doble sello perimetral con Butilo para máxima resistencia térmica y acústica.',
-    norma: 'Norma de Hermeticidad NCh'
-  },
-  {
-    name: 'Colectores Solares Certificados',
+    name: 'Colectores Solares Certificados SEC',
     category: 'Energía Solar Térmica',
-    description: 'Paneles solares y acumuladores térmicos para agua caliente con sellos de aprobación SEC.',
-    norma: 'Aprobación SEC Chile'
-  },
-  {
-    name: 'Inspectores Técnicos ITO',
-    category: 'Control de Calidad Independiente',
-    description: 'Inspección técnica externa de cada hito antes de la recepción y aprobación del subsidio Serviu.',
-    norma: 'Validación Técnica Minvu'
+    description: 'Paneles solares y acumuladores térmicos para agua caliente con sellos de aprobación y certificación SEC Chile.',
+    norma: 'Aprobación SEC Chile',
   }
 ];
 
@@ -601,6 +639,127 @@ export const SIMPLE_STEPS = [
     number: '04',
     title: 'Ejecución y Aislamiento Garantizado',
     desc: 'Ganada la postulación, Kotai aísla tu vivienda con termopaneles, EIFS, ventilación y techumbre. Tu único aporte es el ahorro previo en tu libreta.',
+  }
+];
+
+// Videos oficiales de Vidriería y Ferretería Valey (Proveedor Principal & Fábrica de Ventanas)
+export interface ProviderVideoItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  videoSrc: string;
+  posterSrc: string;
+  badge: string;
+  tag: string;
+}
+
+export const PROVIDER_VIDEOS: ProviderVideoItem[] = [
+  {
+    id: 'vid-proceso',
+    title: 'Fabricación Integral de Ventanas Termopanel',
+    subtitle: 'Desde la medición milimétrica hasta la instalación final en terreno',
+    description: 'En Vidriería Valey llevamos cada proyecto desde la toma de medidas en terreno, corte computarizado de perfiles, armado estanco con sellado de Butilo, hasta la instalación y terminación final en obra.',
+    videoSrc: '/videos/valey_proceso_integral.mp4',
+    posterSrc: '/videos/posters/valey_proceso_integral.jpg',
+    badge: 'Proceso Certificado',
+    tag: 'Fábrica de Ventanas',
+  },
+  {
+    id: 'vid-tripleriel',
+    title: 'Correderas Triple Riel Termopanel',
+    subtitle: 'Ingeniería hermética para grandes aperturas y luz natural',
+    description: 'Línea de ventanales correderos con triple riel y cristales DVH con control acústico y térmico, ideal para hogares que buscan confort sin filtraciones de viento ni ruido.',
+    videoSrc: '/videos/valey_correderas_tripleriel.mp4',
+    posterSrc: '/videos/posters/valey_correderas_tripleriel.jpg',
+    badge: 'Alta Hermeticidad',
+    tag: 'Vidriería Valey',
+  },
+  {
+    id: 'vid-winhouse',
+    title: 'Ventanales PVC con Perfilería Winhouse',
+    subtitle: 'Perfiles europeos de PVC certificados con doble vidriado hermético',
+    description: 'Instalación de ventanales termo-acústicos con perfilería Winhouse y doble vidrio sellado. Máxima eficiencia energética bajo estándares de habitabilidad y clima del sur de Chile.',
+    videoSrc: '/videos/valey_ventanales_winhouse.mp4',
+    posterSrc: '/videos/posters/valey_ventanales_winhouse.jpg',
+    badge: 'PVC Certificado',
+    tag: 'Termopanel Winhouse',
+  },
+  {
+    id: 'vid-ferreteria',
+    title: 'Ferretería Valey: Materiales y Abastecimiento Integral',
+    subtitle: 'El proveedor principal de las empresas constructoras de Ñuble y Biobío',
+    description: 'Todo para la construcción en un solo lugar: aislantes térmicos EIFS, lanas de vidrio, planchas, perfiles y herramientas técnicas para responder a las exigencias de licitaciones Serviu.',
+    videoSrc: '/videos/valey_ferreteria_materiales.mp4',
+    posterSrc: '/videos/posters/valey_ferreteria_materiales.jpg',
+    badge: 'Proveedor Principal',
+    tag: 'Ferretería Técnica',
+  },
+  {
+    id: 'vid-fachada',
+    title: 'Fachadas y Cerramientos Herméticos Terminados',
+    subtitle: 'Obras ejecutadas con estanqueidad de alta durabilidad',
+    description: 'Muestra de ventanales y accesos de alta durabilidad instalados en obra, listos para resistir intemperie y cambios climáticos extremos.',
+    videoSrc: '/videos/valey_obra_fachada.mp4',
+    posterSrc: '/videos/posters/valey_obra_fachada.jpg',
+    badge: 'Obra Terminada',
+    tag: 'Envolvente Estanca',
+  },
+  {
+    id: 'vid-oficinas',
+    title: 'Espacios y Cerramientos Vidriados de Alta Gama',
+    subtitle: 'Terminaciones de cristal templado y arquitectura moderna',
+    description: 'Soluciones arquitectónicas de precisión con cristal y perfilería estructural para oficinas y divisiones acústicas de alto rendimiento.',
+    videoSrc: '/videos/valey_oficinas_corporativas.mp4',
+    posterSrc: '/videos/posters/valey_oficinas_corporativas.jpg',
+    badge: 'Línea Arquitectónica',
+    tag: 'Grupo Valey',
+  },
+];
+
+// Fotos oficiales de taller, logística y entrega de Vidriería & Ferretería Valey
+export const PROVIDER_PHOTOS = [
+  {
+    id: 'p-1',
+    title: 'Planta de Ferretería & Vidriería Valey',
+    description: 'Instalaciones principales y flota logística para despacho a obras de acondicionamiento térmico.',
+    image: '/images/proveedor/valey_fachada_ferreteria.jpg',
+    tag: 'Planta & Flota'
+  },
+  {
+    id: 'p-2',
+    title: 'Despacho de Ventanas Termopanel',
+    description: 'Camión acondicionado con caballete técnico para transporte seguro de cristales DVH directamente a la vivienda.',
+    image: '/images/proveedor/valey_camion_despacho_ventanas.jpg',
+    tag: 'Logística Segura'
+  },
+  {
+    id: 'p-3',
+    title: 'Ventanas Termopanel DVH Certificadas',
+    description: 'Marcos y hojas de aluminio y PVC con doble sello y protección para montaje en obra.',
+    image: '/images/proveedor/valey_ventanas_certificadas_dvh.jpg',
+    tag: 'Certificación DVH'
+  },
+  {
+    id: 'p-4',
+    title: 'Puertas Herméticas con Termopanel Madera',
+    description: 'Puertas exteriores de alta aislación térmica con cristales dobles y terminación tipo nogal.',
+    image: '/images/proveedor/valey_puertas_termopanel_nogal.jpg',
+    tag: 'Puertas Térmicas'
+  },
+  {
+    id: 'p-5',
+    title: 'Instalación de Puerta Corredera y Ventanales',
+    description: 'Terminación interior limpia y ajuste hermético sin filtraciones de aire.',
+    image: '/images/proveedor/valey_puerta_corredera_instalada.jpg',
+    tag: 'Instalación Final'
+  },
+  {
+    id: 'p-6',
+    title: 'Despacho en Terreno a Comités y Viviendas',
+    description: 'Entregas puntuales en terreno en las regiones de Ñuble y Biobío para obras D.S. 27.',
+    image: '/images/proveedor/valey_camion_despacho_terreno.jpg',
+    tag: 'Entrega en Obra'
   }
 ];
 

@@ -9,7 +9,7 @@ export const ContactSection: React.FC = () => {
     nombre: '',
     telefono: '',
     comuna: '',
-    tramoRsh: 'Familias entre 40% y 60% RSH (3 UF de ahorro)',
+    tramoRsh: 'Familias hasta el 70% RSH (3 UF de ahorro)',
     tipoProyecto: 'Acondicionamiento Térmico D.S. 27 (Muros EIFS, Ventanas Termopanel, Techo)',
     mensaje: '',
   });
@@ -139,7 +139,7 @@ export const ContactSection: React.FC = () => {
                       Horario de Atención
                     </div>
                     <span className="text-base font-bold text-zinc-900">
-                      Lunes a Viernes: 08:30 a 18:30 hrs
+                      Lunes a Viernes: 08:30 a 17:30 hrs
                     </span>
                   </div>
                 </div>
@@ -287,10 +287,9 @@ export const ContactSection: React.FC = () => {
                         onChange={(e) => setFormData({ ...formData, tramoRsh: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-zinc-300 bg-white text-base text-zinc-900 focus:outline-none focus:ring-2 focus:ring-kotai-800 focus:border-transparent transition-all"
                       >
-                        <option value="Familias entre 40% y 60% RSH (3 UF de ahorro)">Entre 40% y 60% RSH (Ahorro exigido: 3 UF en libreta)</option>
-                        <option value="Familias en el 70% RSH (5 UF de ahorro)">70% RSH (Ahorro exigido: 5 UF en libreta)</option>
-                        <option value="Sobre 70% RSH (Revisar caso especial)">Sobre 70% RSH (Revisar caso especial)</option>
-                        <option value="No sé mi porcentaje aún (Revisar en registrosocial.gob.cl)">No sé mi porcentaje aún (Revisar en RSH)</option>
+                        <option value="Familias hasta el 70% RSH (3 UF de ahorro)">Hasta el 70% RSH (Ahorro exigido: 3 UF en libreta)</option>
+                        <option value="Sobre 70% RSH (Revisar caso especial con Kotai)">Sobre 70% RSH (Revisar caso especial con Kotai)</option>
+                        <option value="No sé mi porcentaje aún (Kotai te orienta sin costo)">No sé mi porcentaje aún (Kotai te orienta sin costo)</option>
                       </select>
                     </div>
                   </div>

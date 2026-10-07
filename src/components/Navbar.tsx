@@ -20,6 +20,7 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { label: 'Subsidio D.S. 27', href: '#servicios', isRoute: false },
+    { label: 'Fábrica & Proveedor', href: '#proveedor', isRoute: false },
     { label: 'Evidencia en Terreno', href: '/obras', isRoute: true },
     { label: 'Requisitos', href: '#requisitos', isRoute: false },
     { label: 'Quiénes Somos', href: '#nosotros', isRoute: false },

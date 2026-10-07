@@ -4,7 +4,7 @@ import { COMPANY_INFO } from '../data/mockData';
 export const WhatsAppButton: React.FC = () => {
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
 
-  // Número oficial de Kotai (+56 9 3101 8612)
+  // Número oficial de Kotai (+56 9 5050 1231)
   const phoneNumber = COMPANY_INFO.phoneClean;
   const defaultMessage = encodeURIComponent('Hola Kotai Constructora, me gustaría consultar por la postulación gratuita al subsidio de acondicionamiento térmico Serviu D.S. 27.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
