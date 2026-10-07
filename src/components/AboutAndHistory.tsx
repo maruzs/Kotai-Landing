@@ -13,19 +13,27 @@ export const AboutAndHistory: React.FC = () => {
           <div className="lg:col-span-6 space-y-5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-kotai-50 border border-kotai-200 text-kotai-900 text-xs font-bold uppercase tracking-wider">
               <Award className="w-3.5 h-3.5 text-kotai-800" />
-              <span>Nuestra Historia y Vocación</span>
+              <span>Trayectoria y compromiso</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 tracking-tight leading-snug">
-              Nacidos para Construir con Verdad y Calidad en Ñuble y Biobío
+              Nuestra Historia
             </h2>
 
             <p className="text-base text-zinc-600 leading-relaxed">
-              Kotai nació con un propósito claro: permitir que las familias de esfuerzo accedan a viviendas dignas, abrigadas y energéticamente eficientes a través del <strong className="text-zinc-900">Programa de Mejoramiento de Viviendas y Barrios D.S. N° 27 de 2016 (CS27)</strong> del MINVU y SERVIU.
+              Constructora Kotai nace hace aproximadamente dos años con el propósito de acercar a las familias a los distintos beneficios y programas de mejoramiento de viviendas, especialmente aquellos orientados al mejoramiento térmico y eficiencia energética.
             </p>
 
-            <p className="text-sm text-zinc-600 leading-relaxed">
-              Con sede en <strong>Chillán (José Joaquín Prieto N° 269)</strong> y atención en toda la Región de Ñuble y Región del Biobío, nos encargamos de todo el proceso: formulación técnica, planimetría, presentación de carpetas ante el SERVIU y ejecución de la aislación térmica EIFS, ventanas termopanel DVH y colectores solares. Como parte del <strong className="text-zinc-900 font-semibold">Grupo Alianza G5</strong>, entregamos cada obra con contrato por escrito, materiales certificados y garantía real.
+            <p className="text-base text-zinc-600 leading-relaxed">
+              Desde nuestros inicios, hemos trabajado para acompañar y orientar a las personas que desean postular a estos beneficios, entregando una atención cercana, profesional y comprometida durante cada etapa del proceso.
+            </p>
+
+            <p className="text-base text-zinc-600 leading-relaxed">
+              En estos dos años de trayectoria, Constructora Kotai ha logrado posicionarse exitosamente en el mercado, destacándose por la seriedad de su trabajo, el profesionalismo de su equipo y el compromiso permanente con las familias y comunidades.
+            </p>
+
+            <p className="text-base text-zinc-600 leading-relaxed">
+              Nuestro crecimiento se sustenta en la confianza de nuestros beneficiarios, en la calidad de nuestras obras y en la convicción de que mejorar una vivienda también significa mejorar la calidad de vida de quienes la habitan.
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-2">
@@ -34,8 +42,8 @@ export const AboutAndHistory: React.FC = () => {
                 <div className="text-xs text-zinc-600 font-medium mt-1">Cumplimiento estricto de norma térmica Serviu</div>
               </div>
               <div className="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
-                <div className="text-2xl font-black text-kotai-800 font-mono">100%</div>
-                <div className="text-xs text-zinc-600 font-medium mt-1">Obras terminadas y entregadas a conformidad</div>
+                <div className="text-2xl font-black text-kotai-800">2 años</div>
+                <div className="text-xs text-zinc-600 font-medium mt-1">Aproximadamente, acompañando a familias y comunidades</div>
               </div>
             </div>
           </div>
