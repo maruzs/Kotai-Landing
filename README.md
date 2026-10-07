@@ -33,6 +33,14 @@ El formulario prepara el mensaje localmente. El visitante revisa los datos, abre
 
 Los carruseles se controlan manualmente. La ampliación de fotografías mantiene el diálogo accesible con Escape y restauración de foco. El comparador tiene un control nativo para teclado. Los enlaces de secciones funcionan también desde Obras.
 
+## Contador de visitas y despliegue
+
+`wrangler.jsonc` despliega un Worker con `worker/index.js` como entrada. Las rutas `/api/*` y `/webmail` pasan por el Worker antes de los archivos estáticos. La API reutiliza `functions/api/visits.js` y el enlace `KOTAI_KV`; mantener este namespace al desplegar para conservar sus datos.
+
+Se cuenta una visita por navegador al día, sin duplicar recargas. El contador se consulta al abrir el sitio y no registra pruebas en localhost. Si la API o KV fallan, la interfaz muestra «Visitas no disponibles» y no inventa cifras. Las visitas anteriores que no llegaron a registrarse no se pueden reconstruir con este contador.
+
+Prueba de regresión: `node scripts/test-visits.mjs`. Esta prueba ejecuta el Worker con almacenamiento de prueba; no escribe visitas de prueba en producción.
+
 ## Verificación
 
 La decisión actual se documenta en `MEJORAS_INTERFAZ.md`. Las capturas y resultados de esta corrección están en `revision-interfaz-2026-10-07/` con nombres `portada-restaurada-*` y `pruebas-anchors.json`. Los archivos anteriores de esa carpeta corresponden al rediseño descartado.

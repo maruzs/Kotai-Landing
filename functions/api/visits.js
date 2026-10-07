@@ -1,7 +1,7 @@
 // functions/api/visits.js
 // Cloudflare Pages Function serverless endpoint
 // 100% gratuito: usa Cloudflare KV (hasta 100.000 lecturas y 1.000 escrituras diarias gratis)
-// Si KV no está vinculado (o en desarrollo local), opera de forma resiliente en memoria.
+// Las estadísticas solo se muestran cuando el almacenamiento está disponible.
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -30,13 +30,7 @@ export async function onRequest(context) {
     return new Response(JSON.stringify({
       configured: false,
       message: 'Cloudflare KV no vinculado aún en el dashboard de Pages (variable KOTAI_KV).',
-      total: 0,
-      month: 0,
-      today: 0,
-      history: [
-        { date: 'Hoy', visits: 0 }
-      ]
-    }), { headers });
+    }), { status: 503, headers });
   }
 
   try {
@@ -103,7 +97,7 @@ export async function onRequest(context) {
       history.push({
         date: dayLabel,
         fullDate: dKey,
-        visits: v ? parseInt(v, 10) : (i === 0 ? today : Math.max(10, Math.floor(today * (0.7 + Math.random() * 0.5))))
+        visits: v ? parseInt(v, 10) : 0
       });
     }
 
@@ -115,12 +109,10 @@ export async function onRequest(context) {
       history
     }), { headers });
 
-  } catch (err) {
+  } catch {
     return new Response(JSON.stringify({
-      error: err.message,
-      total: 1248,
-      month: 382,
-      today: 46
-    }), { status: 500, headers });
+      configured: false,
+      error: 'No se pudieron consultar las estadísticas de visitas.'
+    }), { status: 503, headers });
   }
 }

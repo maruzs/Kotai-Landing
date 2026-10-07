@@ -17,62 +17,48 @@ export const VisitorCounter: React.FC = () => {
   });
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [status, setStatus] = useState<'loading' | 'ready' | 'unavailable' | 'local'>('loading');
 
   useEffect(() => {
+    let active = true;
     const fetchStats = async () => {
-      if (['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname)) return;
+      if (['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname)) {
+        setStatus('local');
+        return;
+      }
       try {
-        const STORAGE_KEY = 'kotai_site_analytics_v1';
-        const SESSION_FLAG = 'kotai_session_active';
+        const SESSION_FLAG = 'kotai_session_counted_v2';
         const VISITOR_ID_KEY = 'kotai_vid';
-
-        // 1. Obtener o generar un ID de visitante persistente para deduplicación
+        const day = new Date().toISOString().slice(0, 10);
         let visitorId = localStorage.getItem(VISITOR_ID_KEY);
         if (!visitorId) {
-          visitorId = 'v_' + Math.random().toString(36).substring(2, 11) + Date.now().toString(36);
+          visitorId = crypto.randomUUID();
           localStorage.setItem(VISITOR_ID_KEY, visitorId);
         }
-
-        // 2. Verificar si es una recarga de pestaña o nueva visita
-        // sessionStorage se borra solo al cerrar la pestaña/navegador. Si ya existe, es solo un refresh (F5).
-        const isSessionAlreadyActive = sessionStorage.getItem(SESSION_FLAG);
-        const isHit = !isSessionAlreadyActive;
-
-        if (isHit) {
-          sessionStorage.setItem(SESSION_FLAG, 'true');
-        }
-
-        // 3. Consultar / registrar en el backend Cloudflare Pages Functions
-        const apiUrl = isHit ? `/api/visits?action=hit&vid=${encodeURIComponent(visitorId)}` : '/api/visits';
-        const res = await fetch(apiUrl, {
+        const isHit = sessionStorage.getItem(SESSION_FLAG) !== day;
+        const res = await fetch('/api/visits', {
           method: isHit ? 'POST' : 'GET',
-          headers: { 'X-Visitor-Id': visitorId }
+          headers: { 'X-Visitor-Id': visitorId },
+          cache: 'no-store',
         });
-
-        if (res.ok) {
-          const data = await res.json();
-          if (data && typeof data.total === 'number') {
-            setStats(data);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-            return;
-          }
-        }
+        if (!res.ok || !res.headers.get('Content-Type')?.includes('application/json')) throw new Error('API no disponible');
+        const data = await res.json();
+        if (data.configured !== true || ![data.total, data.month, data.today].every(n => Number.isFinite(n) && n >= 0) || !Array.isArray(data.history)) throw new Error('Estadísticas no disponibles');
+        // Marcar la sesión únicamente cuando el servidor confirma el registro.
+        if (isHit) sessionStorage.setItem(SESSION_FLAG, day);
+        if (active) { setStats(data); setStatus('ready'); }
       } catch {
-        // Fallback resiliente si la API no está disponible (ej: entorno local estático)
+        if (active) setStatus('unavailable');
       }
-
-      // 4. Fallback local si la función Edge no responde
-      try {
-        const STORAGE_KEY = 'kotai_site_analytics_v1';
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          setStats(JSON.parse(saved));
-        }
-      } catch {}
     };
-
     fetchStats();
+    return () => { active = false; };
   }, []);
+
+  if (status !== 'ready') return <span className="inline-flex items-center gap-2 px-3 py-1.5 text-xs text-zinc-400" role="status" title={status === 'local' ? 'El contador se consulta en el sitio publicado; las pruebas locales no registran visitas.' : undefined}>
+    <Eye className="w-3.5 h-3.5" aria-hidden="true" />
+    {status === 'loading' ? 'Consultando visitas…' : status === 'local' ? 'Visitas: —' : 'Visitas no disponibles'}
+  </span>;
 
   const maxVisits = Math.max(...stats.history.map(h => h.visits), 1);
 
@@ -191,7 +177,7 @@ export const VisitorCounter: React.FC = () => {
             <div className="mt-6 pt-4 border-t border-zinc-800 flex items-start gap-2.5 text-xs text-zinc-400">
               <ShieldCheck className="w-4 h-4 text-kotai-400 shrink-0 mt-0.5" />
               <span>
-                Esta versión ligera registra y visualiza el tráfico en tiempo real. En la siguiente etapa se conectará al CRM propio para correlacionar visitas con postulaciones por comuna.
+                Se cuenta una visita por navegador al día. Recargar la página no duplica el conteo. Las estadísticas se consultan al abrir el sitio.
               </span>
             </div>
 

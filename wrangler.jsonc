@@ -1,8 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "kotai-landing",
+  "main": "worker/index.js",
   "compatibility_date": "2026-10-06",
   "assets": {
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/webmail", "/webmail/*"],
     "directory": "./dist",
     "not_found_handling": "single-page-application"
   },
