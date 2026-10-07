@@ -1,5 +1,5 @@
 import React from 'react';
-import { TEAM_MEMBERS, STRATEGIC_ALLIES, REAL_WORKS_GALLERY } from '../data/mockData';
+import { TEAM_MEMBERS, STRATEGIC_ALLIES } from '../data/mockData';
 import { Users, Award, ShieldCheck, HeartHandshake, CheckCircle2 } from 'lucide-react';
 
 export const AboutAndHistory: React.FC = () => {
@@ -51,8 +51,9 @@ export const AboutAndHistory: React.FC = () => {
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-3xl overflow-hidden shadow-xl border border-zinc-200 aspect-[4/3]">
               <img
-                src={REAL_WORKS_GALLERY[0].image}
-                alt={REAL_WORKS_GALLERY[0].title}
+                src="/images/despues.jpg"
+                alt="Fachada de una vivienda con revestimiento térmico y ventanas termopanel, obra terminada por Kotai"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent flex items-end p-6">
@@ -61,7 +62,7 @@ export const AboutAndHistory: React.FC = () => {
                     Compromiso en Terreno · Chillán y Biobío
                   </div>
                   <div className="text-base sm:text-lg font-bold">
-                    Supervisión diaria y trato directo con nuestros vecinos
+                    Mejoramiento térmico para el bienestar de las familias
                   </div>
                 </div>
               </div>
