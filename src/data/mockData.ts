@@ -65,7 +65,7 @@ export const COMPANY_INFO = {
   schedule: 'Lunes a Viernes de 8:30 a 17:30 hrs',
   website: 'https://constructorakotai.cl',
   rshUrl: 'https://registrosocial.gob.cl/',
-  norma: 'D.S. N° 27 de 2016 (CS27) - MINVU / SERVIU',
+  norma: 'D.S. N° 27 de 2016 (DS27) - MINVU / SERVIU',
   programName: 'Programa de Mejoramiento de Viviendas y Barrios (Eficiencia Energética e Hídrica / PDA)',
 };
 
@@ -86,7 +86,7 @@ export const HERO_CAROUSEL_SLIDES = [
     title: 'Más Confort, Menos Ruido y Cero Humedad',
     description: 'Recambio integral a ventanas de Doble Vidriado Hermético con doble sello Butilo. Cortan el frío del invierno, el calor y eliminan la condensación.',
     image: '/images/Termopanel3.jpg',
-    stat: 'Norma CS27',
+    stat: 'Norma DS27',
     statLabel: 'Estándar térmico oficial Serviu / Minvu',
   },
   {
@@ -263,7 +263,7 @@ export const REAL_WORKS_GALLERY: GalleryPhoto[] = [
     title: 'Faena de Aislación de Techumbre en Ejecución',
     tag: 'Techumbre',
     image: '/images/pda/techumbre_proceso.jpg',
-    description: 'Colocación en entretecho de material aislante con espesor certificado bajo especificaciones SERVIU CS27.'
+    description: 'Colocación en entretecho de material aislante con espesor certificado bajo especificaciones SERVIU DS27.'
   },
   {
     id: 'gal-16',
@@ -335,7 +335,7 @@ export const BEFORE_AFTER_CASES: BeforeAfterItem[] = [
       'Barrera térmica exterior continua que corta puentes térmicos',
       'Materiales certificados que protegen contra la lluvia y humedad',
       'Mayor durabilidad, resistencia mecánica y terminación moderna',
-      'Cumplimiento con estándar de transmitancia térmica SERVIU CS27'
+      'Cumplimiento con estándar de transmitancia térmica SERVIU DS27'
     ]
   },
   {
@@ -614,7 +614,7 @@ export const SIMPLE_STEPS = [
   {
     number: '03',
     title: 'Reunión de los 7 Documentos y Postulación',
-    desc: 'Te acompañamos a reunir los 7 documentos oficiales y presentamos la carpeta técnica ante el SERVIU bajo la norma D.S. N° 27 (CS27).',
+    desc: 'Te acompañamos a reunir los 7 documentos oficiales y presentamos la carpeta técnica ante el SERVIU bajo la norma D.S. N° 27 (DS27).',
   },
   {
     number: '04',

@@ -65,7 +65,7 @@ export const ServicesSection: React.FC = () => {
             Programa de Mejoramiento de Viviendas y Barrios
           </h2>
           <p className="mt-2 text-base sm:text-lg font-bold text-kotai-800">
-            Decreto Supremo N° 27 de 2016 (CS27) · Eficiencia Energética e Hídrica (PDA)
+            Decreto Supremo N° 27 de 2016 (DS27) · Eficiencia Energética e Hídrica (PDA)
           </p>
           <p className="mt-4 text-base sm:text-lg text-zinc-600 leading-relaxed font-normal">
             Kotai ejecuta obras bajo la reglamentación oficial del Estado en las regiones de <strong>Ñuble y Biobío</strong>, mejorando la envolvente de las viviendas para reducir el frío, la condensación y las fugas térmicas.

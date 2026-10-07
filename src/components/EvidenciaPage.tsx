@@ -47,7 +47,7 @@ export const EvidenciaPage: React.FC = () => {
             </h1>
 
             <p className="text-base sm:text-lg text-zinc-300 leading-relaxed font-normal">
-              Aquí puedes ver en detalle el trabajo ejecutado por Kotai en las regiones de <strong>Ñuble y Biobío</strong>. Casas aisladas bajo el <strong>Decreto Supremo N° 27 de 2016 (CS27)</strong> con termopaneles certificados, sistemas EIFS, siding y sellos térmicos.
+              Aquí puedes ver en detalle el trabajo ejecutado por Kotai en las regiones de <strong>Ñuble y Biobío</strong>. Casas aisladas bajo el <strong>Decreto Supremo N° 27 de 2016 (DS27)</strong> con termopaneles certificados, sistemas EIFS, siding y sellos térmicos.
             </p>
 
             {/* Badges strip */}

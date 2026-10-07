@@ -100,7 +100,7 @@ export const EvidenciaTeaser: React.FC = () => {
         <div className="p-6 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-zinc-700">
           <div className="flex items-center gap-3">
             <ShieldCheck className="w-5 h-5 text-kotai-800 shrink-0" />
-            <span>Todas las fotografías corresponden a proyectos reales ejecutados bajo norma <strong>D.S. N° 27 de 2016 (CS27)</strong>.</span>
+            <span>Todas las fotografías corresponden a proyectos reales ejecutados bajo norma <strong>D.S. N° 27 de 2016 (DS27)</strong>.</span>
           </div>
 
           <button

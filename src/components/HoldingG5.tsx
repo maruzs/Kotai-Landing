@@ -34,14 +34,14 @@ export const HoldingG5: React.FC = () => {
                 {COMPANY_INFO.name}
               </h3>
               <p className="text-sm text-zinc-300 max-w-2xl leading-relaxed">
-                Empresa del holding encargada de la formulación técnica, licitación y ejecución de subsidios de eficiencia energética D.S. N° 27 de 2016 (CS27) Serviu, con cuadrillas de terreno propias y supervisión diaria. Representante Legal: <strong>{COMPANY_INFO.representative}</strong>.
+                Empresa del holding encargada de la formulación técnica, licitación y ejecución de subsidios de eficiencia energética D.S. N° 27 de 2016 (DS27) Serviu, con cuadrillas de terreno propias y supervisión diaria. Representante Legal: <strong>{COMPANY_INFO.representative}</strong>.
               </p>
             </div>
 
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
               <div className="flex items-center gap-2 text-xs text-zinc-200 bg-black/30 p-2.5 rounded-xl border border-white/10">
                 <ShieldCheck className="w-4 h-4 text-kotai-400 shrink-0" />
-                <span>Solvencia y Respaldo Holding G5</span>
+                <span>Solvencia y Respaldo Holding Alianza G5</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-zinc-200 bg-black/30 p-2.5 rounded-xl border border-white/10">
                 <CheckCircle className="w-4 h-4 text-kotai-400 shrink-0" />

@@ -35,12 +35,12 @@ export const Footer: React.FC = () => {
             </a>
 
             <p className="text-zinc-300 text-sm leading-relaxed max-w-sm">
-              Empresa constructora especialista en licitaciones y ejecución de proyectos de acondicionamiento térmico Serviu bajo la norma <strong>D.S. N° 27 de 2016 (CS27)</strong>. Perteneciente al Grupo Empresarial Alianza G5.
+              Empresa constructora especialista en licitaciones y ejecución de proyectos de acondicionamiento térmico Serviu bajo la norma <strong>D.S. N° 27 de 2016 (DS27)</strong>. Perteneciente al Grupo Empresarial Alianza G5.
             </p>
 
             <div className="pt-1 flex flex-wrap gap-2 text-xs">
               <span className="inline-block px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold">
-                Norma D.S. N° 27 / CS27 · Serviu MINVU
+                Norma D.S. N° 27 / DS27 · Serviu MINVU
               </span>
               <span className="inline-block px-3 py-1 rounded-lg bg-kotai-950/80 border border-kotai-800/60 text-kotai-300 font-semibold">
                 Asesoría 100% Gratuita

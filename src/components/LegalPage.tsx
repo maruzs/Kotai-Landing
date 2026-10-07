@@ -172,7 +172,7 @@ export const LegalPage: React.FC = () => {
               <section className="space-y-3">
                 <h3 className="text-lg font-bold text-zinc-900">2. Naturaleza del Servicio y Marco Técnico</h3>
                 <p className="text-sm sm:text-base text-zinc-600">
-                  Kotai SpA actúa como entidad constructora y prestadora de servicios de asistencia técnica y postulación habitacional bajo el <strong>Decreto Supremo N° 27 de 2016 (CS27)</strong> del Ministerio de Vivienda y Urbanismo (MINVU), enfocado en el Mejoramiento de Viviendas y Planes de Descontaminación Atmosférica (PDA), incluyendo acondicionamiento térmico (envolvente EIFS, ventanas de doble vidriado hermético y aislamiento de techumbre), sistemas solares térmicos y obras de seguridad habitacional.
+                  Kotai SpA actúa como entidad constructora y prestadora de servicios de asistencia técnica y postulación habitacional bajo el <strong>Decreto Supremo N° 27 de 2016 (DS27)</strong> del Ministerio de Vivienda y Urbanismo (MINVU), enfocado en el Mejoramiento de Viviendas y Planes de Descontaminación Atmosférica (PDA), incluyendo acondicionamiento térmico (envolvente EIFS, ventanas de doble vidriado hermético y aislamiento de techumbre), sistemas solares térmicos y obras de seguridad habitacional.
                 </p>
               </section>
 
