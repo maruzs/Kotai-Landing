@@ -366,7 +366,7 @@ export const SUBSIDY_REQUIREMENTS = [
   'Acreditar una vivienda que cuente con permiso de edificación y recepción definitiva hasta el año 2009.',
   'Viviendas cuyo avalúo fiscal sea inferior a 1.375 UF.',
   'Contar con Registro Social de Hogares (RSH) con la misma dirección (donde postula y donde reside) hasta el 70%.',
-  'Tener libreta de ahorro para la vivienda en BancoEstado con el ahorro reglamentario exigido por SERVIU (monto a confirmar con Kotai).',
+  'Tener libreta de ahorro para la vivienda en BancoEstado con el ahorro reglamentario exigido por SERVIU (entre 1 y 3 UF).',
   'Que la vivienda no exceda los 90 m² (previa evaluación en visita técnica).'
 ];
 
@@ -374,8 +374,8 @@ export const SUBSIDY_REQUIREMENTS = [
 export const AHORRO_RSH_TABLE = [
   {
     tramo: 'Familias hasta el 70% RSH',
-    ahorroUF: 'Por confirmar',
-    ahorroPesos: 'Consulta con Kotai',
+    ahorroUF: 'Entre 1 y 3 UF',
+    ahorroPesos: 'En tu libreta de ahorro',
     descripcion: 'Ahorro reglamentario depositado en su propia libreta para la vivienda en BancoEstado. Califican todas las familias con RSH vigente hasta el 70%.'
   },
   {

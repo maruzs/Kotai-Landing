@@ -16,10 +16,10 @@ export const EvidenciaPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="pt-28 sm:pt-36 bg-[#FAFAFA]">
+    <div className="pt-20 sm:pt-24 bg-[#FAFAFA]">
 
       {/* Header Hero de la Página de Evidencia */}
-      <section className="bg-zinc-950 text-white py-14 sm:py-20 border-b border-zinc-800 relative overflow-hidden">
+      <section className="bg-zinc-950 text-white py-10 sm:py-12 border-b border-zinc-800 relative overflow-hidden">
         {/* Ambient glow */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-kotai-800/20 blur-[120px] pointer-events-none rounded-full" />
 
@@ -42,7 +42,7 @@ export const EvidenciaPage: React.FC = () => {
               <span>Registro Fotográfico Oficial</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
               Evidencia en Terreno: Obras y Transformaciones Reales
             </h1>
 
@@ -69,6 +69,12 @@ export const EvidenciaPage: React.FC = () => {
 
         </div>
       </section>
+
+      <nav aria-label="Secciones de Obras" className="bg-white border-b border-zinc-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap gap-3">
+          {[['#antes-despues', 'Antes y después'], ['#proyectos', 'Proyectos destacados'], ['#fotos-obras', 'Fotos en terreno']].map(([href, label]) => <a key={href} href={href} className="min-h-11 inline-flex items-center px-4 py-2 rounded-lg border border-zinc-300 text-base font-semibold text-zinc-800 hover:bg-zinc-100">{label}</a>)}
+        </div>
+      </nav>
 
       {/* 1. ANTES Y DESPUÉS INTERACTIVO */}
       <BeforeAfterSlider />

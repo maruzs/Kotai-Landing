@@ -9,7 +9,8 @@ import {
   Maximize2,
   Check,
   ThumbsUp,
-  Award
+  Award,
+  ExternalLink
 } from 'lucide-react';
 import { PROVIDER_VIDEOS, PROVIDER_PHOTOS, ProviderVideoItem } from '../data/mockData';
 import { ImageLightboxModal, LightboxItem } from './ImageLightboxModal';
@@ -72,11 +73,10 @@ export const ProviderShowcase: React.FC = () => {
 
           {/* Pilar 1: Vidriería Valey (Fábrica Oficial de Ventanas) */}
           <div className="rounded-3xl bg-white border border-zinc-200/90 shadow-sm hover:shadow-md transition-shadow p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-kotai-50 rounded-bl-full pointer-events-none" />
 
             <div>
               {/* Header con Logo y Badge */}
-              <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex flex-col items-start gap-4 mb-6">
                 <div className="h-14 sm:h-16 w-36 sm:w-44 bg-white rounded-2xl border border-zinc-200/80 p-2 flex items-center justify-center shadow-2xs">
                   <img
                     src="/images/valey/logo_vidrieria_valey.png"
@@ -86,7 +86,7 @@ export const ProviderShowcase: React.FC = () => {
                 </div>
 
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-kotai-50 border border-kotai-200 text-kotai-900 text-xs font-bold uppercase tracking-wider">
-                  <ThumbsUp className="w-3.5 h-3.5 text-kotai-800" />
+                  <ThumbsUp className="w-3.5 h-3.5 text-kotai-800 shrink-0" />
                   <span>Fábrica Altamente Recomendada</span>
                 </div>
               </div>
@@ -94,6 +94,9 @@ export const ProviderShowcase: React.FC = () => {
               <h3 className="text-xl sm:text-2xl font-black text-zinc-900 mb-2">
                 Vidriería Valey · Fábrica Oficial de Ventanas
               </h3>
+              <a href="https://grupovaley.cl/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-base font-bold text-kotai-800 underline underline-offset-4 mb-3">
+                Visitar Vidriería Valey <ExternalLink className="w-4 h-4 shrink-0" aria-hidden="true" />
+              </a>
 
               <div className="inline-block text-xs font-bold uppercase tracking-wider text-kotai-800 bg-kotai-50 px-2.5 py-1 rounded-md mb-4 border border-kotai-100">
                 Termopaneles DVH & Perfiles PVC Winhouse Certificados
@@ -145,11 +148,10 @@ export const ProviderShowcase: React.FC = () => {
 
           {/* Pilar 2: Ferretería Valey (Proveedor Principal de Materiales) */}
           <div className="rounded-3xl bg-white border border-zinc-200/90 shadow-sm hover:shadow-md transition-shadow p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-zinc-100 rounded-bl-full pointer-events-none" />
 
             <div>
               {/* Header con Logo y Badge */}
-              <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex flex-col items-start gap-4 mb-6">
                 <div className="h-14 sm:h-16 w-36 sm:w-44 bg-white rounded-2xl border border-zinc-200/80 p-2 flex items-center justify-center shadow-2xs">
                   <img
                     src="/images/valey/logo_ferreteria_valey.png"
@@ -159,7 +161,7 @@ export const ProviderShowcase: React.FC = () => {
                 </div>
 
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-300 text-zinc-900 text-xs font-bold uppercase tracking-wider">
-                  <ThumbsUp className="w-3.5 h-3.5 text-kotai-800" />
+                  <ThumbsUp className="w-3.5 h-3.5 text-kotai-800 shrink-0" />
                   <span>Proveedor Principal Recomendado</span>
                 </div>
               </div>
@@ -167,6 +169,9 @@ export const ProviderShowcase: React.FC = () => {
               <h3 className="text-xl sm:text-2xl font-black text-zinc-900 mb-2">
                 Ferretería Valey · Proveedor Principal de Materiales
               </h3>
+              <a href="https://grupovaley.cl/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-base font-bold text-kotai-800 underline underline-offset-4 mb-3">
+                Visitar Ferretería Valey <ExternalLink className="w-4 h-4 shrink-0" aria-hidden="true" />
+              </a>
 
               <div className="inline-block text-xs font-bold uppercase tracking-wider text-kotai-800 bg-kotai-50 px-2.5 py-1 rounded-md mb-4 border border-kotai-100">
                 Materiales de Construcción & Envolvente Térmica Certificada

@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-07",
+  "build": "npm run build: correcto",
+  "checks": [
+    {
+      "check": "Ahorro 1–3 UF sin Por confirmar",
+      "pass": true
+    },
+    {
+      "check": "Enlaces de ambas empresas a Grupo Valey",
+      "pass": true
+    },
+    {
+      "check": "Facebook e Instagram a páginas generales",
+      "pass": true
+    },
+    {
+      "check": "Seis miniaturas visibles por grupo; Más fotos avanza a 7–12",
+      "pass": true
+    },
+    {
+      "check": "Visor vertical contenido en su área, título y miniaturas visibles en desktop",
+      "pass": true
+    },
+    {
+      "check": "Visor móvil sin solapamiento ni salida del viewport",
+      "pass": true
+    },
+    {
+      "check": "Último grupo 19–20 deshabilita Más fotos",
+      "pass": true
+    },
+    {
+      "check": "Escape cierra y devuelve foco",
+      "pass": true
+    },
+    {
+      "check": "Etiquetas de Valey completas y dentro de las tarjetas",
+      "pass": true
+    },
+    {
+      "check": "Flecha de proyecto cambia ficha y filtro solar reinicia a obra 1 de 1",
+      "pass": true
+    },
+    {
+      "check": "Obras desktop sin desbordamiento; controles dentro de la ficha",
+      "pass": true
+    },
+    {
+      "check": "Obras móvil sin desbordamiento; foco permanece dentro del visor con Shift+Tab",
+      "pass": true
+    }
+  ]
+}

@@ -8,6 +8,9 @@ export const RealWorksCarousel: React.FC = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const total = REAL_WORKS_GALLERY.length;
+  const pageSize = 6;
+  const pageStart = Math.floor(currentIndex / pageSize) * pageSize;
+  const visiblePhotos = REAL_WORKS_GALLERY.slice(pageStart, pageStart + pageSize);
 
   const prev = () => {
     setCurrentIndex((prev) => (prev - 1 + total) % total);
@@ -34,7 +37,7 @@ export const RealWorksCarousel: React.FC = () => {
   }));
 
   return (
-    <section className="py-16 sm:py-24 bg-white border-b border-zinc-200">
+    <section id="fotos-obras" className="py-12 sm:py-16 bg-white border-b border-zinc-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -51,14 +54,14 @@ export const RealWorksCarousel: React.FC = () => {
           </p>
         </div>
 
-        {/* Featured Showcase Box with STRICT FIXED HEIGHT */}
+        {/* Foto destacada con controles manuales y altura adaptable */}
         <div className="bg-zinc-50 rounded-3xl border border-zinc-200 shadow-md overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 h-auto lg:h-[460px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
 
             {/* Image (7 cols) - Clickeable para agrandar */}
             <div
               onClick={() => openLightboxAt(currentIndex)}
-              className="group lg:col-span-7 relative h-[320px] sm:h-[400px] lg:h-full w-full overflow-hidden bg-zinc-950 cursor-pointer"
+              className="group lg:col-span-7 relative h-[280px] sm:h-[400px] lg:min-h-[440px] lg:h-full w-full overflow-hidden bg-zinc-950 cursor-pointer"
               title="Haz clic para agrandar esta imagen"
             >
               <img
@@ -133,23 +136,8 @@ export const RealWorksCarousel: React.FC = () => {
               </div>
 
               {/* Navigation Controls */}
-              <div className="pt-4 border-t border-zinc-200 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-1.5">
-                  {REAL_WORKS_GALLERY.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentIndex(idx)}
-                      className="inline-flex items-center justify-center min-w-11 min-h-11"
-                aria-label={`Ver foto ${idx + 1}`}
-                aria-pressed={idx === currentIndex}>
-                <span aria-hidden="true" className={`h-2.5 rounded-full transition-all duration-300 ${
-                        idx === currentIndex
-                          ? 'w-7 bg-kotai-800'
-                          : 'w-2 bg-zinc-300 hover:bg-zinc-400'
-                      }`} />
-              </button>
-                  ))}
-                </div>
+              <div className="pt-4 border-t border-zinc-200 flex flex-wrap items-center justify-between gap-4">
+                <span className="text-base font-semibold text-zinc-700" aria-live="polite">Foto {currentIndex + 1} de {total}</span>
 
                 <div className="flex items-center gap-2">
                   <button
@@ -182,35 +170,23 @@ export const RealWorksCarousel: React.FC = () => {
           </div>
         </div>
 
-        {/* Thumbnail Row - Clickeable para cambiar y ampliar */}
-        <div className="mt-4 grid grid-cols-4 sm:grid-cols-8 gap-2">
-          {REAL_WORKS_GALLERY.map((photo, idx) => (
-            <button
-              key={photo.id}
-              onClick={() => {
-                setCurrentIndex(idx);
-                // Si hace clic en la activa, abrir lightbox directamente
-                if (idx === currentIndex) {
-                  openLightboxAt(idx);
-                }
-              }}
-              title={`Ver foto: ${photo.title}`}
-              className={`group relative rounded-xl overflow-hidden h-16 sm:h-20 border-2 transition-all duration-200 ${
-                idx === currentIndex
-                  ? 'border-kotai-800 ring-2 ring-kotai-800/30 scale-105'
-                  : 'border-transparent opacity-65 hover:opacity-100'
-              }`}
-            >
-              <img
-                src={photo.image}
-                alt={photo.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-zinc-950/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                <ZoomIn className="w-4 h-4 text-white drop-shadow" />
-              </div>
-            </button>
-          ))}
+        <div className="mt-6 space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-base text-zinc-600">Fotos {pageStart + 1} a {Math.min(pageStart + pageSize, total)} de {total}</p>
+            <div className="flex gap-2">
+              <button type="button" disabled={pageStart === 0} onClick={() => setCurrentIndex(pageStart - pageSize)} className="min-h-11 px-4 rounded-lg border border-zinc-300 font-semibold disabled:opacity-40">Fotos anteriores</button>
+              <button type="button" disabled={pageStart + pageSize >= total} onClick={() => setCurrentIndex(pageStart + pageSize)} className="min-h-11 px-4 rounded-lg border border-zinc-300 font-semibold disabled:opacity-40">Más fotos</button>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {visiblePhotos.map((photo, offset) => {
+              const index = pageStart + offset;
+              return <button type="button" key={photo.id} onClick={() => setCurrentIndex(index)} aria-pressed={index === currentIndex} aria-label={`Seleccionar foto ${index + 1}: ${photo.title}`} className={`text-left rounded-xl overflow-hidden border-2 bg-white ${index === currentIndex ? 'border-kotai-800' : 'border-zinc-200 hover:border-kotai-300'}`}>
+                <img src={photo.image} alt="" loading="lazy" className="w-full h-24 object-cover" />
+                <span className="block px-3 py-2 text-sm font-semibold text-zinc-800">Foto {index + 1}</span>
+              </button>;
+            })}
+          </div>
         </div>
 
       </div>

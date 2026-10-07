@@ -27,7 +27,7 @@ Solo la galería completa (`/obras`, alias `/evidencia`) y las páginas legales 
 
 ## Contenido y funcionalidad
 
-Usar únicamente `Notas/`, `Images/` y `video_assets/` para nuevo contenido. Se incorporan las tres fotografías reales y las reseñas de `Images/Integrantes empresa/`. El teléfono de cabecera conserva 20 px. El ahorro está pendiente de confirmación; el video anterior incluye un aviso de consulta.
+Usar únicamente `Notas/`, `Images/` y `video_assets/` para nuevo contenido. Se incorporan las tres fotografías reales y las reseñas de `Images/Integrantes empresa/`. El teléfono de cabecera conserva 20 px. El ahorro requerido es de entre 1 y 3 UF, según lo indicado por el propietario. El video anterior incluye un aviso del rango actualizado.
 
 El formulario prepara el mensaje localmente. El visitante revisa los datos, abre WhatsApp y presiona Enviar. La web no confirma recepción ni postulación ante SERVIU.
 

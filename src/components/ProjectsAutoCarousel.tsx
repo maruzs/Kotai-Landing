@@ -1,7 +1,7 @@
 import { navigate } from '../utils/navigation';
 import React, { useState, useEffect } from 'react';
 import { PROJECTS_GALLERY, ProjectSlide } from '../data/mockData';
-import { MapPin, CheckCircle, Layers, ZoomIn, Maximize2 } from 'lucide-react';
+import { MapPin, CheckCircle, Layers, ZoomIn, Maximize2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ImageLightboxModal, LightboxItem } from './ImageLightboxModal';
 
 export const ProjectsAutoCarousel: React.FC = () => {
@@ -46,7 +46,7 @@ export const ProjectsAutoCarousel: React.FC = () => {
   }));
 
   return (
-    <section id="proyectos" className="py-16 sm:py-24 bg-zinc-50 border-b border-zinc-200">
+    <section id="proyectos" className="py-12 sm:py-16 bg-zinc-50 border-b border-zinc-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
@@ -68,7 +68,8 @@ export const ProjectsAutoCarousel: React.FC = () => {
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              onClick={() => { setSelectedCategory(cat); setCurrentIndex(0); }}
+              aria-pressed={selectedCategory === cat}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 ${
                 selectedCategory === cat
                   ? 'bg-kotai-800 text-white shadow-sm'
@@ -80,15 +81,15 @@ export const ProjectsAutoCarousel: React.FC = () => {
           ))}
         </div>
 
-        {/* Main Auto-Playing Showcase Card with RIGID UNIFIED HEIGHT */}
+        {/* Ficha de proyecto con altura adaptable */}
         {currentProject && (
           <div className="bg-white rounded-3xl border border-zinc-200 shadow-md overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-12 h-auto lg:h-[460px]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
 
               {/* Left / Image Half (7 cols) - Clickeable para agrandar */}
               <div
                 onClick={() => openLightboxAt(currentIndex)}
-                className="group lg:col-span-7 relative h-[320px] sm:h-[400px] lg:h-full w-full overflow-hidden bg-zinc-950 cursor-pointer"
+                className="group lg:col-span-7 relative h-[280px] sm:h-[400px] lg:min-h-[460px] lg:h-full w-full overflow-hidden bg-zinc-950 cursor-pointer"
                 title="Haz clic para agrandar la imagen del proyecto"
               >
                 <img
@@ -145,10 +146,10 @@ export const ProjectsAutoCarousel: React.FC = () => {
                   <div className="text-xs uppercase font-bold text-kotai-800 tracking-wider">
                     Proyecto Aprobado Serviu
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 tracking-tight leading-snug line-clamp-2">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 tracking-tight leading-snug">
                     {currentProject.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-zinc-600 leading-relaxed line-clamp-3">
+                  <p className="text-sm sm:text-base text-zinc-600 leading-relaxed">
                     {currentProject.description}
                   </p>
 
@@ -168,42 +169,16 @@ export const ProjectsAutoCarousel: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Bottom Row: Pure Postulación Wording + Controles */}
-                <div className="pt-4 border-t border-zinc-100 flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-1.5">
-                    {filteredProjects.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentIndex(idx)}
-                        className="inline-flex items-center justify-center min-w-11 min-h-11"
-                aria-label={`Ver obra ${idx + 1}`}
-                aria-pressed={idx === currentIndex}>
-                <span aria-hidden="true" className={`h-2.5 rounded-full transition-all duration-300 ${
-                          idx === currentIndex
-                            ? 'w-7 bg-kotai-800'
-                            : 'w-2 bg-zinc-200 hover:bg-zinc-300'
-                        }`} />
-              </button>
-                    ))}
+                <div className="pt-4 border-t border-zinc-100 space-y-4">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <span className="text-base font-semibold" aria-live="polite">Obra {currentIndex + 1} de {total}</span>
+                    <div className="flex items-center gap-2">
+                      <button type="button" onClick={() => setCurrentIndex((currentIndex - 1 + total) % total)} className="w-11 h-11 grid place-items-center rounded-xl border border-zinc-300" aria-label="Obra anterior"><ChevronLeft className="w-5 h-5" /></button>
+                      <button type="button" onClick={() => setCurrentIndex((currentIndex + 1) % total)} className="w-11 h-11 grid place-items-center rounded-xl border border-zinc-300" aria-label="Obra siguiente"><ChevronRight className="w-5 h-5" /></button>
+                      <button type="button" onClick={() => openLightboxAt(currentIndex)} className="w-11 h-11 grid place-items-center rounded-xl border border-zinc-300" aria-label="Agrandar imagen de la obra"><Maximize2 className="w-5 h-5 text-kotai-800" /></button>
+                    </div>
                   </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => openLightboxAt(currentIndex)}
-                      className="p-2.5 rounded-xl border border-zinc-200 bg-white hover:bg-zinc-100 text-zinc-700 shadow-sm transition-colors active:scale-95"
-                      title="Agrandar imagen de la obra"
-                      aria-label="Agrandar imagen de la obra"
-                    >
-                      <Maximize2 className="w-4 h-4 text-kotai-800" />
-                    </button>
-                    <a
-                      href="/#contacto"
-                      onClick={(e) => handleSoftScroll(e, '#contacto')}
-                      className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-kotai-800 hover:bg-kotai-700 text-white text-xs sm:text-sm font-bold shadow-sm transition-colors duration-200 shrink-0"
-                    >
-                      Postular a este Programa
-                    </a>
-                  </div>
+                  <a href="/#contacto" onClick={e => handleSoftScroll(e, '#contacto')} className="inline-flex items-center justify-center min-h-11 px-5 py-3 rounded-xl bg-kotai-800 hover:bg-kotai-700 text-white text-sm font-bold">Postular a este Programa</a>
                 </div>
 
               </div>

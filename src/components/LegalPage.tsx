@@ -183,7 +183,7 @@ export const LegalPage: React.FC = () => {
                 </p>
                 <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base text-zinc-600">
                   <li>El Estado de Chile financia el costo mayoritario de las obras mediante subsidio fiscal no reembolsable.</li>
-                  <li>El beneficiario solo debe aportar el ahorro previo obligatorio normado por el MINVU (<strong>monto pendiente de confirmación</strong> según las condiciones del llamado correspondiente).</li>
+                  <li>El beneficiario solo debe aportar el ahorro previo obligatorio normado por el MINVU (<strong>entre 1 y 3 UF</strong> según las condiciones del llamado correspondiente).</li>
                   <li>Dicho ahorro debe permanecer en la cuenta de ahorro para la vivienda propia del postulante (en BancoEstado u otra entidad habilitada) y no es transferido a Kotai SpA sino hasta la asignación formal del subsidio y autorización expresa de los organismos públicos competentes.</li>
                 </ul>
               </section>

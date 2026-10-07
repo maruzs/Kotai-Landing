@@ -202,7 +202,7 @@ export const BeforeAfterSlider: React.FC = () => {
 
               <div className="p-4 rounded-2xl bg-kotai-50 border border-kotai-200 text-sm font-medium text-kotai-950 flex items-center gap-3">
                 <ShieldCheck className="w-6 h-6 text-kotai-800 shrink-0" />
-                <span>El subsidio financia la obra. Consulta con Kotai el ahorro requerido para el llamado correspondiente.</span>
+                <span>El subsidio financia la obra. El ahorro familiar requerido es de entre 1 y 3 UF en tu libreta para la vivienda.</span>
               </div>
 
               <div className="pt-2">

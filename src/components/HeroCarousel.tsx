@@ -107,7 +107,7 @@ export const HeroCarousel: React.FC = () => {
               </div>
               <div className="flex items-center gap-2.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-kotai-400 shrink-0" />
-                <span>Ahorro: consultar con Kotai</span>
+                <span>Ahorro: entre 1 y 3 UF</span>
               </div>
             </div>
 

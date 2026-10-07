@@ -3,9 +3,20 @@ Fecha: 7 de octubre de 2026. Solicitud posterior del propietario y preferencia d
 
 Se recuperaron el diseño y las secciones de la portada anterior al rediseño. Servicios, requisitos, proveedor, equipo, Alianza G5, video y contacto se leen desde inicio. El menú vuelve a usar anchor links. Solo Obras y las páginas legales conservan rutas independientes.
 
-Se mantienen las correcciones útiles: cabecera responsive sin cortar botones, teléfono de 20 px, menú móvil con Escape, navegación a secciones desde Obras y rutas antiguas compatibles, fotografías ampliables con diálogo accesible, controles manuales de carrusel, filtros con contenido, comparador con teclado, contraste de WhatsApp y formulario que prepara el mensaje sin declarar que ya fue enviado. El ahorro sigue pendiente de confirmación. Se incorporan las fotografías reales de Claudio García, José Prieto y Jorge Rosales, con las reseñas entregadas por el cliente. Claudio y José muestran sus títulos académicos; el de Jorge queda pendiente de confirmación porque no aparece en la fuente.
+Se mantienen las correcciones útiles: cabecera responsive sin cortar botones, teléfono de 20 px, menú móvil con Escape, navegación a secciones desde Obras y rutas antiguas compatibles, fotografías ampliables con diálogo accesible, controles manuales de carrusel, filtros con contenido, comparador con teclado, contraste de WhatsApp y formulario que prepara el mensaje sin declarar que ya fue enviado. El ahorro requerido se actualizó a entre 1 y 3 UF por instrucción posterior del propietario. Se incorporan las fotografías reales de Claudio García, José Prieto y Jorge Rosales, con las reseñas entregadas por el cliente. Claudio y José muestran sus títulos académicos; el de Jorge queda pendiente de confirmación porque no aparece en la fuente.
 
 Verificación de esta corrección: compilación de producción y pruebas de navegador documentadas en `revision-interfaz-2026-10-07/pruebas-anchors.json`. Las capturas `portada-restaurada-*` muestran la versión vigente.
+
+
+## Ajustes posteriores solicitados por el propietario
+
+- Ahorro requerido: entre 1 y 3 UF, sin mensajes de «Por confirmar». Se actualizaron portada, requisitos, comparador, aviso del video y texto de postulación.
+- Vidriería y Ferretería Valey: enlaces a `https://grupovaley.cl/` en cada tarjeta; eliminación de los círculos decorativos que tapaban las etiquetas.
+- Obras: acceso por anchors a sus tres secciones, controles con contador y flechas, seis miniaturas por grupo y navegación para acceder a las veinte fotografías. Fichas con altura adaptable y textos completos.
+- Visor: filas separadas para cabecera, imagen y descripción; fotografía contenida en su área, sin invadir texto ni miniaturas. Conserva Escape y devolución de foco.
+- Facebook e Instagram: botones recuperados con enlace a las páginas generales de las plataformas, por instrucción del propietario. No representan perfiles de Kotai.
+
+Validación: `npm run build`, comprobaciones de desktop y móvil y resultados en `revision-interfaz-2026-10-07/pruebas-ajustes-obras.json`. Captura del visor: `visor-obras-corregido.jpg`.
 
 ---
 

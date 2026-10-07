@@ -48,7 +48,7 @@ export const VideoSection: React.FC = () => {
 
           </div>
 
-          <p className="mt-4 text-base text-zinc-200">El monto de ahorro mencionado en el video debe confirmarse con Kotai para el llamado correspondiente.</p>
+          <p className="mt-4 text-base text-zinc-200">El ahorro requerido es de entre 1 y 3 UF. Si el video menciona otro monto, considera este rango actualizado.</p>
           {/* Highlights Row below video */}
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
 
@@ -74,7 +74,7 @@ export const VideoSection: React.FC = () => {
                 RSH Hasta el 70%
               </h3>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                Libreta para la vivienda con ahorro a confirmar con Kotai y ser propietario/a de la vivienda hasta 90 m².
+                Libreta para la vivienda con ahorro de entre 1 y 3 UF y ser propietario/a de la vivienda hasta 90 m².
               </p>
             </div>
 
