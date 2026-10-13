@@ -487,6 +487,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   },
   {
     id: 'team-4', name: 'Jorge Rosales', role: 'Gerente de Proyectos',
+    academicTitle: 'Constructor Civil',
     department: 'Proyectos y Operaciones', experience: 'Supervisión de obras',
     bio: 'Lidera la adquisición de materiales y el reclutamiento de personal calificado para la construcción. Realiza la cubicación y coordina el uso eficiente de materiales. Supervisa la correcta ejecución de obras y proyectos de SERVIU y del sector privado.',
     image: '/images/equipo/jorge-rosales.jpeg', specialty: 'Operaciones y ejecución de obras',
