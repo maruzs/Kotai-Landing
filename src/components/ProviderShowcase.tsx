@@ -12,7 +12,7 @@ import {
   Award,
   ExternalLink
 } from 'lucide-react';
-import { PROVIDER_VIDEOS, PROVIDER_PHOTOS, ProviderVideoItem } from '../data/mockData';
+import { PROVIDER_VIDEOS, KOTAI_TEAM_PHOTOS, ProviderVideoItem } from '../data/mockData';
 import { ImageLightboxModal, LightboxItem } from './ImageLightboxModal';
 
 export const ProviderShowcase: React.FC = () => {
@@ -36,7 +36,7 @@ export const ProviderShowcase: React.FC = () => {
     setLightboxOpen(true);
   };
 
-  const lightboxItems: LightboxItem[] = PROVIDER_PHOTOS.map((p) => ({
+  const lightboxItems: LightboxItem[] = KOTAI_TEAM_PHOTOS.map((p) => ({
     id: p.id,
     image: p.image,
     title: p.title,
@@ -344,34 +344,36 @@ export const ProviderShowcase: React.FC = () => {
 
         </div>
 
-        {/* FOTOGRAFÍAS REALES DE PLANTA, TALLER Y LOGÍSTICA */}
-        <div>
+        {/* FOTOGRAFÍAS REALES DEL EQUIPO KOTAI */}
+        <div role="region" aria-labelledby="equipo-galeria-titulo">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-200/80 text-zinc-800 text-xs font-bold uppercase tracking-wider mb-2">
               <Building2 className="w-3.5 h-3.5 text-kotai-800" />
-              <span>Evidencia Fotográfica de la Fábrica</span>
+              <span>Las Personas detrás de Kotai</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight">
-              Instalaciones, Despacho y Montaje en Obra
+            <h3 id="equipo-galeria-titulo" className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight">
+              Nuestro Equipo, Siempre Junto a Ti
             </h3>
             <p className="mt-2 text-sm text-zinc-600">
-              Haz clic en cualquier imagen para verla en alta resolución con sus especificaciones de calidad.
+              Conoce a nuestro equipo y los espacios donde trabajamos por tu hogar. Haz clic en una fotografía para ampliarla.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PROVIDER_PHOTOS.map((photo, pIdx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {KOTAI_TEAM_PHOTOS.map((photo, pIdx) => (
               <button
                 type="button"
                 key={photo.id}
                 onClick={() => openLightboxAt(pIdx)}
-                className="text-left group bg-white rounded-2xl border border-zinc-200 overflow-hidden shadow-xs hover:shadow-md hover:border-kotai-300 transition-all duration-200 flex flex-col justify-between cursor-pointer"
+                className="text-left group bg-white rounded-2xl border border-zinc-200 overflow-hidden shadow-xs hover:shadow-md hover:border-kotai-300 transition-[border-color,box-shadow] duration-200 flex flex-col justify-between cursor-pointer"
               >
                 <div className="h-48 sm:h-52 w-full overflow-hidden bg-zinc-950 relative">
                   <img
                     src={photo.image}
                     alt={photo.title}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover object-center motion-safe:group-hover:scale-105 transition-transform duration-300"
+                    width={1280}
+                    height={720}
                     loading="lazy"
                   />
 
@@ -437,7 +439,7 @@ export const ProviderShowcase: React.FC = () => {
 
       </div>
 
-      {/* Modal Lightbox para fotos de taller */}
+      {/* Modal Lightbox para fotos del equipo */}
       <ImageLightboxModal
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}

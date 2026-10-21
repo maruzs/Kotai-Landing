@@ -1,0 +1,11 @@
+node_modules/
+public/
+build/
+review/
+.cache/
+renders/*
+!renders/Kotai-Mejorando-juntos-1080p-liviano.mp4
+!renders/portada.jpg
+!renders/vista-general.jpg
+!renders/verificacion.json
+!renders/compresion.json

@@ -699,48 +699,48 @@ export const PROVIDER_VIDEOS: ProviderVideoItem[] = [
   },
 ];
 
-// Fotos oficiales de taller, logística y entrega de Vidriería & Ferretería Valey
-export const PROVIDER_PHOTOS = [
+// Fotografías reales del equipo y las oficinas de Constructora Kotai.
+export const KOTAI_TEAM_PHOTOS = [
   {
     id: 'p-1',
-    title: 'Planta de Ferretería & Vidriería Valey',
-    description: 'Instalaciones principales y flota logística para despacho a obras de acondicionamiento térmico.',
-    image: '/images/proveedor/valey_fachada_ferreteria.jpg',
-    tag: 'Planta & Flota'
+    title: 'El Equipo detrás de tu Proyecto',
+    description: 'Personas comprometidas con acompañarte en el mejoramiento de tu vivienda.',
+    image: '/images/equipo/equipo-kotai.webp',
+    tag: 'Equipo Kotai'
   },
   {
     id: 'p-2',
-    title: 'Despacho de Ventanas Termopanel',
-    description: 'Camión acondicionado con caballete técnico para transporte seguro de cristales DVH directamente a la vivienda.',
-    image: '/images/proveedor/valey_camion_despacho_ventanas.jpg',
-    tag: 'Logística Segura'
+    title: 'Trabajamos Juntos por tu Hogar',
+    description: 'Nuestro equipo coordina cada etapa para ayudarte a dar el siguiente paso.',
+    image: '/images/equipo/coordinacion-kotai.webp',
+    tag: 'Trabajo en Equipo'
   },
   {
     id: 'p-3',
-    title: 'Ventanas Termopanel DVH Certificadas',
-    description: 'Marcos y hojas de aluminio y PVC con doble sello y protección para montaje en obra.',
-    image: '/images/proveedor/valey_ventanas_certificadas_dvh.jpg',
-    tag: 'Certificación DVH'
+    title: 'Orientación Cercana y Personalizada',
+    description: 'Te escuchamos y orientamos sobre las alternativas de mejoramiento para tu casa.',
+    image: '/images/equipo/orientacion-kotai.webp',
+    tag: 'Acompañamiento'
   },
   {
     id: 'p-4',
-    title: 'Puertas Herméticas con Termopanel Madera',
-    description: 'Puertas exteriores de alta aislación térmica con cristales dobles y terminación tipo nogal.',
-    image: '/images/proveedor/valey_puertas_termopanel_nogal.jpg',
-    tag: 'Puertas Térmicas'
+    title: 'Compromiso en Cada Detalle',
+    description: 'Un equipo que trabaja día a día para preparar y acompañar los proyectos de las familias.',
+    image: '/images/equipo/compromiso-kotai.webp',
+    tag: 'Compromiso'
   },
   {
     id: 'p-5',
-    title: 'Instalación de Puerta Corredera y Ventanales',
-    description: 'Terminación interior limpia y ajuste hermético sin filtraciones de aire.',
-    image: '/images/proveedor/valey_puerta_corredera_instalada.jpg',
-    tag: 'Instalación Final'
+    title: 'Siempre Junto a Ti',
+    description: 'Conoce a las personas que te acompañan desde la primera conversación con Kotai.',
+    image: '/images/equipo/acompanamiento-kotai.webp',
+    tag: 'Cercanía'
   },
   {
     id: 'p-6',
-    title: 'Despacho en Terreno a Comités y Viviendas',
-    description: 'Entregas puntuales en terreno en las regiones de Ñuble y Biobío para obras D.S. 27.',
-    image: '/images/proveedor/valey_camion_despacho_terreno.jpg',
-    tag: 'Entrega en Obra'
+    title: 'Un Espacio para Conversar',
+    description: 'Nuestras oficinas son el punto de encuentro para comenzar a mejorar tu hogar juntos.',
+    image: '/images/equipo/oficinas-kotai.webp',
+    tag: 'Nuestras Oficinas'
   }
 ];
