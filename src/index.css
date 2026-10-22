@@ -70,6 +70,7 @@
 .whatsapp-float:hover { background: #0e512e; }
 .contact-shortcuts { position: fixed; right: 20px; bottom: 20px; z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
 .contact-shortcuts .whatsapp-float { position: static; }
+body:has(#video-explicativo[data-player-visible="true"]) .contact-shortcuts { visibility: hidden; pointer-events: none; }
 body:has([aria-modal=true]) .contact-shortcuts, body:has(#contacto :focus) .contact-shortcuts { visibility: hidden; }
 body:has([aria-modal=true]) .whatsapp-float { visibility: hidden; }
 html { scroll-padding-top: 110px; }

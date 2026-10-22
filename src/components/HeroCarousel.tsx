@@ -1,7 +1,7 @@
 import { navigate } from '../utils/navigation';
 import React, { useState } from 'react';
 import { HERO_CAROUSEL_SLIDES } from '../data/mockData';
-import { ChevronLeft, ChevronRight, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ShieldCheck, CheckCircle2, ArrowRight, Play } from 'lucide-react';
 
 export const HeroCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -94,6 +94,11 @@ export const HeroCarousel: React.FC = () => {
                 <span>Revisar Subsidios y Requisitos</span>
               </a>
             </div>
+
+            <a href="/#video-explicativo" onClick={e => handleSoftScroll(e, '#video-explicativo')}
+              className="inline-flex items-center gap-2 min-h-12 py-2 text-base font-semibold text-white underline underline-offset-4 decoration-white/50 hover:decoration-white">
+              <Play className="w-5 h-5" aria-hidden="true" /> Ver video: Mejorando juntos
+            </a>
 
             {/* Trust Highlights Strip with larger fonts */}
             <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/15 text-sm font-semibold text-zinc-200">

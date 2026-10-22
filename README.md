@@ -19,6 +19,12 @@ La nueva pieza promocional y su proyecto editable están en [`videos/kotai-mejor
 
 La entrega liviana, con cobertura de toda la región del Biobío y Ñuble, se conserva en `videos/kotai-mejorando-juntos/renders/Kotai-Mejorando-juntos-1080p-liviano.mp4`. El máster de alta calidad se genera localmente y se excluye de Git.
 
+La landing presenta este video inmediatamente después de la portada, antes de los pasos para postular. La portada incluye el acceso «Ver video: Mejorando juntos», con desplazamiento suave a `/#video-explicativo`. El reproductor muestra una imagen de portada y descarga el MP4 únicamente cuando el visitante lo reproduce (`preload="none"`), conserva la imagen completa en 16:9 y ofrece controles nativos, pantalla completa, reproducción inline en móvil y descarga. Incluye estados de carga y error con reintento, una alternativa de lectura y enlaces a orientación y WhatsApp.
+
+Los archivos públicos son `public/videos/kotai-mejorando-juntos.mp4` (13,09 MB) y `public/videos/posters/kotai-mejorando-juntos.jpg`. Si se vuelve a generar la entrega, copiar el MP4 liviano y su portada a estas rutas antes de compilar. El video informativo anterior permanece como archivo, pero el reproductor de la landing presenta «Mejorando juntos».
+
+Los accesos flotantes de redes sociales se ocultan mientras el reproductor está a la vista para evitar superposiciones. QA de esta integración: reproducción real mediante teclado en 1440 y 390 px, pausa y búsqueda, ausencia de descarga previa al clic, desplazamiento hasta contacto y simulación de fallo de red con reintento exitoso. Los resultados y capturas locales están en `videos/kotai-mejorando-juntos/review/landing-video/`.
+
 ## Navegación actual
 
 La portada conserva el diseño anterior y reúne la información principal. El menú usa anchors:
@@ -33,7 +39,7 @@ Solo la galería completa (`/obras`, alias `/evidencia`) y las páginas legales 
 
 ## Contenido y funcionalidad
 
-Usar únicamente `Notas/`, `Images/` y `video_assets/` para nuevo contenido. Se incorporan las tres fotografías reales y las reseñas de `Images/Integrantes empresa/`. El teléfono de cabecera conserva 20 px. El ahorro requerido es de entre 1 y 3 UF, según lo indicado por el propietario. El video anterior incluye un aviso del rango actualizado.
+Usar únicamente `Notas/`, `Images/` y `video_assets/` para nuevo contenido. Se incorporan las tres fotografías reales y las reseñas de `Images/Integrantes empresa/`. El teléfono de cabecera conserva 20 px. El ahorro requerido es de entre 1 y 3 UF, según lo indicado por el propietario.
 
 El formulario prepara el mensaje localmente. El visitante revisa los datos, abre WhatsApp y presiona Enviar. La web no confirma recepción ni postulación ante SERVIU.
 

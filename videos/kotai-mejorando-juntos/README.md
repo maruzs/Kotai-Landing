@@ -12,7 +12,7 @@ El video conserva la canción completa entregada en `Images/newContent/Construct
 - `renders/vista-general.jpg`: 18 escenas tomadas del MP4 exportado.
 - `renders/verificacion.json`: resultado de la verificación técnica.
 
-El máster de alta calidad, los cachés y las copias de los originales se excluyen de Git. La entrega liviana, portada, vista general e informes se versionan. Los archivos fuente y el lockfile permiten reconstruirlos; el reproductor anterior de la web conserva su video explicativo.
+El máster de alta calidad, los cachés y las copias de los originales se excluyen de Git. La entrega liviana, portada, vista general e informes se versionan. Los archivos fuente y el lockfile permiten reconstruirlos. La landing presenta la entrega liviana justo después de la portada principal; sus archivos públicos están en `public/videos/kotai-mejorando-juntos.mp4` y `public/videos/posters/kotai-mejorando-juntos.jpg` (rutas desde la raíz del repositorio).
 
 ## Reconstrucción
 

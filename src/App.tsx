@@ -45,11 +45,11 @@ export const App: React.FC = () => {
             {/* Hero con carrusel de fotos reales de Kotai */}
             <HeroCarousel />
 
+            {/* Video promocional junto a la portada para facilitar su descubrimiento */}
+            <VideoSection />
+
             {/* 4 Pasos Simples para postular ante Serviu */}
             <SimplicityBanner />
-
-            {/* Video Oficial Informativo con Locución y Requisitos */}
-            <VideoSection />
 
             {/* Subsidio D.S. 27 de Mejoramiento de la Vivienda y Soluciones */}
             <ServicesSection />
