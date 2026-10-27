@@ -160,6 +160,19 @@ export const ContactSection: React.FC = () => {
                 </a>
               </div>
 
+              <div aria-labelledby="whatsapp-qr-title" className="rounded-2xl border border-zinc-200 bg-white p-5 text-center">
+                <h3 id="whatsapp-qr-title" className="text-lg font-bold text-zinc-900">Escanea y conversemos por WhatsApp</h3>
+                <p className="mt-2 text-sm text-zinc-600">Apunta la cámara de tu celular al código de Constructora Kotai.</p>
+                <a href="https://wa.me/message/NS3GHW7UFXGUG1?src=qr" target="_blank" rel="noopener noreferrer"
+                  aria-label="Abrir el WhatsApp de Constructora Kotai desde el código QR"
+                  className="mx-auto mt-4 block w-60 max-w-full rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-kotai-800">
+                  <svg viewBox="230 555 440 440" role="img" aria-label="Código QR de la cuenta de WhatsApp de Constructora Kotai" className="block w-full h-auto bg-white">
+                    <image href="/images/whatsapp-kotai-qr.png" width="900" height="1600" />
+                  </svg>
+                </a>
+                <p className="mt-3 text-sm text-zinc-600">Si estás en tu celular, toca el código para abrir WhatsApp.</p>
+              </div>
+
               {/* Registro Social de Hogares Link */}
               <div className="p-4 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-between">
                 <div>
