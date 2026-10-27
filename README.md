@@ -47,6 +47,8 @@ Contacto incluye el QR de WhatsApp entregado por Kotai en `public/images/whatsap
 
 Los carruseles se controlan manualmente. La ampliación de fotografías mantiene el diálogo accesible con Escape y restauración de foco. El comparador tiene un control nativo para teclado. Los enlaces de secciones funcionan también desde Obras.
 
+Los accesos flotantes ofrecen Instagram oficial, WhatsApp y un botón para volver arriba con desplazamiento suave (o inmediato si se prefiere movimiento reducido). Los tres usan botones del mismo tamaño y se ocultan al visualizar el video o interactuar con diálogos y el formulario de contacto para no tapar los controles.
+
 La galería fotográfica de la sección Proveedor muestra ahora seis fotografías reales del equipo y las oficinas de Kotai, con títulos y descripciones acordes. Los videos y las fichas de los proveedores conservan su contenido. Las imágenes WebP se reconstruyen con `python scripts/prepare-team-photos.py` (Pillow). La galería usa una columna bajo 768 px; el diálogo permite ampliar, navegar con flechas y cerrar con Escape. Su prueba E2E está en `scripts/test-team-gallery.cjs` y usa Playwright instalado en el entorno de pruebas.
 
 ## Contador de visitas y despliegue

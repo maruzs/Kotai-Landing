@@ -66,17 +66,12 @@
 .lightbox-thumbnails button[aria-pressed=true] { border-color: #fff; }
 .lightbox-thumbnails img { width: 100%; height: 100%; object-fit: cover; }
 
-.whatsapp-float { position: fixed; right: 20px; bottom: 20px; z-index: 40; background: #146c40; color: white; min-height: 52px; padding: 14px 18px; border-radius: 28px; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; box-shadow: 0 3px 12px #0002; }
-.whatsapp-float:hover { background: #0e512e; }
 .contact-shortcuts { position: fixed; right: 20px; bottom: 20px; z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
-.contact-shortcuts .whatsapp-float { position: static; }
 body:has(#video-explicativo[data-player-visible="true"]) .contact-shortcuts { visibility: hidden; pointer-events: none; }
 body:has([aria-modal=true]) .contact-shortcuts, body:has(#contacto :focus) .contact-shortcuts { visibility: hidden; }
-body:has([aria-modal=true]) .whatsapp-float { visibility: hidden; }
 html { scroll-padding-top: 110px; }
 section[id], #requisitos { scroll-margin-top: 12px; }
 #contacto input, #contacto select, #contacto textarea, #contacto h3 { scroll-margin-top: 120px; }
-body:has(#contacto :focus) .whatsapp-float { visibility: hidden; }
 .image-dialog button:focus-visible { outline: 3px solid white; outline-offset: 3px; box-shadow: none; }
 @media (prefers-reduced-motion: reduce) {
  html, html.scroll-smooth { scroll-behavior: auto !important; }
