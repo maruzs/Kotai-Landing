@@ -51,6 +51,8 @@ Los accesos flotantes ofrecen Instagram oficial, WhatsApp y un botón para volve
 
 La galería fotográfica de la sección Proveedor muestra ahora seis fotografías reales del equipo y las oficinas de Kotai, con títulos y descripciones acordes. Los videos y las fichas de los proveedores conservan su contenido. Las imágenes WebP se reconstruyen con `python scripts/prepare-team-photos.py` (Pillow). La galería usa una columna bajo 768 px; el diálogo permite ampliar, navegar con flechas y cerrar con Escape. Su prueba E2E está en `scripts/test-team-gallery.cjs` y usa Playwright instalado en el entorno de pruebas.
 
+Las ocho fotografías de `Images/newContent2/` aparecen en `/obras`, agrupadas en tres viviendas con sus vistas antes y después, incluida la vista lateral de la segunda. Las imágenes se muestran completas y pueden ampliarse; la portada destaca las tres transformaciones y enlaza a Obras. Los archivos publicados conservan los originales en `public/images/transformaciones/`. No se atribuyen ubicaciones ni características técnicas no indicadas con las fotos.
+
 ## Contador de visitas y despliegue
 
 `wrangler.jsonc` despliega un Worker con `worker/index.js` como entrada. Las rutas `/api/*` y `/webmail` pasan por el Worker antes de los archivos estáticos. La API reutiliza `functions/api/visits.js` y el enlace `KOTAI_KV`; mantener este namespace al desplegar para conservar sus datos.

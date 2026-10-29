@@ -1,9 +1,17 @@
 import React from 'react';
 import { Camera, ArrowRight, ShieldCheck } from 'lucide-react';
 import { navigate } from '../utils/navigation';
+import { NEW_WORKS } from '../data/newWorks';
 
 export const EvidenciaTeaser: React.FC = () => {
   const previews = [
+    ...NEW_WORKS.map(work => ({
+      title: work.title,
+      location: 'Antes y después',
+      image: work.photos[1].src,
+      badge: 'Vivienda renovada',
+      desc: work.description,
+    })),
     {
       title: 'Aislamiento Térmico EIFS y Siding',
       location: 'Chillán, Región de Ñuble',
@@ -58,10 +66,9 @@ export const EvidenciaTeaser: React.FC = () => {
         {/* 3 Previews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
           {previews.map((item, idx) => (
-            <div
+            <article
               key={idx}
-              onClick={() => navigate('/obras')}
-              className="group cursor-pointer rounded-3xl bg-zinc-50 border border-zinc-200 overflow-hidden shadow-sm hover:shadow-md hover:border-kotai-300 transition-all duration-200 flex flex-col justify-between"
+              className="group rounded-3xl bg-zinc-50 border border-zinc-200 overflow-hidden shadow-sm hover:shadow-md hover:border-kotai-300 transition-shadow duration-200 flex flex-col justify-between"
             >
               <div className="aspect-[16/10] overflow-hidden relative bg-zinc-200">
                 <img
@@ -87,12 +94,12 @@ export const EvidenciaTeaser: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-zinc-200 flex items-center justify-between text-xs font-bold text-kotai-800 group-hover:text-kotai-900">
+                <a href="/obras" onClick={e => { e.preventDefault(); navigate('/obras'); }} className="pt-4 border-t border-zinc-200 flex items-center justify-between text-xs font-bold text-kotai-800 group-hover:text-kotai-900 min-h-11">
                   <span>Ver detalles en Galería</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
+                </a>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 

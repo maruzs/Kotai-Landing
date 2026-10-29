@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BeforeAfterSlider } from './BeforeAfterSlider';
 import { ProjectsAutoCarousel } from './ProjectsAutoCarousel';
 import { RealWorksCarousel } from './RealWorksCarousel';
+import { NewWorksGallery } from './NewWorksGallery';
 import { ArrowLeft, ArrowRight, ShieldCheck, CheckCircle2, Sparkles, MapPin, Phone } from 'lucide-react';
 import { navigate } from '../utils/navigation';
 import { COMPANY_INFO } from '../data/mockData';
@@ -72,9 +73,11 @@ export const EvidenciaPage: React.FC = () => {
 
       <nav aria-label="Secciones de Obras" className="bg-white border-b border-zinc-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap gap-3">
-          {[['#antes-despues', 'Antes y después'], ['#proyectos', 'Proyectos destacados'], ['#fotos-obras', 'Fotos en terreno']].map(([href, label]) => <a key={href} href={href} className="min-h-11 inline-flex items-center px-4 py-2 rounded-lg border border-zinc-300 text-base font-semibold text-zinc-800 hover:bg-zinc-100">{label}</a>)}
+          {[['#nuevas-obras', 'Nuevas transformaciones'], ['#antes-despues', 'Antes y después'], ['#proyectos', 'Proyectos destacados'], ['#fotos-obras', 'Fotos en terreno']].map(([href, label]) => <a key={href} href={href} className="min-h-11 inline-flex items-center px-4 py-2 rounded-lg border border-zinc-300 text-base font-semibold text-zinc-800 hover:bg-zinc-100">{label}</a>)}
         </div>
       </nav>
+
+      <NewWorksGallery />
 
       {/* 1. ANTES Y DESPUÉS INTERACTIVO */}
       <BeforeAfterSlider />
