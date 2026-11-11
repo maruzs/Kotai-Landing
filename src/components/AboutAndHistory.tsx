@@ -145,14 +145,14 @@ export const AboutAndHistory: React.FC = () => {
               <span>Red de Confianza</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 tracking-tight">
-              Nuestros Aliados y Proveedores Estratégicos
+              Soluciones para el mejoramiento del hogar
             </h3>
             <p className="mt-2 text-sm text-zinc-600">
-              Trabajamos únicamente con marcas líderes y laboratorios certificados en Chile.
+              Conoce otras soluciones para el bienestar de las familias.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {STRATEGIC_ALLIES.map((ally, idx) => (
               <div
                 key={idx}

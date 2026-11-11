@@ -31,7 +31,8 @@ La portada conserva el diseño anterior y reúne la información principal. El m
 
 - `/#servicios`: programas y mejoras de vivienda.
 - `/#requisitos`: condiciones y documentos para preparar.
-- `/#proveedor`: Valey, fotografías y videos.
+- `/#proveedor`: ventanas termopanel certificadas y fotografías del equipo.
+- `/#vinculacion`: encuentro con la comunidad, fotografías y video de los preparativos.
 - `/#nosotros`: equipo; Alianza G5 también aparece en inicio.
 - `/#contacto`: formulario, llamada y otros canales de contacto.
 
@@ -49,7 +50,9 @@ Los carruseles se controlan manualmente. La ampliación de fotografías mantiene
 
 Los accesos flotantes ofrecen Instagram oficial, WhatsApp y un botón para volver arriba con desplazamiento suave (o inmediato si se prefiere movimiento reducido). Los tres usan botones del mismo tamaño y se ocultan al visualizar el video o interactuar con diálogos y el formulario de contacto para no tapar los controles.
 
-La galería fotográfica de la sección Proveedor muestra ahora seis fotografías reales del equipo y las oficinas de Kotai, con títulos y descripciones acordes. Los videos y las fichas de los proveedores conservan su contenido. Las imágenes WebP se reconstruyen con `python scripts/prepare-team-photos.py` (Pillow). La galería usa una columna bajo 768 px; el diálogo permite ampliar, navegar con flechas y cerrar con Escape. Su prueba E2E está en `scripts/test-team-gallery.cjs` y usa Playwright instalado en el entorno de pruebas.
+La sección de ventanas presenta la calidad de los termopaneles certificados y conserva seis fotografías reales del equipo y las oficinas de Kotai. Las imágenes WebP del equipo se reconstruyen con `python scripts/prepare-team-photos.py` (Pillow). La galería usa una columna bajo 768 px; el diálogo permite ampliar, navegar con flechas y cerrar con Escape. Su prueba E2E está en `scripts/test-team-gallery.cjs` y usa Playwright instalado en el entorno de pruebas.
+
+Vinculación con el medio muestra el encuentro con la comunidad mediante ocho fotografías y un video breve de los preparativos entregados en `Images/newContent3/`. Las fotografías se pueden ampliar y recorrer con teclado. Los archivos públicos están en `public/images/comunidad/` y `public/videos/encuentro-comunidad.mp4`. El video se reproduce a petición del visitante y no se precarga. La sección no inventa fecha, lugar ni identidad de los participantes.
 
 Las ocho fotografías de `Images/newContent2/` aparecen en `/obras`, agrupadas en tres viviendas con sus vistas antes y después, incluida la vista lateral de la segunda. Las imágenes se muestran completas y pueden ampliarse; la portada destaca las tres transformaciones y enlaza a Obras. Los archivos publicados conservan los originales en `public/images/transformaciones/`. No se atribuyen ubicaciones ni características técnicas no indicadas con las fotos.
 

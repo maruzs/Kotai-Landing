@@ -272,34 +272,7 @@ export const REAL_WORKS_GALLERY: GalleryPhoto[] = [
     image: '/images/pda/material_aislacion.png',
     description: 'Fijación de paneles térmicos continuos para suprimir completamente los puentes térmicos estructurales.'
   },
-  {
-    id: 'gal-17',
-    title: 'Puertas Herméticas con Termopanel en Madera Noble',
-    tag: 'Puertas & Ventanas',
-    image: '/images/proveedor/valey_puertas_termopanel_nogal.jpg',
-    description: 'Puertas exteriores de alta eficiencia con doble vidriado hermético y terminación premium tipo nogal fabricadas a medida.'
-  },
-  {
-    id: 'gal-18',
-    title: 'Despacho de Ventanas Termopanel Certificadas DVH',
-    tag: 'Logística & Taller',
-    image: '/images/proveedor/valey_camion_despacho_ventanas.jpg',
-    description: 'Transporte técnico en camión con caballete para asegurar la integridad de los termopaneles antes de su montaje.'
-  },
-  {
-    id: 'gal-19',
-    title: 'Puerta Corredera Hermética y Ventanales Interiores',
-    tag: 'Terminación Final',
-    image: '/images/proveedor/valey_puerta_corredera_instalada.jpg',
-    description: 'Instalación y terminación estanca de correderas y ventanales sin filtraciones de aire ni ruidos exteriores.'
-  },
-  {
-    id: 'gal-20',
-    title: 'Ventanales Termopanel DVH en Caballete de Taller',
-    tag: 'Fábrica de Ventanas',
-    image: '/images/proveedor/valey_ventanas_certificadas_dvh.jpg',
-    description: 'Ventanas con doble vidrio y sellos térmicos ensambladas en planta bajo certificación Serviu D.S. 27.'
-  }
+
 ];
 
 // Casos de Antes y Después (Fotos reales de obra y presentación oficial PDA 2026)
@@ -497,24 +470,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
 // Aliados estratégicos y normas técnicas
 export const STRATEGIC_ALLIES: StrategicAlly[] = [
   {
-    name: 'Vidriería Valey',
-    category: 'Fábrica Oficial de Ventanas Termopanel',
-    description: 'Fábrica de ventanas altamente recomendada para todas las constructoras del sector. Ventanas 100% certificadas Serviu, doble vidriado hermético (DVH), doble sello de Butilo y perfiles de PVC Winhouse y aluminio reforzado.',
-    norma: 'Ventanas Certificadas Serviu D.S. 27',
-    logo: '/images/valey/logo_vidrieria_valey.png',
-    badge: 'Fábrica Altamente Recomendada',
-    highlight: true,
-  },
-  {
-    name: 'Ferretería Valey (Grupo Valey)',
-    category: 'Proveedor Principal de Materiales',
-    description: 'Proveedor principal altamente recomendado para todas las empresas constructoras de la región. Abastecimiento continuo de aislantes térmicos EIFS, lana de vidrio, fibrocemento, siding y perfilería estructural.',
-    norma: 'Proveedor Líder del Sector',
-    logo: '/images/valey/logo_ferreteria_valey.png',
-    badge: 'Proveedor Principal Recomendado',
-    highlight: true,
-  },
-  {
     name: 'Sistemas EIFS & Revestimientos',
     category: 'Aislación Térmica Continua',
     description: 'Poliestireno expandido de alta densidad, fibra de vidrio y morteros elastoméricos bajo norma NCh853 y D.S. 27.',
@@ -622,81 +577,6 @@ export const SIMPLE_STEPS = [
     title: 'Ejecución y Aislamiento Garantizado',
     desc: 'Ganada la postulación, Kotai aísla tu vivienda con termopaneles, EIFS, ventilación y techumbre. Tu único aporte es el ahorro previo en tu libreta.',
   }
-];
-
-// Videos oficiales de Vidriería y Ferretería Valey (Proveedor Principal & Fábrica de Ventanas)
-export interface ProviderVideoItem {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  videoSrc: string;
-  posterSrc: string;
-  badge: string;
-  tag: string;
-}
-
-export const PROVIDER_VIDEOS: ProviderVideoItem[] = [
-  {
-    id: 'vid-proceso',
-    title: 'Fabricación Integral de Ventanas Termopanel',
-    subtitle: 'Desde la medición milimétrica hasta la instalación final en terreno',
-    description: 'En Vidriería Valey llevamos cada proyecto desde la toma de medidas en terreno, corte computarizado de perfiles, armado estanco con sellado de Butilo, hasta la instalación y terminación final en obra.',
-    videoSrc: '/videos/valey_proceso_integral.mp4',
-    posterSrc: '/videos/posters/valey_proceso_integral.jpg',
-    badge: 'Proceso Certificado',
-    tag: 'Fábrica de Ventanas',
-  },
-  {
-    id: 'vid-tripleriel',
-    title: 'Correderas Triple Riel Termopanel',
-    subtitle: 'Ingeniería hermética para grandes aperturas y luz natural',
-    description: 'Línea de ventanales correderos con triple riel y cristales DVH con control acústico y térmico, ideal para hogares que buscan confort sin filtraciones de viento ni ruido.',
-    videoSrc: '/videos/valey_correderas_tripleriel.mp4',
-    posterSrc: '/videos/posters/valey_correderas_tripleriel.jpg',
-    badge: 'Alta Hermeticidad',
-    tag: 'Vidriería Valey',
-  },
-  {
-    id: 'vid-winhouse',
-    title: 'Ventanales PVC con Perfilería Winhouse',
-    subtitle: 'Perfiles europeos de PVC certificados con doble vidriado hermético',
-    description: 'Instalación de ventanales termo-acústicos con perfilería Winhouse y doble vidrio sellado. Máxima eficiencia energética bajo estándares de habitabilidad y clima del sur de Chile.',
-    videoSrc: '/videos/valey_ventanales_winhouse.mp4',
-    posterSrc: '/videos/posters/valey_ventanales_winhouse.jpg',
-    badge: 'PVC Certificado',
-    tag: 'Termopanel Winhouse',
-  },
-  {
-    id: 'vid-ferreteria',
-    title: 'Ferretería Valey: Materiales y Abastecimiento Integral',
-    subtitle: 'El proveedor principal de las empresas constructoras de Ñuble y Biobío',
-    description: 'Todo para la construcción en un solo lugar: aislantes térmicos EIFS, lanas de vidrio, planchas, perfiles y herramientas técnicas para responder a las exigencias de licitaciones Serviu.',
-    videoSrc: '/videos/valey_ferreteria_materiales.mp4',
-    posterSrc: '/videos/posters/valey_ferreteria_materiales.jpg',
-    badge: 'Proveedor Principal',
-    tag: 'Ferretería Técnica',
-  },
-  {
-    id: 'vid-fachada',
-    title: 'Fachadas y Cerramientos Herméticos Terminados',
-    subtitle: 'Obras ejecutadas con estanqueidad de alta durabilidad',
-    description: 'Muestra de ventanales y accesos de alta durabilidad instalados en obra, listos para resistir intemperie y cambios climáticos extremos.',
-    videoSrc: '/videos/valey_obra_fachada.mp4',
-    posterSrc: '/videos/posters/valey_obra_fachada.jpg',
-    badge: 'Obra Terminada',
-    tag: 'Envolvente Estanca',
-  },
-  {
-    id: 'vid-oficinas',
-    title: 'Espacios y Cerramientos Vidriados de Alta Gama',
-    subtitle: 'Terminaciones de cristal templado y arquitectura moderna',
-    description: 'Soluciones arquitectónicas de precisión con cristal y perfilería estructural para oficinas y divisiones acústicas de alto rendimiento.',
-    videoSrc: '/videos/valey_oficinas_corporativas.mp4',
-    posterSrc: '/videos/posters/valey_oficinas_corporativas.jpg',
-    badge: 'Línea Arquitectónica',
-    tag: 'Grupo Valey',
-  },
 ];
 
 // Fotografías reales del equipo y las oficinas de Constructora Kotai.

@@ -94,8 +94,11 @@ export const Footer: React.FC = () => {
                   onClick={(e) => handleSoftScroll(e, '#proveedor')}
                   className="inline-flex min-h-11 items-center hover:text-white transition-colors"
                 >
-                  Fábrica & Proveedor
+                  Ventanas certificadas
                 </a>
+              </li>
+              <li>
+                <a href="/#vinculacion" onClick={(e) => handleSoftScroll(e, '#vinculacion')} className="inline-flex min-h-11 items-center hover:text-white transition-colors">Vinculación con el medio</a>
               </li>
               <li>
                 <a

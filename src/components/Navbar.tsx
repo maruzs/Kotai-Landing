@@ -19,7 +19,8 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { label: 'Servicios', href: '#servicios', isRoute: false },
-    { label: 'Proveedor', href: '#proveedor', isRoute: false },
+    { label: 'Ventanas', href: '#proveedor', isRoute: false },
+    { label: 'Comunidad', href: '#vinculacion', isRoute: false },
     { label: 'Obras', href: '/obras', isRoute: true },
     { label: 'Requisitos', href: '#requisitos', isRoute: false },
     { label: 'Nosotros', href: '#nosotros', isRoute: false },
@@ -75,7 +76,7 @@ export const Navbar: React.FC = () => {
             </a>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden xl:flex items-center gap-2 shrink-0">
+            <nav className="hidden xl:flex items-center gap-1 shrink-0">
               {navLinks.map((link) => {
                 const isActive = link.isRoute && isEvidenciaPage;
                 return (
@@ -83,7 +84,7 @@ export const Navbar: React.FC = () => {
                     key={link.label}
                     href={link.isRoute ? link.href : `/${link.href}`}
                     onClick={(e) => handleNavClick(e, link)}
-                    className={`text-sm xl:text-base font-bold whitespace-nowrap transition-all duration-150 py-1.5 px-2.5 rounded-xl relative flex items-center gap-1.5 ${
+                    className={`text-sm 2xl:text-base font-bold whitespace-nowrap transition-all duration-150 py-1.5 px-2 rounded-xl relative flex items-center gap-1.5 ${
                       isActive
                         ? 'text-kotai-900 bg-kotai-50 border border-kotai-200/80'
                         : 'text-zinc-700 hover:text-kotai-800 hover:bg-zinc-100/70'
